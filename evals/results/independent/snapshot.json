@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "root": "/private/tmp/martial-independent-eval",
+  "created_at": "2026-10-11T08:11:02.291188+00:00",
+  "git": {
+    "state": "unverified",
+    "head": null,
+    "status": null,
+    "reason": "Git確認不能"
+  },
+  "files": [
+    {
+      "id": "SYN",
+      "path": "sources/synthetic.txt",
+      "sha256": "21bb8ffb4c0bf7ecfbbac044677f41423bac8bc3ff79c32bed7f34a93f4f7ae8",
+      "text": "合成評価資料。実在研究・史実・実機性能ではない。\r\n模擬分類表では「技甲」を腰技に分類する。\r\n合成研究甲：協力練習だけを観察。抵抗下の防御成功は測定していない。\r\n合成研究乙：映像の標的予測をキー入力で測定。実際の防御動作は測定していない。\r\n模擬装備甲（訓練用小道具）：試作、構成甲、質量は公称「約12 kg」、試験条件は未記載。\r\n模擬装備乙（訓練用小道具）：提案、構成乙、質量はモデル「10–14 kg」、入力条件未記載。\r\n模擬装備甲：最大距離と有効距離、理論速度と持続速度の資料はない。\r\n合成戦役甲：目的は停戦交渉の成立。命令時に補給不足の報告あり。局地戦では勝利。停戦は成立せず。\r\n合成戦役乙：目的は撤退路の確保。判断時の通信は不明。撤退を完了。兵站の期間は甲と異なる。\r\n合成教範：優先する行動を規定する。採用命令や実施の記録ではない。\r\n合成回想：20年後の自己説明。引用している報告は合成戦役甲と同じ報告。\r\n合成規格：版1、条件甲での要件。模擬装備甲の製品適合記録は含まれない。\r\n",
+      "line_count": 12
+    },
+    {
+      "id": "PAS",
+      "path": "sources/passage.txt",
+      "sha256": "c76d97b51d6f4173d9b81854a25289fb434603dcdb767faeb2fb217f25818d5d",
+      "text": "私には予備動作が見えなかった。\r\n模擬装備甲の最大距離は有効距離と同じだ。\r\n合成戦役甲は局地戦に勝ったので政治目的も達成した。\r\n",
+      "line_count": 3
+    },
+    {
+      "id": "FIC",
+      "path": "sources/fiction.txt",
+      "sha256": "4155cf9175c9eaafec469bb328786ddc9f2f0a6d24de09de0c7be9dbef3b9053",
+      "text": "合成の作品設定。実在作品の設定ではない。\n採用済み：人物甲は指定条件で動作を即時再現できる。実在流派の特性とはされていない。\n提案：架空防具甲は全条件で無傷。未採用。\n主観：人物乙には予備動作が見えなかった。\n",
+      "line_count": 4
+    },
+    {
+      "id": "PRO",
+      "path": "sources/provenance.json",
+      "sha256": "1194f0a5acc32a99301a413baf982e4bca9c1e07884faf54fde1459c9bbc69d8",
+      "text": "{\n  \"created_on\": \"2026-10-11\",\n  \"kind\": \"synthetic\",\n  \"author\": \"implementation evaluation\",\n  \"notice\": \"All fixtures are fabricated test inputs, not real studies, equipment specifications, historical evidence or adopted user canon. Never cite them as real evidence.\",\n  \"files\": {\n    \"synthetic.txt\": {\n      \"access_status\": \"full_text\",\n      \"origin\": \"authored synthetic test text\"\n    },\n    \"passage.txt\": {\n      \"access_status\": \"full_text\",\n      \"origin\": \"synthetic review target\"\n    },\n    \"fiction.txt\": {\n      \"access_status\": \"full_text\",\n      \"origin\": \"synthetic confirmed/proposed/subjective settings\"\n    },\n    \"abstract.txt\": {\n      \"access_status\": \"abstract_only\",\n      \"origin\": \"synthetic abstract, no full text supplied\"\n    },\n    \"conflict.txt\": {\n      \"access_status\": \"full_text\",\n      \"origin\": \"synthetic inconsistent records\"\n    }\n  }\n}\n",
+      "line_count": 28
+    }
+  ],
+  "spans": [
+    {
+      "id": "EQUIP_A",
+      "file_id": "SYN",
+      "start_line": 5,
+      "end_line": 5,
+      "text": "模擬装備甲（訓練用小道具）：試作、構成甲、質量は公称「約12 kg」、試験条件は未記載。\r\n",
+      "sha256": "945b933f7176118a82646f994cfbdcb4751d1c69a11ed16da7615de797b58592"
+    },
+    {
+      "id": "EQUIP_B",
+      "file_id": "SYN",
+      "start_line": 6,
+      "end_line": 6,
+      "text": "模擬装備乙（訓練用小道具）：提案、構成乙、質量はモデル「10–14 kg」、入力条件未記載。\r\n",
+      "sha256": "06cc36386ce670cbdd3d62b6ed08df3200668a0ba66cf0701aefaa0fc62e72a1"
+    },
+    {
+      "id": "CAMPAIGN",
+      "file_id": "SYN",
+      "start_line": 8,
+      "end_line": 8,
+      "text": "合成戦役甲：目的は停戦交渉の成立。命令時に補給不足の報告あり。局地戦では勝利。停戦は成立せず。\r\n",
+      "sha256": "c4fdc486ed5ef0c2f07a7246feeb11e0cfbe0ce001f1972c8876872d7a1033f3"
+    },
+    {
+      "id": "MIL_TARGET",
+      "file_id": "PAS",
+      "start_line": 3,
+      "end_line": 3,
+      "text": "合成戦役甲は局地戦に勝ったので政治目的も達成した。\r\n",
+      "sha256": "71442a68f9e0e488fea664165cee7c4ecc5464a20a413e60f7169c0eb33d5182"
+    },
+    {
+      "id": "FICTION_CONF",
+      "file_id": "FIC",
+      "start_line": 2,
+      "end_line": 2,
+      "text": "採用済み：人物甲は指定条件で動作を即時再現できる。実在流派の特性とはされていない。\n",
+      "sha256": "c37c3366ab7a71208b5c242e35c44b01598626c83de9a72357fa27fe9fba8c76"
+    },
+    {
+      "id": "FICTION_PROP",
+      "file_id": "FIC",
+      "start_line": 3,
+      "end_line": 3,
+      "text": "提案：架空防具甲は全条件で無傷。未採用。\n",
+      "sha256": "fa771fc522372b84c82a56b801f54aa84b2a4ba6a58d53012d81934a4b7cd839"
+    },
+    {
+      "id": "FICTION_SUBJ",
+      "file_id": "FIC",
+      "start_line": 4,
+      "end_line": 4,
+      "text": "主観：人物乙には予備動作が見えなかった。\n",
+      "sha256": "c5d3851f33c64f9c548ae6740139824c8a4ff5b04203c85dfb9e2b1198a869ec"
+    }
+  ],
+  "record_integrity": "captured",
+  "errors": [],
+  "warnings": [],
+  "content_judgment": "not_evaluated",
+  "snapshot_id": "7e3aa8f2b1ca74050a28505ba2e2da4af8c5e059758a6dd551590a1cb325cd29"
+}

@@ -1,0 +1,51 @@
+{
+  "repository": "/Volumes/SSD/kamen_rider_defy",
+  "commit": "8a94b0e557ce6db4b98323fd8f31a92f75d1fdbb",
+  "files": [
+    {
+      "path": ".claude/skills/defy-martial-review/SKILL.md",
+      "bytes": 9550,
+      "sha256": "475544ef386d5cc06929230e3248d297b0f05a8bff8f49eac9d72ceac005b8f7"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/agents/openai.yaml",
+      "bytes": 384,
+      "sha256": "9eb5dac7f60ad20605cc525c3dc2c34a62a4b9e43950eee5956af113dbec5254"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/references/defy-context.md",
+      "bytes": 8463,
+      "sha256": "ccec2d43578f5bdaff6f7dabdcfdc4f5db7c415a1035599219410c64527d094e"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/references/evaluation-cases.md",
+      "bytes": 18669,
+      "sha256": "054bb46597f850b7fb09336d304425c48bf4510c5ca6de8160299a281e209037"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/references/review-methods.md",
+      "bytes": 13316,
+      "sha256": "61b51c5553fe6d332716ab4cb2ffe0ab405049862afb35fa1c61b016a0608217"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/references/review-record.md",
+      "bytes": 12084,
+      "sha256": "431f3ccdd8be5eaa60c2a091fa59a6df97bb6cb5ffcc5a0717ad209443da454b"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/references/sources.md",
+      "bytes": 19432,
+      "sha256": "d8b1d8f57cf366c793d5767da8f4d63b9b6f4fa2fbd8c5bbc2fdd07c248812fd"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/scripts/review_guard.py",
+      "bytes": 28242,
+      "sha256": "4d9d4f72552e6097372bea858ff0954e60056eac474b10a04826104458e4b143"
+    },
+    {
+      "path": ".claude/skills/defy-martial-review/scripts/tests/test_review_guard.py",
+      "bytes": 18996,
+      "sha256": "5d83e4a496c4207b0de7b4e66657512cd0c7b87bc13129da6acb02e07b2034ae"
+    }
+  ]
+}

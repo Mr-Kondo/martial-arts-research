@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "context": {
+    "mode": "military",
+    "task": "review",
+    "question": "局地戦勝利から政治目的達成を導けるか",
+    "scope": "passage.txtの3行目。当時情報・兵站・結果と因果の区別",
+    "conditions": [
+      "外部取得不可",
+      "指定された合成評価資料だけでの分析"
+    ],
+    "assumptions": [
+      "合成資料を実在証拠として分類しない"
+    ],
+    "checked_on": "2026-10-11",
+    "requested_extensions": []
+  },
+  "snapshot_id": "7e3aa8f2b1ca74050a28505ba2e2da4af8c5e059758a6dd551590a1cb325cd29",
+  "sources": [
+    {
+      "id": "S01",
+      "source_domain": "unknown",
+      "source_type": "synthetic_evaluation_fixture",
+      "publisher_role": "合成評価資料の作成者。実在対象の研究者・製造者・同時代当事者ではない",
+      "modality": "text",
+      "bibliography": {
+        "author": "implementation evaluation",
+        "title": "synthetic.txt",
+        "year": "2026",
+        "edition": null,
+        "url": null,
+        "doi": null
+      },
+      "access_status": "full_text",
+      "checked_on": "2026-10-11",
+      "method": "指定ローカルファイルを読取り。provenance.jsonで合成資料と確認",
+      "read_range": "全行",
+      "locator": "8行",
+      "limitations": [
+        "合成評価資料。実在研究・史実・装備性能・ユーザー採用設定の証拠ではない"
+      ],
+      "file_id": "SYN"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "target": {
+        "type": "passage",
+        "span_id": "MIL_TARGET",
+        "quote": "合成戦役甲は局地戦に勝ったので政治目的も達成した。"
+      },
+      "domain": "real",
+      "facts": [
+        "合成資料8行では目的は停戦交渉の成立。",
+        "命令時に補給不足の報告あり。報告の受領・認識は未記載。",
+        "局地戦では勝利したが停戦は成立せずと記載。"
+      ],
+      "analysis": "合成資料内では政治目的達成という対象文は「停戦は成立せず」と食い違う。局地戦の結果と政治目的達成は異なる評価対象であり、その間の因果は記載されない。補給不足が未達の原因だった、判断者が知っていた、判断が不合理だったという別命題にも根拠がない。合成資料は実在史実の反証に使えないため機械記録の判定はinsufficient。",
+      "alternative_interpretations": [
+        "「政治目的」を別の目的と解釈する余地はあるが、その別目的は資料に記載がない。",
+        "未達に相手の判断・交渉条件・別の制約が関係した可能性はあるが、どれも未確認。"
+      ],
+      "assessments": [
+        {
+          "axis": "M6",
+          "verdict": "insufficient",
+          "evidence": [
+            {
+              "source_id": "S01",
+              "relation": "context",
+              "locator": "synthetic.txt:8",
+              "span_id": "CAMPAIGN"
+            }
+          ],
+          "conditions": [
+            "合成資料の記載範囲に限定"
+          ],
+          "additional_conditions": [],
+          "missing_information": [
+            "実在の原史料",
+            "局地戦と交渉結果をつなぐ記録",
+            "判断時の情報受領・認識",
+            "兵站量・期間と結果の関係"
+          ]
+        }
+      ],
+      "military_context": {
+        "analysis_kind": "causal",
+        "analysis_levels": [
+          "tactical",
+          "strategic"
+        ],
+        "subject": "合成戦役甲",
+        "period": null,
+        "geography": null,
+        "actors": [],
+        "objectives": [
+          "停戦交渉の成立"
+        ],
+        "decision_point": "命令時。日時・具体的命令内容は不明",
+        "available_information": "命令時に補給不足の報告あり。当事者の受領・認識内容は不明",
+        "resources": null,
+        "constraints": "補給不足の報告。物資量・不足期間・輸送条件は不明",
+        "observed_outcome": "局地戦では勝利。停戦は成立せず。いずれも合成資料の記載",
+        "knowledge_basis": "unknown",
+        "counterfactual_assumptions": []
+      },
+      "limitations": [
+        "合成資料内の不整合指摘と実在史実の反証を区別する。",
+        "同時代報告そのもの、命令内容、通信、当事者、時期、地域は取得できない。"
+      ],
+      "revision": "合成戦役甲は局地戦に勝利したが、目的とされた停戦交渉は成立しなかった。"
+    }
+  ]
+}

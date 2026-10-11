@@ -1,0 +1,1 @@
+{"schema_version": 2, "record_integrity": "pass", "errors": [], "warnings": [{"code": "GIT_UNVERIFIED", "at": "snapshot.git", "message": "Git未確認"}], "content_judgment": "not_evaluated"}

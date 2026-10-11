@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "snapshot_id": null,
+  "context": {
+    "mode": "weapons",
+    "task": "compare",
+    "question": "10式・90式の公表全備重量の表記を比較する",
+    "scope": "陸上自衛隊の車両Webページの全備重量欄",
+    "conditions": [
+      "当該公表欄の紹介のみ、構成・測定条件は未記載"
+    ],
+    "assumptions": [],
+    "checked_on": "2026-10-11",
+    "requested_extensions": []
+  },
+  "sources": [
+    {
+      "id": "W02",
+      "source_domain": "real",
+      "source_type": "published_specifications",
+      "publisher_role": "operator",
+      "modality": "text",
+      "bibliography": {
+        "author": "陸上自衛隊",
+        "title": "車両",
+        "year": null,
+        "edition": null,
+        "url": "https://www.mod.go.jp/gsdf/equipment/ve/",
+        "doi": null
+      },
+      "access_status": "full_text",
+      "checked_on": "2026-10-11",
+      "method": "Web本文の該当諸元欄を閲覧",
+      "read_range": "10式・90式の概要・公開諸元欄",
+      "locator": "10式・90式の全備重量欄",
+      "limitations": [
+        "独立試験ではない",
+        "構成・測定条件の詳細未記載"
+      ],
+      "file_id": null
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "target": {
+        "type": "question",
+        "text": "公表された全備重量の表記は何か"
+      },
+      "domain": "real",
+      "facts": [
+        "10式は約44t、90式は約50tと公表"
+      ],
+      "analysis": "当該公開資料の公称表記の紹介。独立試験や性能の優劣は判定しない。",
+      "alternative_interpretations": [],
+      "assessments": [
+        {
+          "axis": "W3",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "source_id": "W02",
+              "relation": "supports",
+              "locator": "10式・90式の全備重量欄",
+              "span_id": null
+            }
+          ],
+          "conditions": [
+            "資料の公称表記の紹介に限定"
+          ],
+          "additional_conditions": [],
+          "missing_information": []
+        }
+      ],
+      "limitations": [
+        "構成や測定条件を揃えた実測比較ではない"
+      ],
+      "equipment_context": [
+        {
+          "id": "E01",
+          "name": "10式戦車",
+          "variant": null,
+          "region": "日本",
+          "era": null,
+          "configuration": null,
+          "status": "adopted"
+        },
+        {
+          "id": "E02",
+          "name": "90式戦車",
+          "variant": null,
+          "region": "日本",
+          "era": null,
+          "configuration": null,
+          "status": "adopted"
+        }
+      ],
+      "measurements": [
+        {
+          "equipment_id": "E01",
+          "quantity": "全備重量",
+          "original_value": "約44",
+          "unit": "t",
+          "value_kind": "declared",
+          "source_id": "W02",
+          "source_locator": "10式・90式の全備重量欄",
+          "conditions": null,
+          "calculation": null
+        },
+        {
+          "equipment_id": "E02",
+          "quantity": "全備重量",
+          "original_value": "約50",
+          "unit": "t",
+          "value_kind": "declared",
+          "source_id": "W02",
+          "source_locator": "10式・90式の全備重量欄",
+          "conditions": null,
+          "calculation": null
+        }
+      ]
+    }
+  ]
+}

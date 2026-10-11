@@ -1,0 +1,263 @@
+{
+  "checked_on": "2026-10-11",
+  "read_files": [
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/SKILL.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/SKILL.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "63b4b5f957f3a6c50148a65b0e42e3194a51909af7f36ff1f2613a429fe204c9"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/research-methods.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/research-methods.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "543548745a2e7c343e5f22aa2a4feb447087e969420e1eed7e09334d17538b1b"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/evidence-policy.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/evidence-policy.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "53b9a587268e4bf528c55ffd8132280bf8afd3eb683033935176e6f2acf7f6e6"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/record-contract.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/record-contract.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "8c8033bd004adba08a54d6ed1ae02d4acd1de8bc424760e4cd720fc32809c789"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/weapons-methods.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/weapons-methods.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "5b2d7850f83d35c065b7fb6b0061a01536568621aa8d2345ac50b5173aedbfda"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/weapons-source-catalog.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/weapons-source-catalog.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "b384af8324b4645f1e9253eb44e63188af66e5ca02b65f2e35177651b9a05fc3"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/military-methods.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/military-methods.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "08128b7b0144c9de426dc3df5751339d9e856c25901d795a9fc6aadad23c84b8"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/military-source-catalog.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/military-source-catalog.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "fd17bad78aea7bb0b237cc1b372ce1ad9f3b4522da15ee6f77e7704416584adc"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/references/optional-fiction.md",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/references/optional-fiction.md",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "a059edbe698c0ee3a3673fbbe2cdb6a254eb67fca69a46f694d4549fd390e370"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/scripts/research_guard.py",
+      "saved_copy": "/tmp/martial-independent-eval/skill-used/scripts/research_guard.py",
+      "read_range": "全体。ただしresearch_guard.pyは初回表示が切れたため1–390行を追加で再読",
+      "sha256": "0f28c6b2a5fbb2b7de03aa30686ad8e199c924718ccbcfc29066de347118598c"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/evals/fixtures/synthetic.txt",
+      "saved_copy": "/tmp/martial-independent-eval/sources/synthetic.txt",
+      "read_range": "全体",
+      "sha256": "21bb8ffb4c0bf7ecfbbac044677f41423bac8bc3ff79c32bed7f34a93f4f7ae8"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/evals/fixtures/passage.txt",
+      "saved_copy": "/tmp/martial-independent-eval/sources/passage.txt",
+      "read_range": "全体",
+      "sha256": "c76d97b51d6f4173d9b81854a25289fb434603dcdb767faeb2fb217f25818d5d"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/evals/fixtures/fiction.txt",
+      "saved_copy": "/tmp/martial-independent-eval/sources/fiction.txt",
+      "read_range": "全体",
+      "sha256": "4155cf9175c9eaafec469bb328786ddc9f2f0a6d24de09de0c7be9dbef3b9053"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/evals/fixtures/provenance.json",
+      "saved_copy": "/tmp/martial-independent-eval/sources/provenance.json",
+      "read_range": "全体",
+      "sha256": "1194f0a5acc32a99301a413baf982e4bca9c1e07884faf54fde1459c9bbc69d8"
+    }
+  ],
+  "instruction_read": "/Users/masatomiwada/.codex/RTK.md",
+  "scope_resolution": "実際に読み込んだSKILL.mdの所在を基準に相対参照を解決",
+  "search": {
+    "date": "2026-10-11",
+    "destination": "指定ローカル資料",
+    "query": [
+      "模擬装備甲・乙の質量",
+      "合成戦役甲の局地戦勝利・停戦",
+      "人物甲の能力・槍・防具・部隊行動"
+    ],
+    "external_search": "依頼条件により未実施"
+  },
+  "selection": {
+    "adopted": [
+      "synthetic.txt",
+      "passage.txt",
+      "fiction.txt",
+      "provenance.json"
+    ],
+    "reasons": [
+      "synthetic.txt:装備・戦役の記載",
+      "passage.txt:検証対象の原文",
+      "fiction.txt:採用済み・提案・主観の分類",
+      "provenance.json:合成資料の来歴"
+    ],
+    "not_read": [
+      "abstract.txt",
+      "conflict.txt",
+      "evals/task-cases.json",
+      "evals/trigger-cases.json",
+      "docs/validation.md"
+    ],
+    "exclusion_reason": "今回の問いに不要な資料、または禁止された評価期待資料"
+  },
+  "tasks": [
+    {
+      "task": 1,
+      "mode": "weapons",
+      "task_type": "compare",
+      "evidence_ranges": [
+        "synthetic.txt:5–6",
+        "provenance.json:全体"
+      ],
+      "actions": [
+        "元値と値の状態を抽出",
+        "比較条件を照合",
+        "不足条件を判定",
+        "schema 2と回答を保存",
+        "guardで再読・検証"
+      ]
+    },
+    {
+      "task": 2,
+      "mode": "military",
+      "task_type": "review",
+      "evidence_ranges": [
+        "passage.txt:3",
+        "synthetic.txt:8",
+        "provenance.json:全体"
+      ],
+      "actions": [
+        "原文を逐語引用",
+        "情報・兵站・結果を区別",
+        "合成資料内の不整合と現実史実の判断を区別",
+        "schema 2と回答を保存",
+        "guardで再読・検証"
+      ]
+    },
+    {
+      "task": 3,
+      "mode": "integrated",
+      "task_type": "review",
+      "extensions": [
+        "fiction"
+      ],
+      "evidence_ranges": [
+        "fiction.txt:1–4",
+        "provenance.json:全体"
+      ],
+      "actions": [
+        "採用済み・未採用・主観を分類",
+        "槍・部隊の欠落を確認",
+        "関係の保留を明記",
+        "独立回答を保存"
+      ]
+    }
+  ],
+  "executed_processes": [
+    {
+      "process": "snapshot",
+      "argv": [
+        "rtk",
+        "python3",
+        "/tmp/martial-independent-eval/skill-used/scripts/research_guard.py",
+        "snapshot",
+        "--root",
+        "/tmp/martial-independent-eval",
+        "--file",
+        "SYN=sources/synthetic.txt",
+        "--file",
+        "PAS=sources/passage.txt",
+        "--file",
+        "FIC=sources/fiction.txt",
+        "--file",
+        "PRO=sources/provenance.json",
+        "--span",
+        "EQUIP_A=SYN:5:5",
+        "--span",
+        "EQUIP_B=SYN:6:6",
+        "--span",
+        "CAMPAIGN=SYN:8:8",
+        "--span",
+        "MIL_TARGET=PAS:3:3",
+        "--span",
+        "FICTION_CONF=FIC:2:2",
+        "--span",
+        "FICTION_PROP=FIC:3:3",
+        "--span",
+        "FICTION_SUBJ=FIC:4:4"
+      ],
+      "exit_code": 0
+    },
+    {
+      "process": "validate",
+      "argv": [
+        "rtk",
+        "python3",
+        "/tmp/martial-independent-eval/skill-used/scripts/research_guard.py",
+        "validate",
+        "--record",
+        "/tmp/martial-independent-eval/01-weapons-record.json",
+        "--snapshot",
+        "/tmp/martial-independent-eval/snapshot.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "process": "validate",
+      "argv": [
+        "rtk",
+        "python3",
+        "/tmp/martial-independent-eval/skill-used/scripts/research_guard.py",
+        "validate",
+        "--record",
+        "/tmp/martial-independent-eval/02-military-record.json",
+        "--snapshot",
+        "/tmp/martial-independent-eval/snapshot.json"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "limitations": [
+    "外部検索・取得なし",
+    "合成資料を現実証拠に分類せず、B/Cのrecord判定はinsufficient",
+    "modeledの入力・式を補作せず、measurementsは省略",
+    "guardは内容判定を実施しない",
+    "コピー先にGit管理はなく、GIT_UNVERIFIED警告は許容",
+    "スキル原本・ユーザー設定・対象原文は未編集"
+  ],
+  "read_method": "rtk proxy catで指示・SKILL・参照・fixtureを読取り。初回の総出力が切れたためfixtureと軸別資料を再読、guardの1–240行と241–390行をsedで再読。",
+  "persisted_verification": {
+    "method": "rtk proxy python3のassertによる保存後照合",
+    "result": "pass",
+    "checks": [
+      "全保存資料のSHA-256一致",
+      "全コピーと原本のバイト一致",
+      "2件validationのpass・errorsなし",
+      "3件回答の8項目・限界表記の存在"
+    ],
+    "warnings": [
+      "GIT_UNVERIFIEDのみ。保存先はGit管理外"
+    ],
+    "content_judgment": "not_evaluated"
+  }
+}

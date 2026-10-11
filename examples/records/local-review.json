@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "snapshot_id": "94c44e714ddb5b6e334ad67dc92a2f80503016a5aceb5308ba97335af8ff1808",
+  "context": {
+    "mode": "martial",
+    "task": "survey",
+    "question": "資料の定義を調べる最小例",
+    "scope": "契約例のみ",
+    "conditions": [],
+    "assumptions": [],
+    "checked_on": "2026-10-11",
+    "requested_extensions": []
+  },
+  "sources": [],
+  "findings": [
+    {
+      "id": "F01",
+      "target": {
+        "type": "passage",
+        "span_id": "Q01",
+        "quote": "私には予備動作が見えなかった。"
+      },
+      "domain": "subjective",
+      "facts": [],
+      "analysis": "合成の人物の知覚記述。物理的消失の普遍命題とはしない。",
+      "alternative_interpretations": [],
+      "assessments": [
+        {
+          "axis": "A",
+          "verdict": "not_applicable",
+          "evidence": [],
+          "conditions": [],
+          "additional_conditions": [],
+          "missing_information": []
+        }
+      ],
+      "limitations": [
+        "契約の最小例であり調査済み記録ではない"
+      ]
+    }
+  ]
+}

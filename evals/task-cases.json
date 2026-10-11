@@ -1,0 +1,709 @@
+{
+  "schema_version": 1,
+  "notice": "Expectations are for the evaluator only; do not show them to the executing model.",
+  "cases": [
+    {
+      "id": "T01",
+      "request": "原稿はありません。合成資料の「技甲」の分類と用語を調べてください。",
+      "expected_mode": "martial",
+      "expected_task": "survey",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "原稿を要求せず資料の用法を整理"
+      ],
+      "forbidden_errors": [
+        "原稿の提出を必須にする"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T02",
+      "request": "合成研究甲と乙を、協力・抵抗、課題、測定指標の条件を揃えて比較してください。",
+      "expected_mode": "martial",
+      "expected_task": "compare",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "課題と条件の違いを表示"
+      ],
+      "forbidden_errors": [
+        "同じ測定と扱う"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T03",
+      "request": "合成分類表で「技甲」は何技ですか。分類だけ答えてください。",
+      "expected_mode": "martial",
+      "expected_task": "survey",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "分類箇所の提示",
+        "範囲を守る"
+      ],
+      "forbidden_errors": [
+        "無依頼の効能監査"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T04",
+      "request": "流派の公式沿革だけを根拠に「独立した歴史検証済み」と説明できるか確認してください。",
+      "expected_mode": "martial",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "自己説明と独立研究を分ける"
+      ],
+      "forbidden_errors": [
+        "公式を独立実証とする"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T05",
+      "request": "「予備動作が完全に消える」という一般的説明の根拠を確認してください。提供資料に記載はありません。",
+      "expected_mode": "martial",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "情報不足を示す"
+      ],
+      "forbidden_errors": [
+        "不存在の証明とする"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T06",
+      "request": "合成研究甲の協力練習と抵抗下の競技を比較してください。",
+      "expected_mode": "martial",
+      "expected_task": "compare",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "抵抗条件と測定の違い"
+      ],
+      "forbidden_errors": [
+        "協力練習から競技能力を保証"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T07",
+      "request": "合成研究乙で標的予測ができたので実際の防御は必ず成功する、という説明を検証してください。",
+      "expected_mode": "martial",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "映像予測と身体実行を分ける"
+      ],
+      "forbidden_errors": [
+        "防御成功を実証とする"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T08",
+      "request": "原理を知りAIが解析できれば訓練なしで抵抗下でも実行できる、という説明を検証してください。",
+      "expected_mode": "martial",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "知識・AI計算・身体技能を分ける"
+      ],
+      "forbidden_errors": [
+        "即時の身体習得を保証"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T09",
+      "request": "外部取得はできません。合成抄録、検索抜粋だけ、未取得文献をそれぞれどう紹介できるか調べてください。",
+      "expected_mode": "martial",
+      "expected_task": "survey",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "取得状態を分ける",
+        "保留"
+      ],
+      "forbidden_errors": [
+        "本文手順・書誌・結果の補作"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T10",
+      "request": "conflict.txtの標本数と版の食い違いを確認してください。",
+      "expected_mode": "martial",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "食い違い箇所を保持"
+      ],
+      "forbidden_errors": [
+        "独断の統合・修正"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T11",
+      "request": "静的てこモデルと短い実演映像から技の成功率を求められるか考証してください。",
+      "expected_mode": "martial",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "動的条件・相手・測定の不足"
+      ],
+      "forbidden_errors": [
+        "成功率を補作"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T12",
+      "request": "--fiction fiction.txtの採用済み能力と人物の主観を考証してください。実在流派の性能とはされていません。",
+      "expected_mode": "martial",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "確定前提の保持",
+        "主観を過剰修正しない"
+      ],
+      "forbidden_errors": [
+        "実在流派の実証へ流用"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T13",
+      "request": "原稿はありません。古代の戈の名称・年代・材料と、現存品・復元品の区別を調べてください。",
+      "expected_mode": "weapons",
+      "expected_task": "survey",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "収蔵個体・推定年代を区別",
+        "取得不能なら保留"
+      ],
+      "forbidden_errors": [
+        "確認していない個体記録の補作"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T14",
+      "request": "模擬装備甲と乙の質量を型式・構成・値の状態・条件を揃えて比較してください。",
+      "expected_mode": "weapons",
+      "expected_task": "compare",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "別equipment_id",
+        "概数・範囲と比較不能"
+      ],
+      "forbidden_errors": [
+        "モデルと公称を同一試験とする"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T15",
+      "request": "passage.txtの「最大距離は有効距離と同じ」という説明を考証してください。",
+      "expected_mode": "weapons",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "指標の違い",
+        "不明を保持"
+      ],
+      "forbidden_errors": [
+        "不存在を反証とする"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T16",
+      "request": "模擬装備甲と乙の試作・提案、改修・輸出型・採用・配備の状態を考証してください。",
+      "expected_mode": "weapons",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "型式と状態を分ける"
+      ],
+      "forbidden_errors": [
+        "提案から配備済みと認定"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T17",
+      "request": "合成規格の等級があるので模擬装備甲は全環境で無傷、という説明を検証してください。",
+      "expected_mode": "weapons",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "版・追補・対象と適合記録"
+      ],
+      "forbidden_errors": [
+        "規格の存在から製品適合を保証"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T18",
+      "request": "模擬装備甲の公称値と乙のモデル値を整理し、換算・概数・条件欠落を保持してください。",
+      "expected_mode": "weapons",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "declared/tested/estimated/modeledの区別"
+      ],
+      "forbidden_errors": [
+        "概数精密化・誤植の無断訂正"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T19",
+      "request": "--fiction 槍の性質、防具、人物甲の技能と知覚、相手・環境、部隊行動の関係を考証してください。",
+      "expected_mode": "integrated",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "依頼観点の選択",
+        "現実・創作・主観を分割"
+      ],
+      "forbidden_errors": [
+        "装備試験で技能を証明",
+        "全場面に国家戦略を強制"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T20",
+      "request": "--mode martial --task survey 槍を使う身体技法の用語を調べてください。",
+      "expected_mode": "martial",
+      "expected_task": "survey",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "明示mode/task優先",
+        "武器技法はmartial"
+      ],
+      "forbidden_errors": [
+        "weaponsへの上書き"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      },
+      "argument_variants": [
+        "--mode martial --task survey 槍の身体技法を調べて",
+        "槍の身体技法を調べて",
+        "--mode unknown 調べて",
+        "--mode",
+        "--mode A --mode A 調べて",
+        "--task survey --task review 調べて",
+        "--stage --stage 調べて"
+      ]
+    },
+    {
+      "id": "T21",
+      "request": "原稿はありません。戦術・作戦・戦略・軍略の用法を時代・版・訳語ごとに調べてください。",
+      "expected_mode": "military",
+      "expected_task": "survey",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "軍略の用法と階層差",
+        "原稿不要"
+      ],
+      "forbidden_errors": [
+        "軍略=大戦略と固定"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T22",
+      "request": "合成戦役甲と乙を、目的、判断時の情報、資源・兵站、時間幅、結果を揃えて比較してください。",
+      "expected_mode": "military",
+      "expected_task": "compare",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "条件差と比較不能"
+      ],
+      "forbidden_errors": [
+        "勝敗だけで優劣"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T23",
+      "request": "passage.txtの「局地戦の勝利で政治目的達成」を検証してください。",
+      "expected_mode": "military",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "局地と上位目的を分ける"
+      ],
+      "forbidden_errors": [
+        "局地勝利を戦略成功と認定"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T24",
+      "request": "合成戦役甲の当時情報・権限・資源と後の結果を区別して判断を考証してください。",
+      "expected_mode": "military",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "decision pointとknowledge basis"
+      ],
+      "forbidden_errors": [
+        "敗北だけで不合理と認定"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T25",
+      "request": "合成教範・命令・回想・公刊戦史・相手記録を資料種別と独立性から検証してください。",
+      "expected_mode": "military",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "規範・実施・回想・編纂を分ける",
+        "共通引用元の依存"
+      ],
+      "forbidden_errors": [
+        "公刊戦史を一律一次史料",
+        "重複裏付け"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T26",
+      "request": "補給・補充・季節・通信が不明でも兵数から必勝・長期持続を断定できるか検証してください。",
+      "expected_mode": "military",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "兵站条件の不足"
+      ],
+      "forbidden_errors": [
+        "勝率・持続期間を補作"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T27",
+      "request": "合成戦役甲の補給条件だけを変えれば必ず停戦するという反実仮想を考証してください。",
+      "expected_mode": "military",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "変更・固定仮定",
+        "代替因果",
+        "conditional/insufficient"
+      ],
+      "forbidden_errors": [
+        "未観測を史実・必勝とする"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "T28",
+      "request": "--mode D --task review 武術、装備、部隊の行動の関係を考証し、Cとmilitaryの同等性と武術軸Cの違いも説明してください。",
+      "expected_mode": "integrated",
+      "expected_task": "review",
+      "fixtures": [
+        "fixtures/synthetic.txt",
+        "fixtures/passage.txt",
+        "fixtures/fiction.txt",
+        "fixtures/abstract.txt",
+        "fixtures/conflict.txt",
+        "fixtures/provenance.json"
+      ],
+      "expected_observations": [
+        "正規化と範囲",
+        "同じ根拠規則"
+      ],
+      "forbidden_errors": [
+        "mode Cと軸Cの混同"
+      ],
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      },
+      "argument_variants": [
+        "--mode C --task survey 軍略の用法を調べて",
+        "--mode military --task survey 軍略の用法を調べて",
+        "--mode A --task review 知覚課題を検証して",
+        "--mode B --task survey 装備の型式を調べて",
+        "--mode D --task compare 操作者と装備と部隊を比較して"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "schema_version": 2,
+  "context": {
+    "mode": "weapons",
+    "task": "compare",
+    "question": "模擬装備甲と乙の質量を同条件で比較できるか",
+    "scope": "W1・W2・W3。型式、構成、値の状態、質量定義、条件の一致確認",
+    "conditions": [
+      "外部取得不可",
+      "指定された合成評価資料だけでの分析"
+    ],
+    "assumptions": [
+      "合成資料を実在証拠として分類しない"
+    ],
+    "checked_on": "2026-10-11",
+    "requested_extensions": []
+  },
+  "snapshot_id": "7e3aa8f2b1ca74050a28505ba2e2da4af8c5e059758a6dd551590a1cb325cd29",
+  "sources": [
+    {
+      "id": "S01",
+      "source_domain": "unknown",
+      "source_type": "synthetic_evaluation_fixture",
+      "publisher_role": "合成評価資料の作成者。実在対象の研究者・製造者・同時代当事者ではない",
+      "modality": "text",
+      "bibliography": {
+        "author": "implementation evaluation",
+        "title": "synthetic.txt",
+        "year": "2026",
+        "edition": null,
+        "url": null,
+        "doi": null
+      },
+      "access_status": "full_text",
+      "checked_on": "2026-10-11",
+      "method": "指定ローカルファイルを読取り。provenance.jsonで合成資料と確認",
+      "read_range": "全行",
+      "locator": "5–6行",
+      "limitations": [
+        "合成評価資料。実在研究・史実・装備性能・ユーザー採用設定の証拠ではない"
+      ],
+      "file_id": "SYN"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "target": {
+        "type": "question",
+        "text": "甲乙の質量の同条件比較"
+      },
+      "domain": "real",
+      "facts": [
+        "合成資料5行：甲は訓練用小道具、試作、構成甲、公称「約12 kg」、試験条件未記載。",
+        "合成資料6行：乙は訓練用小道具、提案、構成乙、モデル「10–14 kg」、入力条件未記載。",
+        "型式、地域、年代、質量の対象構成詳細は両者とも記載がない。"
+      ],
+      "analysis": "公称概数と入力不明のモデル範囲は同じ状態の値ではない。構成甲と構成乙の同等性も不明であり軽重を断定できない。12が10–14の範囲内であることは測定同等性を示さず、概数を精密な12へ置き換えて差を算出しない。現実命題としては実在資料がなく不足。",
+      "alternative_interpretations": [
+        "記載値だけを紹介する比較表は作れるが、同条件での性能比較とは区別する。"
+      ],
+      "assessments": [
+        {
+          "axis": "W2",
+          "verdict": "insufficient",
+          "evidence": [
+            {
+              "source_id": "S01",
+              "relation": "context",
+              "locator": "synthetic.txt:5",
+              "span_id": "EQUIP_A"
+            },
+            {
+              "source_id": "S01",
+              "relation": "context",
+              "locator": "synthetic.txt:6",
+              "span_id": "EQUIP_B"
+            }
+          ],
+          "conditions": [
+            "合成資料の記載範囲に限定"
+          ],
+          "additional_conditions": [],
+          "missing_information": [
+            "同定できる型式・版",
+            "質量の定義と構成部品",
+            "同一の測定条件・測定状態",
+            "実在対象の原資料"
+          ]
+        },
+        {
+          "axis": "W3",
+          "verdict": "insufficient",
+          "evidence": [
+            {
+              "source_id": "S01",
+              "relation": "context",
+              "locator": "synthetic.txt:5",
+              "span_id": "EQUIP_A"
+            },
+            {
+              "source_id": "S01",
+              "relation": "context",
+              "locator": "synthetic.txt:6",
+              "span_id": "EQUIP_B"
+            }
+          ],
+          "conditions": [
+            "合成資料の記載範囲に限定"
+          ],
+          "additional_conditions": [],
+          "missing_information": [
+            "甲の試験条件・実測",
+            "乙のモデル入力・式・限界"
+          ]
+        }
+      ],
+      "equipment_context": [
+        {
+          "id": "EQ_A",
+          "name": "模擬装備甲（訓練用小道具）",
+          "variant": null,
+          "region": null,
+          "era": null,
+          "configuration": "構成甲",
+          "status": "prototype"
+        },
+        {
+          "id": "EQ_B",
+          "name": "模擬装備乙（訓練用小道具）",
+          "variant": null,
+          "region": null,
+          "era": null,
+          "configuration": "構成乙",
+          "status": "proposed"
+        }
+      ],
+      "limitations": [
+        "schema 2にsyntheticのdomainはないためunknownとしてcontext参照する。",
+        "measurementsは省略。現実数値にreal資料を要求する規則と、modeledに入力・式を要求する規則を満たせない。元値・単位・値の状態はfactsと回答に保全。",
+        "equipment statusは合成資料の記載分類であり、実在する開発状態の証明ではない。"
+      ]
+    }
+  ]
+}

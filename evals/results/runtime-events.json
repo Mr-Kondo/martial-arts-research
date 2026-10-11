@@ -1,0 +1,51 @@
+{
+  "checked_on": "2026-10-11",
+  "note": "Relevant observed fields only; authentication and unrelated logs excluded.",
+  "codex": {
+    "version": "0.155.1",
+    "model": "gpt-6.1-sol",
+    "exit_code": 1,
+    "prompt": "$martial-arts-research --mode A --task survey fixtures/synthetic.txtの合成分類表で技甲は何技ですか。分類だけ、該当箇所付きで答えてください。今回外部取得は使わず、資料を実在の研究と引用せず、ファイルは編集しないでください。",
+    "detection": {
+      "method": "skills/list",
+      "cwd": "/tmp/martial-runtime-eval/codex",
+      "skill_entries": [
+        {
+          "name": "martial-arts-research",
+          "description": "武術・武道・格闘競技、武器・兵器・防具、戦術・戦略・軍略について、調査・比較・考証・根拠確認を求められたときに使う。身体の技法と習得、装備自体の型式・構造・公開性能、部隊・戦役の目的・指揮・情報・兵站、依頼された観点の関係を出典と条件を示して分析する。単語が含まれるだけの通常の推敲、名称の単純翻訳、新規戦闘シーン執筆には自動適用しない。",
+          "path": "/private/tmp/martial-runtime-eval/codex/.agents/skills/martial-arts-research/SKILL.md",
+          "scope": "repo",
+          "enabled": true,
+          "pluginId": null
+        }
+      ],
+      "error": null,
+      "model_inference": false
+    },
+    "events": [
+      {
+        "type": "error",
+        "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}}"
+      },
+      {
+        "type": "turn.failed",
+        "error": {
+          "message": "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}}"
+        }
+      }
+    ],
+    "answer_complete": false
+  },
+  "claude": {
+    "version": "2.1.285",
+    "model": "claude-opus-5-5",
+    "exit_code": 1,
+    "prompt": "/martial-arts-research --mode A --task survey fixtures/synthetic.txtの合成分類表で技甲は何技ですか。分類だけ、該当箇所付きで答えてください。今回外部取得は使わず、資料を実在の研究と引用せず、ファイルは編集しないでください。",
+    "skill_registered": true,
+    "slash_registered": true,
+    "api_error_status": 429,
+    "result": "You've hit your weekly limit · resets 9pm (Asia/Tokyo)",
+    "model_usage": {},
+    "answer_complete": false
+  }
+}

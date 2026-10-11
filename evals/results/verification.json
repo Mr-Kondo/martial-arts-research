@@ -1,0 +1,278 @@
+{
+  "checked_on": "2026-10-11",
+  "status": "verified_with_runtime_evaluation_limits",
+  "python": "3.14.8",
+  "unittest": {
+    "command": "python3 -B -m unittest discover -s scripts/tests -v",
+    "tests": 55,
+    "elapsed_seconds": 2.591,
+    "result": "OK",
+    "log": "unittest.log"
+  },
+  "package_checks": [
+    "relative_links",
+    "frontmatter",
+    "python39_grammar",
+    "case_coverage",
+    "fixture_paths",
+    "saved_examples_from_other_cwd",
+    "design_inputs_unchanged"
+  ],
+  "python39_runtime": "not_run",
+  "quick_validate": "blocked_before_validation_by_missing_PyYAML; stdlib package checks passed",
+  "record_examples": [
+    {
+      "record": "martial",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [],
+        "content_judgment": "not_evaluated"
+      }
+    },
+    {
+      "record": "weapons",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [],
+        "content_judgment": "not_evaluated"
+      }
+    },
+    {
+      "record": "military",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [],
+        "content_judgment": "not_evaluated"
+      }
+    },
+    {
+      "record": "integrated",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [],
+        "content_judgment": "not_evaluated"
+      }
+    },
+    {
+      "record": "weapons-declared",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [
+          {
+            "code": "SOURCE_CONTENT_UNCHECKED",
+            "at": "sources.W02",
+            "message": "外部本文の取得状態は申告。機械未照合"
+          }
+        ],
+        "content_judgment": "not_evaluated"
+      }
+    },
+    {
+      "record": "local-review",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [
+          {
+            "code": "GIT_UNVERIFIED",
+            "at": "snapshot.git",
+            "message": "Git未確認"
+          }
+        ],
+        "content_judgment": "not_evaluated"
+      }
+    }
+  ],
+  "relocated_independent_records": [
+    {
+      "record": "01-weapons",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [
+          {
+            "code": "GIT_UNVERIFIED",
+            "at": "snapshot.git",
+            "message": "Git未確認"
+          }
+        ],
+        "content_judgment": "not_evaluated"
+      }
+    },
+    {
+      "record": "02-military",
+      "exit_code": 0,
+      "result": {
+        "schema_version": 2,
+        "record_integrity": "pass",
+        "errors": [],
+        "warnings": [
+          {
+            "code": "GIT_UNVERIFIED",
+            "at": "snapshot.git",
+            "message": "Git未確認"
+          }
+        ],
+        "content_judgment": "not_evaluated"
+      }
+    }
+  ],
+  "fixture_sha256": {
+    "provenance.json": "1194f0a5acc32a99301a413baf982e4bca9c1e07884faf54fde1459c9bbc69d8",
+    "fiction.txt": "4155cf9175c9eaafec469bb328786ddc9f2f0a6d24de09de0c7be9dbef3b9053",
+    "synthetic.txt": "21bb8ffb4c0bf7ecfbbac044677f41423bac8bc3ff79c32bed7f34a93f4f7ae8",
+    "abstract.txt": "80a2ce45927e2e53443c80e4f996fd0fc6bb0d15fad2d4888b0923ec6ecd6cf2",
+    "passage.txt": "c76d97b51d6f4173d9b81854a25289fb434603dcdb767faeb2fb217f25818d5d",
+    "conflict.txt": "0d369040aecc10989a3589d29f2b1198edb1b93b80630c07e69837cb8897db25"
+  },
+  "cli_evaluation": "detection_confirmed_both; no_completed_answers_or_implicit_trigger_baseline_evaluation",
+  "independent_forward_evaluation": {
+    "modes": [
+      "martial",
+      "weapons",
+      "military",
+      "integrated"
+    ],
+    "tasks": [
+      "survey",
+      "compare",
+      "review"
+    ],
+    "fixture": "synthetic",
+    "no_baseline": true
+  },
+  "prior_unittest": {
+    "command": "python3 -B -m unittest discover -s scripts/tests -v",
+    "tests": 48,
+    "elapsed_seconds": 1.544,
+    "result": "OK",
+    "log": "unittest.log"
+  },
+  "version": "0.1.0",
+  "prior_deployments": [
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/.agents/skills/martial-arts-research",
+      "matched_files": 77,
+      "symlink_required": false,
+      "guard_from_other_cwd": [
+        {
+          "record": "martial",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "weapons",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "military",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "integrated",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "weapons-declared",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "local-review",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        }
+      ]
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/.claude/skills/martial-arts-research",
+      "matched_files": 77,
+      "symlink_required": false,
+      "guard_from_other_cwd": [
+        {
+          "record": "martial",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "weapons",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "military",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "integrated",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "weapons-declared",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        },
+        {
+          "record": "local-review",
+          "exit_code": 0,
+          "record_integrity": "pass"
+        }
+      ]
+    }
+  ],
+  "deployment_update": "verified",
+  "installation_checks": [
+    "new_install",
+    "repeat_update",
+    "version_update",
+    "stale_file_removal",
+    "uninstall_absent",
+    "modified_and_extra_data_protection",
+    "symlink_refusal",
+    "all_target_preflight",
+    "swap_rollback",
+    "real_cli_other_cwd"
+  ],
+  "deployments": [
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/.agents/skills/martial-arts-research",
+      "matched_files": 83,
+      "version": "0.1.0",
+      "detected_entrypoint_files": [
+        "SKILL.md"
+      ]
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/.claude/skills/martial-arts-research",
+      "matched_files": 83,
+      "version": "0.1.0",
+      "detected_entrypoint_files": [
+        "SKILL.md"
+      ]
+    }
+  ]
+}

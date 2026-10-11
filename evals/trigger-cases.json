@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "notice": "Score implicit selection separately from explicit loading.",
+  "cases": [
+    {
+      "id": "R01",
+      "kind": "implicit",
+      "request": "払腰の公式分類を根拠付きで確認してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R02",
+      "kind": "implicit",
+      "request": "剣術の間合いの用法を流派別に調べてください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R03",
+      "kind": "implicit",
+      "request": "槍を扱う身体動作と技能の研究を調べてください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R04",
+      "kind": "implicit",
+      "request": "二つの投技を協力と抵抗の条件を揃えて比較してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "compare"
+    },
+    {
+      "id": "R05",
+      "kind": "implicit",
+      "request": "映像予測から防御成功が保証されるという説明の根拠を確認してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "review"
+    },
+    {
+      "id": "R06",
+      "kind": "implicit",
+      "request": "個人の攻防での予測と反応を研究から考証してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R07",
+      "kind": "implicit",
+      "request": "運動学習の保持と転移の研究を比較してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "compare"
+    },
+    {
+      "id": "R08",
+      "kind": "implicit",
+      "request": "AI解析と人の動作実行の説明を検証してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "review"
+    },
+    {
+      "id": "R09",
+      "kind": "implicit",
+      "request": "古代の戈の名称と年代を収蔵資料から調べてください。",
+      "should_trigger": true,
+      "expected_mode": "weapons",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R10",
+      "kind": "implicit",
+      "request": "10式と90式の公開諸元を比較してください。",
+      "should_trigger": true,
+      "expected_mode": "weapons",
+      "expected_task": "compare"
+    },
+    {
+      "id": "R11",
+      "kind": "implicit",
+      "request": "この防具説明の規格と適合の根拠を検証してください。",
+      "should_trigger": true,
+      "expected_mode": "weapons",
+      "expected_task": "review"
+    },
+    {
+      "id": "R12",
+      "kind": "implicit",
+      "request": "試作車両の型式と開発状態を調べてください。",
+      "should_trigger": true,
+      "expected_mode": "weapons",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R13",
+      "kind": "implicit",
+      "request": "刀剣の材料と年代の資料を比較してください。",
+      "should_trigger": true,
+      "expected_mode": "weapons",
+      "expected_task": "compare"
+    },
+    {
+      "id": "R14",
+      "kind": "implicit",
+      "request": "最大射程と有効射程が同じという説明を考証してください。",
+      "should_trigger": true,
+      "expected_mode": "weapons",
+      "expected_task": "review"
+    },
+    {
+      "id": "R15",
+      "kind": "implicit",
+      "request": "戦術・作戦・戦略・軍略の用法を調べてください。",
+      "should_trigger": true,
+      "expected_mode": "military",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R16",
+      "kind": "implicit",
+      "request": "二つの戦役を兵站と当時情報から比較してください。",
+      "should_trigger": true,
+      "expected_mode": "military",
+      "expected_task": "compare"
+    },
+    {
+      "id": "R17",
+      "kind": "implicit",
+      "request": "局地勝利から政治目的達成への推論を検証してください。",
+      "should_trigger": true,
+      "expected_mode": "military",
+      "expected_task": "review"
+    },
+    {
+      "id": "R18",
+      "kind": "implicit",
+      "request": "部隊の指揮権限と通信について史料を調べてください。",
+      "should_trigger": true,
+      "expected_mode": "military",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R19",
+      "kind": "implicit",
+      "request": "教範が実際に実施されたという記述を検証してください。",
+      "should_trigger": true,
+      "expected_mode": "military",
+      "expected_task": "review"
+    },
+    {
+      "id": "R20",
+      "kind": "implicit",
+      "request": "この戦役の反実仮想を資料と仮定から考証してください。",
+      "should_trigger": true,
+      "expected_mode": "military",
+      "expected_task": "review"
+    },
+    {
+      "id": "R21",
+      "kind": "implicit",
+      "request": "槍の性質と操作者の技能の関係を調べてください。",
+      "should_trigger": true,
+      "expected_mode": "integrated",
+      "expected_task": "survey"
+    },
+    {
+      "id": "R22",
+      "kind": "implicit",
+      "request": "防具・身体技能・部隊行動の関係を比較してください。",
+      "should_trigger": true,
+      "expected_mode": "integrated",
+      "expected_task": "compare"
+    },
+    {
+      "id": "R23",
+      "kind": "implicit",
+      "request": "この描写の装備と知覚と補給の整合性を検証してください。",
+      "should_trigger": true,
+      "expected_mode": "integrated",
+      "expected_task": "review"
+    },
+    {
+      "id": "R24",
+      "kind": "implicit",
+      "request": "殺陣の協力と観客の見え方を考証してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "review"
+    },
+    {
+      "id": "R25",
+      "kind": "implicit",
+      "request": "武術についての文章を読みやすく推敲して。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R26",
+      "kind": "implicit",
+      "request": "武器と兵器の段落の誤字を直して。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R27",
+      "kind": "implicit",
+      "request": "戦略についての文章の口調を柔らかくして。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R28",
+      "kind": "implicit",
+      "request": "「戦術」を英語に翻訳して。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R29",
+      "kind": "implicit",
+      "request": "「槍」を英語にして。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R30",
+      "kind": "implicit",
+      "request": "兵器名だけをローマ字にして。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R31",
+      "kind": "implicit",
+      "request": "新しい剣の戦闘シーンを書いて。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R32",
+      "kind": "implicit",
+      "request": "軍略に長けた人物の台詞を作って。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R33",
+      "kind": "implicit",
+      "request": "武道教室の案内文を短くして。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R34",
+      "kind": "implicit",
+      "request": "戦略という文字を太字にして。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R35",
+      "kind": "implicit",
+      "request": "兵器と書いた見出しを中央揃えにして。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R36",
+      "kind": "implicit",
+      "request": "戦役の概要文の句読点だけを整えて。",
+      "should_trigger": false,
+      "expected_mode": null,
+      "expected_task": null
+    },
+    {
+      "id": "R37",
+      "kind": "explicit",
+      "request": "--mode A --task survey 対象を根拠付きで考証してください。",
+      "should_trigger": true,
+      "expected_mode": "martial",
+      "expected_task": "survey",
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "R38",
+      "kind": "explicit",
+      "request": "--mode B --task compare 対象を根拠付きで考証してください。",
+      "should_trigger": true,
+      "expected_mode": "weapons",
+      "expected_task": "compare",
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "R39",
+      "kind": "explicit",
+      "request": "--mode C --task survey 対象を根拠付きで考証してください。",
+      "should_trigger": true,
+      "expected_mode": "military",
+      "expected_task": "survey",
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    },
+    {
+      "id": "R40",
+      "kind": "explicit",
+      "request": "--mode D --task review 対象を根拠付きで考証してください。",
+      "should_trigger": true,
+      "expected_mode": "integrated",
+      "expected_task": "review",
+      "invocation": {
+        "codex": "$martial-arts-research",
+        "claude": "/martial-arts-research"
+      }
+    }
+  ]
+}

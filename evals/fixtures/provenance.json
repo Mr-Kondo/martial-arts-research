@@ -1,0 +1,28 @@
+{
+  "created_on": "2026-10-11",
+  "kind": "synthetic",
+  "author": "implementation evaluation",
+  "notice": "All fixtures are fabricated test inputs, not real studies, equipment specifications, historical evidence or adopted user canon. Never cite them as real evidence.",
+  "files": {
+    "synthetic.txt": {
+      "access_status": "full_text",
+      "origin": "authored synthetic test text"
+    },
+    "passage.txt": {
+      "access_status": "full_text",
+      "origin": "synthetic review target"
+    },
+    "fiction.txt": {
+      "access_status": "full_text",
+      "origin": "synthetic confirmed/proposed/subjective settings"
+    },
+    "abstract.txt": {
+      "access_status": "abstract_only",
+      "origin": "synthetic abstract, no full text supplied"
+    },
+    "conflict.txt": {
+      "access_status": "full_text",
+      "origin": "synthetic inconsistent records"
+    }
+  }
+}

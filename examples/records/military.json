@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "snapshot_id": null,
+  "context": {
+    "mode": "military",
+    "task": "survey",
+    "question": "資料の定義を調べる最小例",
+    "scope": "契約例のみ",
+    "conditions": [],
+    "assumptions": [],
+    "checked_on": "2026-10-11",
+    "requested_extensions": []
+  },
+  "sources": [],
+  "findings": [
+    {
+      "id": "F01",
+      "target": {
+        "type": "question",
+        "text": "対象の資料と定義は確認できるか"
+      },
+      "domain": "real",
+      "facts": [],
+      "analysis": "未確認事項を保留する最小記録例。実在対象の結論ではない。",
+      "alternative_interpretations": [],
+      "assessments": [
+        {
+          "axis": "M1",
+          "verdict": "insufficient",
+          "evidence": [],
+          "conditions": [],
+          "additional_conditions": [],
+          "missing_information": [
+            "対象を特定する原資料・版・箇所"
+          ]
+        }
+      ],
+      "limitations": [
+        "契約の最小例であり調査済み記録ではない"
+      ],
+      "military_context": {
+        "analysis_kind": "terminology",
+        "analysis_levels": [
+          "unspecified"
+        ],
+        "subject": "用語の資料別定義",
+        "period": null,
+        "geography": null,
+        "actors": [],
+        "objectives": [],
+        "decision_point": null,
+        "available_information": null,
+        "resources": null,
+        "constraints": null,
+        "observed_outcome": null,
+        "knowledge_basis": "unknown",
+        "counterfactual_assumptions": []
+      }
+    }
+  ]
+}

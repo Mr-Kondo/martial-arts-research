@@ -1,0 +1,50 @@
+{
+  "checked_on": "2026-10-11",
+  "evaluation_kind": "独立コンテキストの明示指定評価。各製品CLIの自動起動試験ではない",
+  "request": "$martial-arts-research --mode A --task survey 原稿はありません。技甲の合成分類を該当箇所付きで簡潔に回答",
+  "mode": "martial",
+  "task": "survey",
+  "target_manuscript_required": false,
+  "skill": "/Volumes/SSD/Programming/martial-arts-research/SKILL.md",
+  "skill_use": "先行3件で実際に読み込んだ同一SKILL本文を継続使用。明示mode/taskを上書きせずsurveyは原稿不要という手順を適用",
+  "read_files": [
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/evals/fixtures/synthetic.txt",
+      "actual_read_range": "ファイル全体を読取り。回答根拠は2行",
+      "sha256": "21bb8ffb4c0bf7ecfbbac044677f41423bac8bc3ff79c32bed7f34a93f4f7ae8"
+    },
+    {
+      "path": "/Volumes/SSD/Programming/martial-arts-research/evals/fixtures/provenance.json",
+      "actual_read_range": "全体、noticeを確認",
+      "sha256": "1194f0a5acc32a99301a413baf982e4bca9c1e07884faf54fde1459c9bbc69d8"
+    }
+  ],
+  "selected_evidence": {
+    "locator": "synthetic.txt:2",
+    "quote": "模擬分類表では「技甲」を腰技に分類する。",
+    "classification": "腰技",
+    "source_domain": "synthetic evaluation fixture; not real evidence"
+  },
+  "process": [
+    "指定ローカル資料をrtk proxy python3で再読",
+    "合成資料の来歴を確認",
+    "2行目の分類と逐語引用を抽出",
+    "明示されたmartial/surveyとして回答保存",
+    "保存した引用・分類と原資料の一致をassertで検証"
+  ],
+  "external_acquisition": "依頼条件により未実施",
+  "product_cli_auto_trigger": "未実施。評価対象外",
+  "not_read": [
+    "evals/task-cases.json",
+    "evals/trigger-cases.json",
+    "docs/validation.md"
+  ],
+  "writes": [
+    "/tmp/martial-independent-eval/04-martial-answer.md",
+    "/tmp/martial-independent-eval/04-execution-log.json"
+  ],
+  "original_modified": false,
+  "setting_modified": false,
+  "content_scope": "合成分類表内の記載のみ",
+  "persisted_verification": "pass: 原資料と保全コピーがバイト一致、保存回答の逐語引用・分類が2行目と一致"
+}

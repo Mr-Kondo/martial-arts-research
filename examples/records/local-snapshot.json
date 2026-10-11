@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "root": "/Volumes/SSD/Programming/martial-arts-research/evals/fixtures",
+  "created_at": "2026-10-11T08:10:10.202564+00:00",
+  "git": {
+    "state": "unverified",
+    "head": null,
+    "status": null,
+    "reason": "Git確認不能"
+  },
+  "files": [
+    {
+      "id": "T01",
+      "path": "passage.txt",
+      "sha256": "c76d97b51d6f4173d9b81854a25289fb434603dcdb767faeb2fb217f25818d5d",
+      "text": "私には予備動作が見えなかった。\r\n模擬装備甲の最大距離は有効距離と同じだ。\r\n合成戦役甲は局地戦に勝ったので政治目的も達成した。\r\n",
+      "line_count": 3
+    },
+    {
+      "id": "R01",
+      "path": "synthetic.txt",
+      "sha256": "21bb8ffb4c0bf7ecfbbac044677f41423bac8bc3ff79c32bed7f34a93f4f7ae8",
+      "text": "合成評価資料。実在研究・史実・実機性能ではない。\r\n模擬分類表では「技甲」を腰技に分類する。\r\n合成研究甲：協力練習だけを観察。抵抗下の防御成功は測定していない。\r\n合成研究乙：映像の標的予測をキー入力で測定。実際の防御動作は測定していない。\r\n模擬装備甲（訓練用小道具）：試作、構成甲、質量は公称「約12 kg」、試験条件は未記載。\r\n模擬装備乙（訓練用小道具）：提案、構成乙、質量はモデル「10–14 kg」、入力条件未記載。\r\n模擬装備甲：最大距離と有効距離、理論速度と持続速度の資料はない。\r\n合成戦役甲：目的は停戦交渉の成立。命令時に補給不足の報告あり。局地戦では勝利。停戦は成立せず。\r\n合成戦役乙：目的は撤退路の確保。判断時の通信は不明。撤退を完了。兵站の期間は甲と異なる。\r\n合成教範：優先する行動を規定する。採用命令や実施の記録ではない。\r\n合成回想：20年後の自己説明。引用している報告は合成戦役甲と同じ報告。\r\n合成規格：版1、条件甲での要件。模擬装備甲の製品適合記録は含まれない。\r\n",
+      "line_count": 12
+    }
+  ],
+  "spans": [
+    {
+      "id": "Q01",
+      "file_id": "T01",
+      "start_line": 1,
+      "end_line": 1,
+      "text": "私には予備動作が見えなかった。\r\n",
+      "sha256": "06064bb44d92e146465069651fd050509f203a3c5922b831b6674e1d47eaabb3"
+    },
+    {
+      "id": "S01",
+      "file_id": "R01",
+      "start_line": 1,
+      "end_line": 2,
+      "text": "合成評価資料。実在研究・史実・実機性能ではない。\r\n模擬分類表では「技甲」を腰技に分類する。\r\n",
+      "sha256": "2bdba17a25461e36239125edb015fdf7849ffe1ea0073c9dc6c9d20c499be169"
+    }
+  ],
+  "record_integrity": "captured",
+  "errors": [],
+  "warnings": [],
+  "content_judgment": "not_evaluated",
+  "snapshot_id": "94c44e714ddb5b6e334ad67dc92a2f80503016a5aceb5308ba97335af8ff1808"
+}
