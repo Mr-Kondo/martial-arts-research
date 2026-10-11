@@ -16,7 +16,7 @@ python3 -B scripts/research_guard.py validate --record examples/records/weapons-
 python3 -B scripts/research_guard.py validate --record examples/records/local-review.json --snapshot examples/records/local-snapshot.json --root evals/fixtures
 ```
 
-テスト対象：日本語・CRLF、引用・同サイズ変更・削除・破損、JSONキー／ID／参照／未知キー／型／不正Unicode／非有限数／サイズ・深さ上限、本文／抄録、現実と設定、モード／軸／拡張、装備／測定／計算、軍事階層／反実仮想、Gitなし・Git変更、標準入力・JSON・終了0/1/2。文書検査は相対リンク、fixture来歴、40起動ケース、28タスク、記録例の実行を確認する。最新の件数と結果は[results/verification.json](../evals/results/verification.json)に保存する。
+テスト対象：日本語・CRLF、引用・同サイズ変更・削除・破損、JSONキー／ID／参照／未知キー／型／不正Unicode／非有限数／サイズ・深さ上限、本文／抄録、現実と設定、モード／軸／拡張、装備／測定／計算、軍事階層／反実仮想、Gitなし・Git変更、標準入力・JSON・終了0/1/2。文書検査は相対リンク、fixture来歴、40起動ケース、28タスク、記録例の実行を確認する。初回の結果は[results/verification.json](../evals/results/verification.json)、追加監査の結果は[output-audit-verification.json](../evals/results/output-audit-verification.json)に保存する。
 
 CLIの結果はJSON。`pass`／`captured`でも`content_judgment=not_evaluated`。外部出典の本文を申告した記録にはSOURCE_CONTENT_UNCHECKED、GitなしにはGIT_UNVERIFIEDが出る。これらを根拠確認の成功として集計しない。
 
@@ -123,3 +123,13 @@ GitHub ActionsにWindows CIを追加し、その後[Python CI](https://github.co
 [実行38127240113](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113)はLinux／Windows × Python 3.9／3.14の4ジョブすべて成功。Ubuntu 24.04上のPython 3.9.25／3.14.8で各57件を通過し、skipはない。guard・配置・更新・削除を含む同じテストを使い、Linux向けのコード修正は不要だった。実行対象コミットc8df6b4、実際の版・件数・結果を[linux-ci.json](../evals/results/linux-ci.json)に保存した。
 
 この検証はmainの機械テストで、モデル回答・個人配置・他のディストリビューションを検証しない。検証記録と共通CI設定を0.1.2に同梱し、既存の0.1.1タグとZIPは変更しない。
+
+## 回答生成・規則監査（未リリース）
+
+2026-10-11、macOS Python 3.14.8で70件を通過。既存57件に加え、同一記録の検証から回答生成、単位換算の不一致による停止、四則演算・次元・丸め・ゼロ除算・入力名重複・未対応式、危険な式の不実行、引用改変とCRLF、出典重複・比較条件・数値矛盾・推論規則、Crossrefの取得不能／応答異常／10 DOI上限、UTF-8・stdin・JSON・終了0/1/2・出力上限を確認。配置後のrenderも実行した。[実行ログ](../evals/results/output-audit-tests.log)と[保存記録](../evals/results/output-audit-verification.json)を参照。
+
+Crossref公式APIへ既存台帳のDOIを実際に問い合わせ、登録DOIと出版年の一致、短縮題名と副題付き登録題名の差によるreview_requiredを確認した。通信へ送ったのはDOIだけで、研究内容の真偽は未評価。取得URL・時刻・応答hash・比較値を保存した。
+
+独立したCodexサブエージェントへスキル所在と計算記録のみを渡し、期待結果・実装説明を渡さず前向き評価した。誤った換算値をrenderが終了1／markdown=nullで止め、原記録を変更せず一時領域に修正案を作り、再実行でCALCULATION=checkedを得た。生成回答はそのまま保存され、review_requiredとnot_checkedを維持した。[保全した入力・提案・回答](../evals/results/output-forward/input-record.json)を参照。製品CLIによる自然言語起動評価の代替とはしない。
+
+skill-creatorのquick_validateは今回もPyYAML不足で検査に到達しなかった。依存関係は増やさず、frontmatter・長さ・参照・3.9文法を既存のpackageテストで確認した。構造化分類の自己申告と、取得した資料自体の真偽は機械保証しない。

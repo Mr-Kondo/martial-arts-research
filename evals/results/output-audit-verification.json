@@ -1,0 +1,167 @@
+{
+  "checked_on": "2026-10-11",
+  "release_status": "unreleased; existing v0.1.2 tag and ZIP unchanged",
+  "local_tests": {
+    "python": "3.14.8",
+    "count": 70,
+    "exit_code": 0,
+    "log": "output-audit-tests.log"
+  },
+  "live_crossref": {
+    "input_record": {
+      "schema_version": 2,
+      "snapshot_id": null,
+      "context": {
+        "mode": "martial",
+        "task": "survey",
+        "question": "資料の定義を調べる最小例",
+        "scope": "契約例のみ",
+        "conditions": [],
+        "assumptions": [],
+        "checked_on": "2026-10-11",
+        "requested_extensions": []
+      },
+      "sources": [
+        {
+          "id": "R01",
+          "source_domain": "real",
+          "source_type": "journal_article",
+          "publisher_role": "researchers",
+          "modality": "text",
+          "bibliography": {
+            "author": null,
+            "title": "Taekwondo Fighting in Training Does Not Simulate the Affective and Cognitive Demands of Competition",
+            "year": "2018",
+            "edition": null,
+            "url": "https://doi.org/10.3389/fpsyg.2018.00025",
+            "doi": "10.3389/fpsyg.2018.00025"
+          },
+          "access_status": "unverified",
+          "checked_on": null,
+          "method": null,
+          "read_range": null,
+          "locator": null,
+          "limitations": [
+            "今回は書誌照合だけ。研究内容は未評価"
+          ],
+          "file_id": null
+        }
+      ],
+      "findings": [
+        {
+          "id": "F01",
+          "target": {
+            "type": "question",
+            "text": "対象の資料と定義は確認できるか"
+          },
+          "domain": "real",
+          "facts": [],
+          "analysis": "未確認事項を保留する最小記録例。実在対象の結論ではない。",
+          "alternative_interpretations": [],
+          "assessments": [
+            {
+              "axis": "A",
+              "verdict": "insufficient",
+              "evidence": [],
+              "conditions": [],
+              "additional_conditions": [],
+              "missing_information": [
+                "対象を特定する原資料・版・箇所"
+              ]
+            }
+          ],
+          "limitations": [
+            "契約の最小例であり調査済み記録ではない"
+          ]
+        }
+      ]
+    },
+    "result": {
+      "schema_version": 2,
+      "record_integrity": "pass",
+      "errors": [],
+      "warnings": [],
+      "content_judgment": "not_evaluated",
+      "record_sha256": "553a6e07608c68b913957f9e5bc4c0139400ef6d854d2a7e68ab1f32fa577e5e",
+      "audit_checks": [
+        {
+          "code": "DOI_REGISTERED",
+          "status": "checked",
+          "at": "sources.R01",
+          "message": "CrossrefのDOIと一致。内容の真偽は未判定",
+          "details": {
+            "doi": "10.3389/fpsyg.2018.00025",
+            "acquisition": {
+              "url": "https://api.crossref.org/works/10.3389%2Ffpsyg.2018.00025",
+              "retrieved_at": "2026-10-11T09:47:40.042139+00:00",
+              "sha256": "63e1aa0a3984a2949027a4545bfe36e6c6ef32ad7aa0ff9638d477b5f2c06d58"
+            }
+          }
+        },
+        {
+          "code": "METADATA_TITLE",
+          "status": "review_required",
+          "at": "sources.R01",
+          "message": "登録情報との表記・版の違いを確認。虚偽とは断定しない",
+          "details": {
+            "declared": "Taekwondo Fighting in Training Does Not Simulate the Affective and Cognitive Demands of Competition",
+            "observed": [
+              "Taekwondo Fighting in Training Does Not Simulate the Affective and Cognitive Demands of Competition: Implications for Behavior and Transfer"
+            ]
+          }
+        },
+        {
+          "code": "METADATA_YEAR",
+          "status": "checked",
+          "at": "sources.R01",
+          "message": "登録情報と一致",
+          "details": {
+            "declared": "2018",
+            "observed": [
+              "2018"
+            ]
+          }
+        },
+        {
+          "code": "METADATA_AUTHOR",
+          "status": "not_checked",
+          "at": "sources.R01",
+          "message": "書誌項目を照合できない",
+          "details": {
+            "field": "author"
+          }
+        },
+        {
+          "code": "INFERENCE",
+          "status": "not_checked",
+          "at": "findings.F01",
+          "message": "構造化した推論種別なし。自然文の論理は未検証",
+          "details": {}
+        },
+        {
+          "code": "SOURCE_TRUTH",
+          "status": "not_checked",
+          "at": "record",
+          "message": "資料そのものの真偽・引用の意味・分類申告の正しさ・歴史と因果は未判定",
+          "details": {}
+        }
+      ],
+      "audit_status": "review_required"
+    }
+  },
+  "independent_forward_test": {
+    "artifacts": "output-forward",
+    "input_kept_unchanged": true,
+    "original_render_exit": 1,
+    "original_markdown": null,
+    "proposal_render_exit": 0,
+    "proposal_record_sha256": "df6f544e035673ca05786d20db810a8e0f113c5d94979a6d90443170973907d3",
+    "audit_status": "review_required",
+    "content_judgment": "not_evaluated",
+    "scope": "Independent Codex subagent, skill and raw record only, no expectations, no network; not a product CLI evaluation"
+  },
+  "quick_validate": {
+    "status": "not_run_to_checks",
+    "reason": "PyYAML missing; existing standard-library package tests passed"
+  }
+}

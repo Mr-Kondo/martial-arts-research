@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "snapshot_id": null,
+  "context": {
+    "mode": "weapons",
+    "task": "review",
+    "question": "合成仮定の40 tをkgへ換算する",
+    "scope": "計算・監査契約の例。実物の性能ではない",
+    "conditions": [
+      "架空の入力を用いた計算"
+    ],
+    "assumptions": [],
+    "checked_on": "2026-10-11",
+    "requested_extensions": []
+  },
+  "sources": [],
+  "findings": [
+    {
+      "id": "F01",
+      "target": {
+        "type": "question",
+        "text": "40 tのkg表記を計算できるか"
+      },
+      "domain": "real",
+      "facts": [],
+      "analysis": "合成仮定の単位換算。入力と式の物理的妥当性や実在の装備の質量は検証しない。",
+      "alternative_interpretations": [],
+      "assessments": [
+        {
+          "axis": "W1",
+          "verdict": "insufficient",
+          "evidence": [],
+          "conditions": [],
+          "additional_conditions": [],
+          "missing_information": [
+            "対象を特定する原資料・版・箇所"
+          ]
+        }
+      ],
+      "limitations": [
+        "契約の最小例であり調査済み記録ではない"
+      ],
+      "equipment_context": [
+        {
+          "id": "E01",
+          "name": "調査対象装備（未特定の例）",
+          "variant": null,
+          "region": null,
+          "era": null,
+          "configuration": null,
+          "status": "unknown"
+        }
+      ],
+      "measurements": [
+        {
+          "equipment_id": "E01",
+          "quantity": "質量",
+          "original_value": "400000",
+          "unit": "kg",
+          "value_kind": "estimated",
+          "source_id": null,
+          "source_locator": null,
+          "conditions": "合成入力の単位換算のみ",
+          "calculation": {
+            "inputs": [
+              {
+                "name": "mass",
+                "value": "40",
+                "unit": "t",
+                "source_id": null,
+                "assumption": "実測値ではない合成仮定"
+              }
+            ],
+            "formula": "mass",
+            "rounding": "丸めなし",
+            "limitations": [
+              "入力の真偽と物理的妥当性は別途確認"
+            ]
+          }
+        }
+      ],
+      "inference_context": {
+        "claim_kind": "description",
+        "basis_kind": "model",
+        "confounders": [],
+        "identification": null
+      }
+    }
+  ]
+}

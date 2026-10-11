@@ -1,5 +1,12 @@
 # リリース履歴
 
+## 未リリース
+
+- audit／renderを追加。同じ読込記録を検証・監査し、根拠・条件・不足情報・警告を保持したMarkdownをJSONで返す。
+- 根拠の逐語引用、単位と次元を伴う四則計算・丸め、重複出典・比較条件・数値矛盾・推論の飛躍を検査。
+- 任意のCrossref DOI書誌照合を追加。登録情報との差や取得失敗を虚偽と断定しない。
+- schema 2に任意のquote・decimal_places・inference_contextを追加。既存記録は互換、内容の正しさはnot_evaluated。
+
 ## 0.1.2 — 2026-10-11
 
 - Windows CIをPython CIへ統合し、Linux／Windows × Python 3.9／3.14の4構成で機械テストを実行。

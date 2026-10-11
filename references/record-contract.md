@@ -49,7 +49,7 @@ bibliographyの必須6キー：`author`, `title`, `year`, `edition`, `url`, `doi
 
 ## findingsとtarget
 
-必須：`id`、`target`、`domain`（real / fictional / subjective）、`facts`（文字列配列）、`analysis`（text）、`alternative_interpretations`（文字列配列）、`assessments`（1件以上）、`limitations`（文字列配列）。任意：`revision`（nullable textの説明修正案）、`equipment_context`、`measurements`、`military_context`。fictional findingにはfiction拡張が必要。
+必須：`id`、`target`、`domain`（real / fictional / subjective）、`facts`（文字列配列）、`analysis`（text）、`alternative_interpretations`（文字列配列）、`assessments`（1件以上）、`limitations`（文字列配列）。任意：`revision`（nullable textの説明修正案）、`equipment_context`、`measurements`、`military_context`、`inference_context`。fictional findingにはfiction拡張が必要。
 
 targetは型によって必須キーを切り替える。余分なキーは不可。
 
@@ -61,6 +61,8 @@ targetは型によって必須キーを切り替える。余分なキーは不�
 各assessmentの必須：axis、verdict、evidence（配列、空可）、conditions、additional_conditions、missing_information（各文字列配列）。軸はmartial=A〜E、weapons=W1〜W5、military=M1〜M6、integrated=その集合。stage明示時だけFを追加する。全軸を要求しない。
 
 evidenceの必須：`source_id`（出典ID）、`relation`（supports / contradicts / reports / context）、`locator`（nullable text）、`span_id`（snapshotの範囲IDまたはnull）。ローカル出典のevidenceは同file_idのspan_idが必要。外部出典にはspan_idを付けない。contextのlocatorだけは不明でnull可。
+
+任意`quote`（text）は根拠の逐語引用。保存spanがある場合は、その範囲に連続して存在することをvalidateで照合する。CRLF・空白・省略を勝手に変更しない。外部出典のquoteは記録できるが、snapshotなしでは機械照合済みにしない。既存のquoteなし記録も有効。
 
 | verdict | 機械検査する最低条件 |
 | --- | --- |
@@ -92,6 +94,12 @@ measurementsは数値考証時の任意配列。各項目の必須：
 declared/testedには出典IDと箇所が必須。参照出典・箇所はevidenceにも記録する。現実数値にはreal資料が必要。未取得資料の値の実質的正しさは保証しない。estimated/modeledにはcalculationが必須。自己計算ならsource_id/locatorを両方nullにできる。
 
 calculationの必須キー：`inputs`（1件以上の配列）、`formula`（text）、`rounding`（text、丸め不要も明記）、`limitations`（文字列配列1件以上）。inputsの各項目はname、value（text）、unit（nullable text）、source_id（IDまたはnull）、assumption（nullable text）が必須。入力には出典または仮定が必要。用いた出典は当該findingのevidenceにも参照し、real findingの出典付き計算入力にはreal資料を要求する。換算でも入力・式・丸めを記録する。
+
+任意`decimal_places`は整数0〜12（bool不可）。実行可能な式・単位・丸めの範囲は[output-audit.md](output-audit.md)。未対応の自然文の式も記録としては有効だが、計算検証はnot_checked。対応した計算結果の不一致はauditのerrorで、validateの記録整合性とは区別する。
+
+## inference_context
+
+任意の構造化推論。使用時は全キー必須：`claim_kind`（description / causal / effectiveness / generalization）、`basis_kind`（observation / association / prediction / normative / declared / tested / model / historical）、`confounders`（文字列配列）、`identification`（nullable text）。因果・実効性・一般化を論じる場合は原資料に基づいて記録する。分類・交絡・識別方法の申告自体を、実証済みの事実とは扱わない。
 
 ## military_context
 
@@ -129,6 +137,8 @@ validateでは保存本文・ハッシュ・行数・範囲・ID・未知キー�
 入力JSONと各UTF-8資料は16 MiB以下、選択資料合計と出力snapshot JSONも16 MiB以下、JSON入れ子は64以下。重複キー、NaN/Infinity、浮動小数オーバーフロー、非UTF-8、通常ファイル以外を拒否。非有限数を無視しない。
 
 結果はJSONのrecord_integrity、errors、warnings、content_judgment。通常の標準出力はJSONのみ（--helpは使用法テキスト）。終了0=pass/captured、1=記録不整合・現在資料変更／削除、2=JSON／CLI入力異常・読取り不能・破損snapshot。予期される異常でtracebackを出さない。snapshotにstdinは不可、recordは`-`で可。
+
+audit／renderも同じ入力オプションを使い、既存の結果にrecord_sha256、audit_status、audit_checksを追加する。renderはmarkdown（文字列またはnull）も追加する。終了1は記録不整合または監査error。要確認・未検証だけなら終了0だが、内容合格ではない。詳細・オンライン照合の条件は[output-audit.md](output-audit.md)。既存のvalidate／snapshot出力は変更しない。
 
 ## 機械保証の境界
 

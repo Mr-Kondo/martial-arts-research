@@ -7,6 +7,7 @@
 - [配置・呼出し・実機の確認範囲](docs/compatibility.md)
 - [検証結果・未実施項目・再実行手順](docs/validation.md)
 - [記録契約schema 2](references/record-contract.md)／[標準ライブラリguard](scripts/research_guard.py)
+- [ツールによる監査・回答生成](references/output-audit.md)：計算・引用・比較条件・推論・書誌の確認範囲を回答に保持
 - [来歴・変更範囲・ライセンス](docs/provenance.md)
 - [呼出し例](examples/codex-invocation.md)／[起動評価40件](evals/trigger-cases.json)／[タスク評価28件](evals/task-cases.json)
 
@@ -30,6 +31,7 @@ Claude Code: /martial-arts-research --mode C --task survey 戦術・作戦・戦
 ```sh
 python3 -B -m unittest discover -s scripts/tests -v
 python3 -B scripts/research_guard.py validate --record examples/records/military.json
+python3 -B scripts/research_guard.py render --record examples/records/calculation-audit.json
 ```
 
 機械検査の合格は記録整合性のみ。意味・歴史・因果・性能・最終回答の正確性は自動保証しない。両CLIでのスキル検出を確認したが、Codexの設定モデル非対応とClaude Codeの週間利用上限により、両CLIの回答評価は未完了。別コンテキストの合成資料評価は実施した。

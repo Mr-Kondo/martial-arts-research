@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Schema 2 record integrity only. Python 3.9+, standard library, read-only."""
+"""Schema 2 integrity, bounded audits and rendering. Python 3.9+, read-only."""
 import argparse
 import datetime as dt
 import hashlib
@@ -386,7 +386,13 @@ def validate(record, snapshot=None, root_override=None):
                         "domain": enum("real", "fictional", "subjective"), "facts": strings, "analysis": text,
                         "alternative_interpretations": strings, "assessments": lambda v: isinstance(v, list), "limitations": strings},
               {"revision": nullable, "equipment_context": lambda v: isinstance(v, list), "measurements": lambda v: isinstance(v, list),
-               "military_context": lambda v: isinstance(v, dict)}, at)
+               "military_context": lambda v: isinstance(v, dict),
+               "inference_context": lambda v: isinstance(v, dict)}, at)
+        if "inference_context" in finding:
+            c.obj(finding["inference_context"], {
+                "claim_kind": enum("description", "causal", "effectiveness", "generalization"),
+                "basis_kind": enum("observation", "association", "prediction", "normative", "declared", "tested", "model", "historical"),
+                "confounders": strings, "identification": nullable}, {}, at + ".inference_context")
         domain = finding.get("domain")
         if domain == "fictional" and "fiction" not in extensions:
             c.add("FICTION_REQUIRED", at, "fictional findingにはfictionが必要")
@@ -421,7 +427,8 @@ def validate(record, snapshot=None, root_override=None):
             for j, evidence in enumerate(c.entries(a.get("evidence"), aa + ".evidence")):
                 ea = aa + f".evidence[{j}]"
                 e = c.obj(evidence, {"source_id": matches(ID), "relation": enum("supports", "contradicts", "reports", "context"),
-                                     "locator": nullable, "span_id": lambda v: v is None or matches(ID)(v)}, {}, ea)
+                                     "locator": nullable, "span_id": lambda v: v is None or matches(ID)(v)},
+                          {"quote": text}, ea)
                 sid = e.get("source_id")
                 source = sources.get(sid) if isinstance(sid, str) else None
                 if source is None:
@@ -437,6 +444,9 @@ def validate(record, snapshot=None, root_override=None):
                         local_ok = False
                 elif span_id is not None:
                     c.add("SOURCE_SPAN_MISMATCH", ea, "範囲を参照する出典にfile_idが必要")
+                    local_ok = False
+                if "quote" in e and span is not None and text(e["quote"]) and e["quote"] not in span["text"]:
+                    c.add("QUOTE_MISMATCH", ea, "根拠の逐語引用が原文に不一致")
                     local_ok = False
                 status, relation = source.get("access_status"), e.get("relation")
                 sc = source.get("source_context")
@@ -499,7 +509,8 @@ def validate(record, snapshot=None, root_override=None):
                 c.add("CALCULATION_REQUIRED", ma, "推定/モデルには入力・式・限界が必要")
             if calculation is not None:
                 ca = c.obj(calculation, {"inputs": lambda v: isinstance(v, list) and bool(v), "formula": text,
-                                         "rounding": text, "limitations": lambda v: strings(v) and bool(v)}, {}, ma + ".calculation")
+                                         "rounding": text, "limitations": lambda v: strings(v) and bool(v)},
+                           {"decimal_places": lambda v: type(v) is int and 0 <= v <= 12}, ma + ".calculation")
                 for j, inp in enumerate(c.entries(ca.get("inputs"), ma + ".calculation.inputs", True)):
                     ia = ma + f".calculation.inputs[{j}]"
                     p = c.obj(inp, {"name": text, "value": text, "unit": nullable,
@@ -545,10 +556,13 @@ def main(argv=None):
         snap.add_argument("--root", required=True)
         snap.add_argument("--file", action="append", required=True)
         snap.add_argument("--span", action="append", default=[])
-        check = commands.add_parser("validate")
-        check.add_argument("--record", required=True)
-        check.add_argument("--snapshot")
-        check.add_argument("--root")
+        for command in ("validate", "audit", "render"):
+            check = commands.add_parser(command)
+            check.add_argument("--record", required=True)
+            check.add_argument("--snapshot")
+            check.add_argument("--root")
+            if command != "validate":
+                check.add_argument("--online", action="store_true", help="DOIのみをCrossrefへ送って書誌照合。既定は通信なし")
         args = parser.parse_args(argv)
         if args.command == "snapshot":
             result, code = capture(args.root, args.file, args.span), 0
@@ -556,8 +570,17 @@ def main(argv=None):
             if args.snapshot == "-":
                 raise InputError("snapshotは保存したファイルを指定")
             snapshot = load_json(args.snapshot) if args.snapshot else None
-            result = validate(load_json(args.record), snapshot, args.root)
+            record = load_json(args.record)
+            result = validate(record, snapshot, args.root)
             code = 0 if result["record_integrity"] == "pass" else 1
+            if args.command != "validate":
+                from research_output import audit_record, render_report
+                result = audit_record(record, snapshot, result, args.online)
+                code = 1 if result["audit_status"] in ("error", "blocked") else 0
+                if args.command == "render":
+                    result["markdown"] = render_report(record, result) if code == 0 else None
+                if len(json.dumps(result, ensure_ascii=False, allow_nan=False).encode("utf-8")) > MAX_BYTES:
+                    raise InputError("監査・回答JSON上限16 MiB超過")
     except (InputError, OSError, ValueError, UnicodeError, RecursionError) as error:
         result = {"schema_version": VERSION, "record_integrity": "input_error", "errors": [{"code": "INPUT_ERROR", "at": "input", "message": str(error)}],
                   "warnings": [], "content_judgment": "not_evaluated"}

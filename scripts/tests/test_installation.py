@@ -132,6 +132,11 @@ class InstallationTests(unittest.TestCase):
         guard = subprocess.run([sys.executable, '-B', str(target / 'scripts/research_guard.py'), 'validate',
                                 '--record', str(target / 'examples/records/military.json')], cwd=tempfile.gettempdir(), capture_output=True)
         self.assertEqual(guard.returncode, 0, guard.stdout)
+        rendered = subprocess.run([sys.executable, '-B', str(target / 'scripts/research_guard.py'), 'render',
+                                   '--record', str(target / 'examples/records/military.json')],
+                                  cwd=tempfile.gettempdir(), capture_output=True)
+        self.assertEqual(rendered.returncode, 0, rendered.stdout + rendered.stderr)
+        self.assertIn('不足情報', json.loads(rendered.stdout)['markdown'])
         self.assertEqual(run('uninstall.py').returncode, 0)
         self.assertEqual(run('uninstall.py').returncode, 0)
         bad = run('install.py', '--user')
