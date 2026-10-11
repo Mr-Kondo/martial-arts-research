@@ -109,3 +109,11 @@ Claudeの限定ツールは一時評価だけに適用する。スキルによ�
 新規配置、同版の再配置、版更新、旧ファイル除去、削除・再削除、CRLF、日本語パス、手編集・追加・空ディレクトリ・削除の保護、管理記録なし・不正記録・リンク拒否、両対象の事前確認、置換失敗時の復元を試験する。別cwdから実際のCLIで両配置を作り、配置先のguardを実行してから削除する。すべて一時プロジェクトで実施し、個人配置は実行しない。
 
 評価保存スキルはSKILL.md.txtに改名した。保存バイトは同じで、raw回答・当時のログの旧パス表記は保持する。過去の77ファイル一致は当時の結果であり、最新版の件数とは分ける。
+
+## Windows CI
+
+GitHub Actionsの[Windows CI](https://github.com/Mr-Kondo/martial-arts-research/actions/workflows/windows.yml)を追加。windows-latest上でPython 3.9／3.14のマトリクスを使い、guardとインストール・更新・削除の全機械テストを実行する。設定は[GitHub公式のPython CI手順](https://docs.github.com/en/actions/tutorials/build-and-test-code/python)とactions/checkout、actions/setup-pythonの公式READMEを2026-10-11に確認した。
+
+検査準備として/tmp固定をOSの一時ディレクトリへ変更し、テストのファイルI/OとCLI出力をUTF-8に固定した。snapshotの保存rootはPOSIXとWindowsの両絶対パス形式を受け入れ、別OSの資料には--rootで移動先を指定する。.gitattributesは自動改行変換を無効化して保存hashを保全する。
+
+CIの合否・実行URLは結果確認後に記録する。既存の0.1.0タグと添付ZIPは変更せず、このCIは追加修正したmainを検証する。アプリのモデル回答や個人配置はこのCIに含めない。

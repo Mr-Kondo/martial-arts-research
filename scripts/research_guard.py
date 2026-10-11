@@ -9,7 +9,7 @@ import re
 import stat
 import subprocess
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 
 VERSION = 2
 MAX_BYTES = 16 * 1024 * 1024
@@ -273,7 +273,7 @@ def snapshot_index(snapshot):
     if not c.errors:
         try:
             created = dt.datetime.fromisoformat(s["created_at"])
-            if created.tzinfo is None or not Path(s["root"]).is_absolute():
+            if created.tzinfo is None or not (PurePosixPath(s["root"]).is_absolute() or PureWindowsPath(s["root"]).is_absolute()):
                 raise ValueError()
         except ValueError:
             c.add("SNAPSHOT_FORMAT", "snapshot", "日時またはrootが不正")
@@ -567,4 +567,6 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     sys.exit(main())

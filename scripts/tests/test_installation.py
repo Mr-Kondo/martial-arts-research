@@ -20,7 +20,7 @@ class InstallationTests(unittest.TestCase):
         self.source = self.root / 'source'
         self.source.mkdir()
         for name in installation.FILES:
-            (self.source / name).write_text('0.1.0\n' if name == 'VERSION' else name + '\n')
+            (self.source / name).write_text('0.1.0\n' if name == 'VERSION' else name + '\n', encoding="utf-8")
         for name in installation.FOLDERS:
             (self.source / name).mkdir()
             (self.source / name / '日本語.txt').write_bytes('原文\r\n'.encode())
@@ -35,13 +35,13 @@ class InstallationTests(unittest.TestCase):
         for target in self.targets:
             self.assertEqual((target / 'scripts/日本語.txt').read_bytes(), '原文\r\n'.encode())
         (self.source / 'scripts/日本語.txt').unlink()
-        (self.source / 'references/日本語.txt').write_text('更新')
-        (self.source / 'VERSION').write_text('0.1.1\n')
+        (self.source / 'references/日本語.txt').write_text('更新', encoding="utf-8")
+        (self.source / 'VERSION').write_text('0.1.1\n', encoding="utf-8")
         update = installation.install(self.source, self.targets)
         self.assertEqual([r['action'] for r in update], ['updated', 'updated'])
         for target in self.targets:
             self.assertFalse((target / 'scripts/日本語.txt').exists())
-            self.assertEqual(json.loads((target / installation.MARKER).read_text())['version'], '0.1.1')
+            self.assertEqual(json.loads((target / installation.MARKER).read_text(encoding="utf-8"))['version'], '0.1.1')
         installation.uninstall(self.targets)
         self.assertTrue(all(not p.exists() for p in self.targets))
         self.assertEqual(installation.uninstall(self.targets)[0]['action'], 'absent')
@@ -52,9 +52,9 @@ class InstallationTests(unittest.TestCase):
                 target = self.root / kind / installation.NAME
                 installation.install(self.source, [target])
                 if kind == 'edit':
-                    (target / 'SKILL.md').write_text('ユーザー編集')
+                    (target / 'SKILL.md').write_text('ユーザー編集', encoding="utf-8")
                 elif kind == 'file':
-                    (target / 'memo.txt').write_text('ユーザー追記')
+                    (target / 'memo.txt').write_text('ユーザー追記', encoding="utf-8")
                 elif kind == 'directory':
                     (target / 'empty-user-dir').mkdir()
                 else:
@@ -69,33 +69,33 @@ class InstallationTests(unittest.TestCase):
     def test_unmanaged_symlink_and_malformed_marker_refused(self):
         target = self.targets[0]
         target.mkdir(parents=True)
-        (target / 'memo.txt').write_text('管理外')
+        (target / 'memo.txt').write_text('管理外', encoding="utf-8")
         with self.assertRaises(ValueError):
             installation.uninstall([target])
-        (target / installation.MARKER).write_text('{"schema_version":1,"schema_version":2}')
+        (target / installation.MARKER).write_text('{"schema_version":1,"schema_version":2}', encoding="utf-8")
         with self.assertRaises(ValueError):
             installation.install(self.source, [target])
         linked = self.root / 'linked'
         linked.symlink_to(target, target_is_directory=True)
         with self.assertRaises(ValueError):
             installation.uninstall([linked])
-        self.assertEqual((target / 'memo.txt').read_text(), '管理外')
+        self.assertEqual((target / 'memo.txt').read_text(encoding="utf-8"), '管理外')
 
     def test_source_link_and_duplicate_skill_are_refused(self):
         (self.source / 'scripts/link').symlink_to(self.source / 'SKILL.md')
         with self.assertRaises(ValueError):
             installation.install(self.source, self.targets)
         (self.source / 'scripts/link').unlink()
-        (self.source / 'evals/SKILL.md').write_text('archived skill')
+        (self.source / 'evals/SKILL.md').write_text('archived skill', encoding="utf-8")
         with self.assertRaises(ValueError):
             installation.install(self.source, self.targets)
         self.assertTrue(all(not t.exists() for t in self.targets))
 
     def test_preflight_checks_all_targets_before_update(self):
         installation.install(self.source, self.targets)
-        (self.targets[1] / 'memo.txt').write_text('ユーザー追記')
+        (self.targets[1] / 'memo.txt').write_text('ユーザー追記', encoding="utf-8")
         before = (self.targets[0] / 'SKILL.md').read_bytes()
-        (self.source / 'SKILL.md').write_text('更新')
+        (self.source / 'SKILL.md').write_text('更新', encoding="utf-8")
         with self.assertRaises(ValueError):
             installation.install(self.source, self.targets)
         self.assertEqual((self.targets[0] / 'SKILL.md').read_bytes(), before)
@@ -123,14 +123,14 @@ class InstallationTests(unittest.TestCase):
         project = self.root / 'CLI プロジェクト'
         def run(name, *args):
             return subprocess.run([sys.executable, '-B', str(ROOT / 'scripts' / name), '--project', str(project), *args],
-                                  cwd='/tmp', capture_output=True, text=True)
+                                  cwd=tempfile.gettempdir(), capture_output=True, text=True, encoding="utf-8")
         first = run('install.py')
         self.assertEqual(first.returncode, 0, first.stdout + first.stderr)
         self.assertEqual(run('install.py').returncode, 0)
         target = project / '.agents/skills' / installation.NAME
         self.assertEqual([p.relative_to(target).as_posix() for p in target.rglob('SKILL.md')], ['SKILL.md'])
         guard = subprocess.run([sys.executable, '-B', str(target / 'scripts/research_guard.py'), 'validate',
-                                '--record', str(target / 'examples/records/military.json')], cwd='/tmp', capture_output=True)
+                                '--record', str(target / 'examples/records/military.json')], cwd=tempfile.gettempdir(), capture_output=True)
         self.assertEqual(guard.returncode, 0, guard.stdout)
         self.assertEqual(run('uninstall.py').returncode, 0)
         self.assertEqual(run('uninstall.py').returncode, 0)

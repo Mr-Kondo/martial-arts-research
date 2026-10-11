@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import tempfile
 import unittest
 from urllib.parse import unquote, urlsplit
 
@@ -22,7 +23,7 @@ class PackageTests(unittest.TestCase):
         for folder in ['references', 'examples', 'docs']:
             paths.extend((ROOT / folder).rglob('*.md'))
         for path in paths:
-            content = re.sub(r'```.*?```', '', path.read_text(), flags=re.S)
+            content = re.sub(r'```.*?```', '', path.read_text(encoding="utf-8"), flags=re.S)
             for target in re.findall(r'\]\(([^\s)]+)\)', content):
                 if urlsplit(target).scheme or target.startswith(('/', '#')):
                     continue
@@ -32,7 +33,7 @@ class PackageTests(unittest.TestCase):
                     self.assertTrue((path.parent / local).exists())
 
     def test_common_frontmatter_and_python39_grammar(self):
-        content = (ROOT / 'SKILL.md').read_text()
+        content = (ROOT / 'SKILL.md').read_text(encoding="utf-8")
         parts = content.split('---', 2)
         self.assertEqual(parts[0], '')
         lines = parts[1].strip().splitlines()
@@ -43,7 +44,7 @@ class PackageTests(unittest.TestCase):
         self.assertLess(len(content.splitlines()), 500)
         for path in (ROOT / 'scripts').rglob('*.py'):
             with self.subTest(path=path):
-                ast.parse(path.read_text(), feature_version=(3, 9))
+                ast.parse(path.read_text(encoding="utf-8"), feature_version=(3, 9))
 
     def test_case_coverage_and_input_provenance(self):
         triggers = guard.load_json(str(ROOT / 'evals/trigger-cases.json'))['cases']
@@ -71,7 +72,7 @@ class PackageTests(unittest.TestCase):
             command = [sys.executable, '-B', str(SCRIPT), 'validate', '--record', str(ROOT / f'examples/records/{name}.json')]
             if name == 'local-review':
                 command.extend(['--snapshot', str(ROOT / 'examples/records/local-snapshot.json'), '--root', str(ROOT / 'evals/fixtures')])
-            result = subprocess.run(command, cwd='/tmp', capture_output=True, text=True)
+            result = subprocess.run(command, cwd=tempfile.gettempdir(), capture_output=True, text=True, encoding="utf-8")
             with self.subTest(name=name):
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
                 self.assertEqual(json.loads(result.stdout)['content_judgment'], 'not_evaluated')

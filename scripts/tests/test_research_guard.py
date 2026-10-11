@@ -25,7 +25,7 @@ class GuardTests(unittest.TestCase):
         self.target.write_bytes("私には見えなかった。\r\n次の行。\r\n".encode())
         (self.root / "資料.txt").write_bytes("合成資料の分類。\r\n条件甲。\r\n".encode())
         self.snapshot = guard.capture(self.root, ["T01=対象 文.txt", "R01=資料.txt"], ["Q01=T01:1:1", "S01=R01:1:2"])
-        self.record = json.loads((SKILL / "examples/records/martial.json").read_text())
+        self.record = json.loads((SKILL / "examples/records/martial.json").read_text(encoding="utf-8"))
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -53,12 +53,12 @@ class GuardTests(unittest.TestCase):
         self.record["findings"][0]["target"] = {"type": "passage", "span_id": "Q01", "quote": "私には見えなかった。\r\n"}
 
     def weapon(self):
-        self.record = json.loads((SKILL / "examples/records/weapons.json").read_text())
+        self.record = json.loads((SKILL / "examples/records/weapons.json").read_text(encoding="utf-8"))
         self.source()
         self.assessment()
 
     def military(self):
-        self.record = json.loads((SKILL / "examples/records/military.json").read_text())
+        self.record = json.loads((SKILL / "examples/records/military.json").read_text(encoding="utf-8"))
 
     def measurement(self, kind="declared"):
         self.weapon()
@@ -70,7 +70,7 @@ class GuardTests(unittest.TestCase):
     def test_minimal_question_without_snapshot_all_modes(self):
         for name in ("martial", "weapons", "military", "integrated"):
             with self.subTest(name=name):
-                r = json.loads((SKILL / f"examples/records/{name}.json").read_text())
+                r = json.loads((SKILL / f"examples/records/{name}.json").read_text(encoding="utf-8"))
                 self.assertEqual(guard.validate(r)["record_integrity"], "pass")
 
     def test_passage_requires_snapshot(self):
@@ -148,7 +148,7 @@ class GuardTests(unittest.TestCase):
         self.assertIn("FILE_CHANGED", self.codes(s))
         with tempfile.TemporaryDirectory() as other:
             p = Path(other).resolve() / "input.txt"
-            p.write_text("貼付文")
+            p.write_text("貼付文", encoding="utf-8")
             s = guard.capture(self.root, ["T01=" + str(p)], [])
             self.assertEqual(s["files"][0]["path"], str(p))
 
@@ -178,7 +178,7 @@ class GuardTests(unittest.TestCase):
     def test_json_duplicate_keys_nonfinite_and_large_exponent(self):
         p = self.root / "bad.json"
         for raw in ('{"id":1,"id":2}', '{"v":NaN}', '{"v":Infinity}', '{"v":-Infinity}', '{"v":1e999}'):
-            p.write_text(raw)
+            p.write_text(raw, encoding="utf-8")
             with self.subTest(raw=raw), self.assertRaises(ValueError):
                 guard.load_json(p)
 
@@ -395,7 +395,7 @@ class GuardTests(unittest.TestCase):
     def test_malformed_nested_values_never_crash(self):
         self.measurement()
         self.record["context"]["mode"] = "integrated"
-        self.record["findings"][0]["military_context"] = json.loads((SKILL / "examples/records/military.json").read_text())["findings"][0]["military_context"]
+        self.record["findings"][0]["military_context"] = json.loads((SKILL / "examples/records/military.json").read_text(encoding="utf-8"))["findings"][0]["military_context"]
         original = copy.deepcopy(self.record)
         paths = [("context",), ("sources", 0), ("sources", 0, "bibliography"), ("findings", 0),
                  ("findings", 0, "target"), ("findings", 0, "assessments", 0),
@@ -416,13 +416,13 @@ class GuardTests(unittest.TestCase):
                         self.assertIn(guard.validate(r)["record_integrity"], ("pass", "fail"))
 
     def cli(self, args, stdin=None):
-        return subprocess.run([sys.executable, "-B", str(SCRIPT), *args], input=stdin, text=True, capture_output=True)
+        return subprocess.run([sys.executable, "-B", str(SCRIPT), *args], input=stdin, text=True, encoding="utf-8", capture_output=True)
 
     def test_cli_stdin_json_exit_codes_and_usage(self):
         capture = self.cli(["snapshot", "--root", str(self.root), "--file", "T01=対象 文.txt", "--span", "Q01=T01:1:1"])
         self.assertEqual(capture.returncode, 0, capture.stdout)
         s = self.root / "snapshot.json"
-        s.write_text(capture.stdout)
+        s.write_text(capture.stdout, encoding="utf-8")
         snap = json.loads(capture.stdout)
         self.local()
         self.record["snapshot_id"] = snap["snapshot_id"]
@@ -468,6 +468,22 @@ class GuardTests(unittest.TestCase):
         self.assertEqual(guard.validate(self.record, snapshot)['errors'][0]['code'], 'SNAPSHOT_MISMATCH')
         self.record['snapshot_id'] = snapshot['snapshot_id']
         self.assertEqual(guard.validate(self.record, snapshot)['record_integrity'], 'pass')
+
+    def test_snapshot_from_other_platform_can_be_relocated(self):
+        for original_root in ('C:\\archived\\project', '/archived/project'):
+            snapshot = copy.deepcopy(self.snapshot)
+            snapshot['root'] = original_root
+            snapshot['snapshot_id'] = guard.fingerprint(snapshot)
+            self.record['snapshot_id'] = snapshot['snapshot_id']
+            self.assertEqual(guard.validate(self.record, snapshot, self.root)['record_integrity'], 'pass')
+
+    def test_cli_utf8_output_with_ascii_default(self):
+        self.record['context']['mode'] = '未知値'
+        result = subprocess.run([sys.executable, '-B', str(SCRIPT), 'validate', '--record', '-'],
+                                input=json.dumps(self.record), text=True, encoding='utf-8', capture_output=True,
+                                env=dict(os.environ, PYTHONIOENCODING='ascii', PYTHONUTF8='0'))
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertEqual(json.loads(result.stdout)['record_integrity'], 'fail')
 
 
 if __name__ == "__main__":
