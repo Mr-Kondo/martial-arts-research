@@ -1,0 +1,16 @@
+test (ubuntu-latest, 3.14)	Set up job	2026-10-11T09:52:53.1082757Z Image: ubuntu-24.04
+test (ubuntu-latest, 3.14)	Run actions/setup-python@v7	2026-10-11T09:52:55.6290739Z Successfully set up CPython (3.14.8)
+test (ubuntu-latest, 3.14)	Test guard and installation lifecycle	2026-10-11T09:53:00.8149004Z Ran 70 tests in 2.426s
+test (ubuntu-latest, 3.14)	Test guard and installation lifecycle	2026-10-11T09:53:00.8149197Z OK
+test (windows-latest, 3.14)	Set up job	2026-10-11T09:52:54.8223985Z Image: windows-2025-vs2026
+test (windows-latest, 3.14)	Run actions/setup-python@v7	2026-10-11T09:53:07.0663752Z Successfully set up CPython (3.14.7)
+test (windows-latest, 3.14)	Test guard and installation lifecycle	2026-10-11T09:53:19.2853930Z Ran 70 tests in 9.629s
+test (windows-latest, 3.14)	Test guard and installation lifecycle	2026-10-11T09:53:19.2854141Z OK
+test (windows-latest, 3.9)	Set up job	2026-10-11T09:52:53.0851589Z Image: windows-2025-vs2026
+test (windows-latest, 3.9)	Run actions/setup-python@v7	2026-10-11T09:53:53.3880186Z Successfully set up CPython (3.9.13)
+test (windows-latest, 3.9)	Test guard and installation lifecycle	2026-10-11T09:53:58.9179398Z Ran 70 tests in 5.162s
+test (windows-latest, 3.9)	Test guard and installation lifecycle	2026-10-11T09:53:58.9179640Z OK
+test (ubuntu-latest, 3.9)	Set up job	2026-10-11T09:52:52.9269025Z Image: ubuntu-24.04
+test (ubuntu-latest, 3.9)	Run actions/setup-python@v7	2026-10-11T09:53:01.6209569Z Successfully set up CPython (3.9.25)
+test (ubuntu-latest, 3.9)	Test guard and installation lifecycle	2026-10-11T09:53:04.0977521Z Ran 70 tests in 2.302s
+test (ubuntu-latest, 3.9)	Test guard and installation lifecycle	2026-10-11T09:53:04.0977750Z OK

@@ -163,5 +163,51 @@
   "quick_validate": {
     "status": "not_run_to_checks",
     "reason": "PyYAML missing; existing standard-library package tests passed"
+  },
+  "ci": {
+    "run_id": 38129938207,
+    "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38129938207",
+    "head_sha": "afcb33c87cc680e480cc0e201ef749bf8f0f313c",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "test (ubuntu-latest, 3.14)",
+        "conclusion": "success",
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38129938207/job/114441989798",
+        "image": "ubuntu-24.04",
+        "python": "3.14.8",
+        "tests": 70,
+        "skipped": 0
+      },
+      {
+        "name": "test (windows-latest, 3.14)",
+        "conclusion": "success",
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38129938207/job/114441989857",
+        "image": "windows-2025-vs2026",
+        "python": "3.14.7",
+        "tests": 70,
+        "skipped": 0
+      },
+      {
+        "name": "test (windows-latest, 3.9)",
+        "conclusion": "success",
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38129938207/job/114441989918",
+        "image": "windows-2025-vs2026",
+        "python": "3.9.13",
+        "tests": 70,
+        "skipped": 0
+      },
+      {
+        "name": "test (ubuntu-latest, 3.9)",
+        "conclusion": "success",
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38129938207/job/114441989954",
+        "image": "ubuntu-24.04",
+        "python": "3.9.25",
+        "tests": 70,
+        "skipped": 0
+      }
+    ],
+    "log_excerpt": "output-audit-ci.log"
   }
 }

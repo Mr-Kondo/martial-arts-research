@@ -130,6 +130,8 @@ GitHub ActionsにWindows CIを追加し、その後[Python CI](https://github.co
 
 Crossref公式APIへ既存台帳のDOIを実際に問い合わせ、登録DOIと出版年の一致、短縮題名と副題付き登録題名の差によるreview_requiredを確認した。通信へ送ったのはDOIだけで、研究内容の真偽は未評価。取得URL・時刻・応答hash・比較値を保存した。
 
+[実行38129938207](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38129938207)では、コミットafcb33cのLinux／Windows × Python 3.9／3.14の4ジョブすべてで各70件を通過し、skipはない。実際のPython版・イメージ・ジョブURLは上記保存記録、テスト件数と結果の抜粋は[output-audit-ci.log](../evals/results/output-audit-ci.log)に保全した。CIのCrossref試験は模擬応答を使い、上記の実通信確認とは分ける。
+
 独立したCodexサブエージェントへスキル所在と計算記録のみを渡し、期待結果・実装説明を渡さず前向き評価した。誤った換算値をrenderが終了1／markdown=nullで止め、原記録を変更せず一時領域に修正案を作り、再実行でCALCULATION=checkedを得た。生成回答はそのまま保存され、review_requiredとnot_checkedを維持した。[保全した入力・提案・回答](../evals/results/output-forward/input-record.json)を参照。製品CLIによる自然言語起動評価の代替とはしない。
 
 skill-creatorのquick_validateは今回もPyYAML不足で検査に到達しなかった。依存関係は増やさず、frontmatter・長さ・参照・3.9文法を既存のpackageテストで確認した。構造化分類の自己申告と、取得した資料自体の真偽は機械保証しない。
