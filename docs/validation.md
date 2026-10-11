@@ -117,3 +117,9 @@ GitHub ActionsにWindows CIを追加し、その後[Python CI](https://github.co
 検査準備として/tmp固定をOSの一時ディレクトリへ変更し、テストのファイルI/OとCLI出力をUTF-8に固定した。snapshotの保存rootはPOSIXとWindowsの両絶対パス形式を受け入れ、別OSの資料には--rootで移動先を指定する。.gitattributesは自動改行変換を無効化して保存hashを保全する。
 
 [実行38126044942](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38126044942)は両ジョブ成功。コミットb394f9bで各57件を通過し、skipはない。[保存した実測結果](../evals/results/windows-ci.json)を参照。これらの修正を0.1.1に同梱し、既存の0.1.0タグと添付ZIPは変更しない。アプリのモデル回答や個人配置はこのCIに含めない。
+
+## Linux CI
+
+[実行38127240113](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113)はLinux／Windows × Python 3.9／3.14の4ジョブすべて成功。Ubuntu 24.04上のPython 3.9.25／3.14.8で各57件を通過し、skipはない。guard・配置・更新・削除を含む同じテストを使い、Linux向けのコード修正は不要だった。実行対象コミットc8df6b4、実際の版・件数・結果を[linux-ci.json](../evals/results/linux-ci.json)に保存した。
+
+この検証はmainの機械テストで、モデル回答・個人配置・他のディストリビューションを検証しない。既存の0.1.1タグとZIPは変更していない。

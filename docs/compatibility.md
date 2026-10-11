@@ -64,3 +64,9 @@ Python 3.9以上の標準ライブラリのみ。Pythonがなければ調査と�
 2026-10-11、[Windows CI実行38126044942](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38126044942)でPython 3.9／3.14各57件に合格。guardとコピー配置・更新・削除、手編集の保護、日本語パス・CRLF・別OSのsnapshotを検証した。Windows上のCodex／Claude Codeモデル回答、個人用配置は未確認。
 
 検証対象は互換修正後のmainコミットb394f9b。これらの修正は0.1.1に同梱する。公開済み0.1.0タグとZIPは変更していない。
+
+## Linux CIで確認した範囲
+
+2026-10-11、[Python CI実行38127240113](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113)でUbuntu 24.04、Python 3.9.25／3.14.8各57件に合格。既存のWindows側も各57件に合格した。guardとコピー配置・更新・削除、手編集の保護、日本語パス・CRLF・別OSのsnapshotを検証した。[実測記録](../evals/results/linux-ci.json)を参照。
+
+検証対象はmainコミットc8df6b4。Linuxの検証記録と共通CI設定は公開済み0.1.1タグ・ZIPに追加していない。Linux上のCodex／Claude Codeモデル回答、個人用配置、他のLinuxディストリビューションは未確認。

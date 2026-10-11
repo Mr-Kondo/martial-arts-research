@@ -1,0 +1,303 @@
+{
+  "checked_on": "2026-10-11",
+  "workflow": "ci.yml",
+  "run": {
+    "conclusion": "success",
+    "headSha": "c8df6b4458692261e66f588b5842469b03b0565a",
+    "jobs": [
+      {
+        "completedAt": "2026-10-11T09:07:46Z",
+        "conclusion": "success",
+        "databaseId": 114434038485,
+        "name": "test (windows-latest, 3.14)",
+        "startedAt": "2026-10-11T09:07:22Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-11T09:07:24Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-11T09:07:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:31Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v7",
+            "number": 2,
+            "startedAt": "2026-10-11T09:07:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:31Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v7",
+            "number": 3,
+            "startedAt": "2026-10-11T09:07:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:42Z",
+            "conclusion": "success",
+            "name": "Test guard and installation lifecycle",
+            "number": 4,
+            "startedAt": "2026-10-11T09:07:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:42Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v7",
+            "number": 7,
+            "startedAt": "2026-10-11T09:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:44Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v7",
+            "number": 8,
+            "startedAt": "2026-10-11T09:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:44Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 9,
+            "startedAt": "2026-10-11T09:07:44Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113/job/114434038485"
+      },
+      {
+        "completedAt": "2026-10-11T09:07:36Z",
+        "conclusion": "success",
+        "databaseId": 114434038534,
+        "name": "test (ubuntu-latest, 3.9)",
+        "startedAt": "2026-10-11T09:07:22Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-11T09:07:23Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-11T09:07:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:25Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v7",
+            "number": 2,
+            "startedAt": "2026-10-11T09:07:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:32Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v7",
+            "number": 3,
+            "startedAt": "2026-10-11T09:07:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:34Z",
+            "conclusion": "success",
+            "name": "Test guard and installation lifecycle",
+            "number": 4,
+            "startedAt": "2026-10-11T09:07:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:34Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v7",
+            "number": 7,
+            "startedAt": "2026-10-11T09:07:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:34Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v7",
+            "number": 8,
+            "startedAt": "2026-10-11T09:07:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:34Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 9,
+            "startedAt": "2026-10-11T09:07:34Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113/job/114434038534"
+      },
+      {
+        "completedAt": "2026-10-11T09:08:30Z",
+        "conclusion": "success",
+        "databaseId": 114434038597,
+        "name": "test (windows-latest, 3.9)",
+        "startedAt": "2026-10-11T09:07:22Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-11T09:07:24Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-11T09:07:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:31Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v7",
+            "number": 2,
+            "startedAt": "2026-10-11T09:07:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:08:19Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v7",
+            "number": 3,
+            "startedAt": "2026-10-11T09:07:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:08:27Z",
+            "conclusion": "success",
+            "name": "Test guard and installation lifecycle",
+            "number": 4,
+            "startedAt": "2026-10-11T09:08:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:08:27Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v7",
+            "number": 7,
+            "startedAt": "2026-10-11T09:08:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:08:29Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v7",
+            "number": 8,
+            "startedAt": "2026-10-11T09:08:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:08:29Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 9,
+            "startedAt": "2026-10-11T09:08:29Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113/job/114434038597"
+      },
+      {
+        "completedAt": "2026-10-11T09:07:30Z",
+        "conclusion": "success",
+        "databaseId": 114434038646,
+        "name": "test (ubuntu-latest, 3.14)",
+        "startedAt": "2026-10-11T09:07:22Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-11T09:07:23Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-11T09:07:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:24Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v7",
+            "number": 2,
+            "startedAt": "2026-10-11T09:07:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:24Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v7",
+            "number": 3,
+            "startedAt": "2026-10-11T09:07:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:28Z",
+            "conclusion": "success",
+            "name": "Test guard and installation lifecycle",
+            "number": 4,
+            "startedAt": "2026-10-11T09:07:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:28Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v7",
+            "number": 7,
+            "startedAt": "2026-10-11T09:07:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:29Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v7",
+            "number": 8,
+            "startedAt": "2026-10-11T09:07:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-11T09:07:29Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 9,
+            "startedAt": "2026-10-11T09:07:29Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113/job/114434038646"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113"
+  },
+  "test_evidence": [
+    "test (windows-latest, 3.14)\tSet up job\t2026-10-11T09:07:23.4968717Z Image: windows-2025-vs2026",
+    "test (windows-latest, 3.14)\tRun actions/setup-python@v7\t2026-10-11T09:07:31.8650099Z Successfully set up CPython (3.14.7)",
+    "test (windows-latest, 3.14)\tTest guard and installation lifecycle\t2026-10-11T09:07:42.4201509Z Ran 57 tests in 7.933s",
+    "test (windows-latest, 3.14)\tTest guard and installation lifecycle\t2026-10-11T09:07:42.4202011Z OK",
+    "test (ubuntu-latest, 3.9)\tSet up job\t2026-10-11T09:07:23.0075208Z Ubuntu",
+    "test (ubuntu-latest, 3.9)\tSet up job\t2026-10-11T09:07:23.0077320Z Image: ubuntu-24.04",
+    "test (ubuntu-latest, 3.9)\tSet up job\t2026-10-11T09:07:23.0078634Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md",
+    "test (ubuntu-latest, 3.9)\tRun actions/setup-python@v7\t2026-10-11T09:07:32.4256021Z Successfully set up CPython (3.9.25)",
+    "test (ubuntu-latest, 3.9)\tTest guard and installation lifecycle\t2026-10-11T09:07:34.0198492Z Ran 57 tests in 1.342s",
+    "test (ubuntu-latest, 3.9)\tTest guard and installation lifecycle\t2026-10-11T09:07:34.0203046Z OK",
+    "test (windows-latest, 3.9)\tSet up job\t2026-10-11T09:07:23.3104343Z Image: windows-2025-vs2026",
+    "test (windows-latest, 3.9)\tRun actions/setup-python@v7\t2026-10-11T09:08:19.8909268Z Successfully set up CPython (3.9.13)",
+    "test (windows-latest, 3.9)\tTest guard and installation lifecycle\t2026-10-11T09:08:27.2262365Z Ran 57 tests in 6.733s",
+    "test (windows-latest, 3.9)\tTest guard and installation lifecycle\t2026-10-11T09:08:27.2262762Z OK",
+    "test (ubuntu-latest, 3.14)\tSet up job\t2026-10-11T09:07:22.9484608Z Ubuntu",
+    "test (ubuntu-latest, 3.14)\tSet up job\t2026-10-11T09:07:22.9488082Z Image: ubuntu-24.04",
+    "test (ubuntu-latest, 3.14)\tSet up job\t2026-10-11T09:07:22.9489887Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md",
+    "test (ubuntu-latest, 3.14)\tRun actions/setup-python@v7\t2026-10-11T09:07:24.3542060Z Successfully set up CPython (3.14.8)",
+    "test (ubuntu-latest, 3.14)\tTest guard and installation lifecycle\t2026-10-11T09:07:28.4675443Z Ran 57 tests in 2.597s",
+    "test (ubuntu-latest, 3.14)\tTest guard and installation lifecycle\t2026-10-11T09:07:28.4675663Z OK"
+  ],
+  "scope": "Linux and Windows, Python 3.9 and 3.14; main commit c8df6b4458692261e66f588b5842469b03b0565a; unchanged v0.1.1 tag and ZIP"
+}
