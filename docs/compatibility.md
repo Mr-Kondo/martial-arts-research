@@ -54,7 +54,13 @@ Python 3.9以上の標準ライブラリのみ。Pythonがなければ調査と�
 | --- | --- | --- | --- |
 | Codex CLI 0.155.1 | app-serverの`skills/list`で正本コピーをrepoスコープ・enabledとして検出 | 未完了 | 設定済み`gpt-6.1-sol`がChatGPTアカウントで非対応としてHTTP 400。モデルを変更していない |
 | Claude Code 2.1.285 | initのskills／slash_commandsに名称を確認 | 未完了 | 通常サンドボックスでは認証不可。既存認証へアクセス可能な実行では週間利用上限によるHTTP 429。既定`claude-opus-5-5`の応答は得ていない |
-| Python 3.14.8 | guard・記録例の機械検査 | オフライン検査を実施 | Python 3.9実機は未実施。3.9文法互換チェックを別途実施 |
+| Python 3.14.8 | guard・記録例の機械検査 | オフライン検査を実施 | 初回検証は3.9文法チェックのみ。その後Windows CIで3.9／3.14各57件を通過（下記） |
 | 独立したCodexサブエージェント | スキルを明示して別コンテキストで読込 | 合成資料で実施 | 製品CLIの発見・自然言語起動・スキルなし比較の代替試験とはしない |
 
 実行条件、保全証拠、採点と再実行手順は[validation.md](validation.md)。自然言語の起動／非起動と全タスクの両CLI評価、スキルなし比較は未実施。コピー一致やJSON合格からモデル回答の互換性を推定しない。
+
+## Windows CIで確認した範囲
+
+2026-10-11、[Windows CI実行38126044942](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38126044942)でPython 3.9／3.14各57件に合格。guardとコピー配置・更新・削除、手編集の保護、日本語パス・CRLF・別OSのsnapshotを検証した。Windows上のCodex／Claude Codeモデル回答、個人用配置は未確認。
+
+検証対象は互換修正後のmainコミットb394f9b。公開済み0.1.0タグとZIPには/tmp・文字コード・保存rootの修正を遡及適用していない。
