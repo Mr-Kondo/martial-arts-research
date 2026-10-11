@@ -116,4 +116,4 @@ GitHub Actionsの[Windows CI](https://github.com/Mr-Kondo/martial-arts-research/
 
 検査準備として/tmp固定をOSの一時ディレクトリへ変更し、テストのファイルI/OとCLI出力をUTF-8に固定した。snapshotの保存rootはPOSIXとWindowsの両絶対パス形式を受け入れ、別OSの資料には--rootで移動先を指定する。.gitattributesは自動改行変換を無効化して保存hashを保全する。
 
-[実行38126044942](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38126044942)は両ジョブ成功。コミットb394f9bで各57件を通過し、skipはない。[保存した実測結果](../evals/results/windows-ci.json)を参照。既存の0.1.0タグと添付ZIPは変更せず、このCIは追加修正したmainを検証する。アプリのモデル回答や個人配置はこのCIに含めない。
+[実行38126044942](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38126044942)は両ジョブ成功。コミットb394f9bで各57件を通過し、skipはない。[保存した実測結果](../evals/results/windows-ci.json)を参照。これらの修正を0.1.1に同梱し、既存の0.1.0タグと添付ZIPは変更しない。アプリのモデル回答や個人配置はこのCIに含めない。

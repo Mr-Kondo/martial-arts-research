@@ -63,4 +63,4 @@ Python 3.9以上の標準ライブラリのみ。Pythonがなければ調査と�
 
 2026-10-11、[Windows CI実行38126044942](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38126044942)でPython 3.9／3.14各57件に合格。guardとコピー配置・更新・削除、手編集の保護、日本語パス・CRLF・別OSのsnapshotを検証した。Windows上のCodex／Claude Codeモデル回答、個人用配置は未確認。
 
-検証対象は互換修正後のmainコミットb394f9b。公開済み0.1.0タグとZIPには/tmp・文字コード・保存rootの修正を遡及適用していない。
+検証対象は互換修正後のmainコミットb394f9b。これらの修正は0.1.1に同梱する。公開済み0.1.0タグとZIPは変更していない。
