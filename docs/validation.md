@@ -122,4 +122,4 @@ GitHub ActionsにWindows CIを追加し、その後[Python CI](https://github.co
 
 [実行38127240113](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113)はLinux／Windows × Python 3.9／3.14の4ジョブすべて成功。Ubuntu 24.04上のPython 3.9.25／3.14.8で各57件を通過し、skipはない。guard・配置・更新・削除を含む同じテストを使い、Linux向けのコード修正は不要だった。実行対象コミットc8df6b4、実際の版・件数・結果を[linux-ci.json](../evals/results/linux-ci.json)に保存した。
 
-この検証はmainの機械テストで、モデル回答・個人配置・他のディストリビューションを検証しない。既存の0.1.1タグとZIPは変更していない。
+この検証はmainの機械テストで、モデル回答・個人配置・他のディストリビューションを検証しない。検証記録と共通CI設定を0.1.2に同梱し、既存の0.1.1タグとZIPは変更しない。
