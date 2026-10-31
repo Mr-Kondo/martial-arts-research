@@ -6,6 +6,7 @@ README.md
 SKILL.md
 VERSION
 adr/explicit-package-boundary.md
+adr/three-environment-delivery.md
 codex-implementation-prompt.txt
 docs/compatibility.md
 docs/original-files.json

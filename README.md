@@ -1,8 +1,8 @@
 # martial-arts-research
 
-バージョン：0.2.1。
+バージョン：0.2.2。
 
-添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本で、Codex／Claude Code向けのプロジェクトコピーを同じ内容で配置した。
+添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本。Codex／Claude Code／Gemini Antigravity向けに同じ内容を配置できる。Antigravityの配置仕様と判断は[ADR](adr/three-environment-delivery.md)を参照。
 
 - [配置・呼出し・実機の確認範囲](docs/compatibility.md)
 - [検証結果・未実施項目・再実行手順](docs/validation.md)
@@ -16,9 +16,10 @@
 ```sh
 python3 scripts/install.py --project /path/to/project --target both
 python3 scripts/uninstall.py --project /path/to/project --target both
+python3 scripts/install.py --project /path/to/project --target all
 ```
 
-個人用は`--project`の代わりに`--user`を明示する。更新もinstall.pyを使う。管理済みファイルに変更・追加があれば保全のため停止する。[詳細](docs/compatibility.md)、[リリース履歴](CHANGELOG.md)。
+個人用は`--project`の代わりに`--user`を明示する。bothは従来の2製品、allは3製品、antigravityはAntigravityだけを選ぶ。CodexとAntigravityのプロジェクト配置は共有する。更新もinstall.pyを使う。管理済みファイルに変更・追加があれば保全のため停止する。[詳細](docs/compatibility.md)、[リリース履歴](CHANGELOG.md)。
 
 ```text
 Codex: $martial-arts-research --mode B --task compare 10式と90式の公称重量を比較して
