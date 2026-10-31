@@ -148,6 +148,24 @@ class InstallationTests(unittest.TestCase):
             installation.uninstall(self.targets)
         self.assertTrue(self.targets[0].exists())
 
+    def test_manifest_accepts_utf8_bom_and_crlf(self):
+        manifest = self.source / 'package-files.txt'
+        names = manifest.read_text(encoding='utf-8').splitlines()
+        manifest.write_bytes(('\ufeff' + '\r\n'.join(names) + '\r\n').encode('utf-8'))
+        installation.install(self.source, self.targets)
+        self.assertTrue(all(installation.ensure_owned(target) for target in self.targets))
+
+    def test_manifest_rejects_case_collisions_and_windows_aliases(self):
+        manifest = self.source / 'package-files.txt'
+        original = manifest.read_text(encoding='utf-8')
+        for entry in ['scripts/FEEDBACK/result.json', 'docs/private.LOCAL.MD', 'docs/NUL.txt',
+                      'docs/name.', 'docs/name ', 'scripts/Case.txt\nscripts/case.txt']:
+            with self.subTest(entry=entry):
+                manifest.write_text(original + entry + '\n', encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, '不正|重複'):
+                    installation.install(self.source, self.targets)
+                self.assertTrue(all(not target.exists() for target in self.targets))
+
     def test_swap_failure_restores_previous_copy(self):
         from unittest.mock import patch
         installation.install(self.source, self.targets[:1])

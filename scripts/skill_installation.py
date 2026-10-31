@@ -86,20 +86,24 @@ def copy_package(source, stage):
     manifest = source / 'package-files.txt'
     if manifest.is_symlink():
         raise ValueError('配布一覧にリンクは使えません')
-    names = manifest.read_text(encoding='utf-8').splitlines()
-    if len(names) != len(set(names)) or not set(FILES).issubset(names):
+    names = manifest.read_text(encoding='utf-8-sig').splitlines()
+    if len(names) != len({name.casefold() for name in names}) or not set(FILES).issubset(names):
         raise ValueError('配布一覧に重複または必須ファイルの欠落があります')
     for name in names:
         path = Path(name)
         if (not name or path.is_absolute() or path.as_posix() != name
-                or any(part in ('', '.', '..') or part.startswith('.')
-                       or part in ('feedback', '__pycache__') for part in name.split('/'))
-                or '\\' in name or ':' in name or name.endswith(('.local.md', '.pyc'))
+                or any(part in ('', '.', '..') or part.startswith('.') or part.endswith((' ', '.'))
+                       or part.casefold() in ('feedback', '__pycache__')
+                       or re.fullmatch(r'(?i)(con|prn|aux|nul|conin\$|conout\$|com[1-9¹²³]|lpt[1-9¹²³])(\..*)?', part)
+                       for part in name.split('/'))
+                or '\\' in name or ':' in name
+                or name.casefold().endswith(('.local.md', '.pyc'))
                 or (name not in FILES and path.parts[0] not in FOLDERS)):
             raise ValueError('配布一覧のパスが不正です: ' + name)
         # Check each parent before copying; copy2 follows directory links too.
-        if any(parent.is_symlink() for parent in (source / path, *(source / path).parents)
-               if parent != source and source in parent.parents):
+        if ((source / path).resolve() != source / path
+                or any(parent.is_symlink() for parent in (source / path, *(source / path).parents)
+                       if parent != source and source in parent.parents)):
             raise ValueError('配布元にリンクがあります: ' + name)
         if not (source / path).is_file():
             raise ValueError('配布元ファイルが不足: ' + name)

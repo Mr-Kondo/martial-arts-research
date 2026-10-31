@@ -19,8 +19,8 @@ spec.loader.exec_module(guard)
 
 class PackageTests(unittest.TestCase):
     def test_relative_documentation_links_resolve(self):
-        paths = [ROOT / 'SKILL.md', ROOT / 'README.md']
-        for folder in ['references', 'examples', 'docs']:
+        paths = [ROOT / 'SKILL.md', ROOT / 'README.md', ROOT / 'CHANGELOG.md']
+        for folder in ['references', 'examples', 'docs', 'adr']:
             paths.extend((ROOT / folder).rglob('*.md'))
         for path in paths:
             content = re.sub(r'```.*?```', '', path.read_text(encoding="utf-8"), flags=re.S)
