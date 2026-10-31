@@ -10,6 +10,7 @@
 - [ツールによる監査・回答生成](references/output-audit.md)：計算・引用・比較条件・推論・書誌の確認範囲を回答に保持
 - [来歴・変更範囲・ライセンス](docs/provenance.md)
 - [非公開の問題報告と合成回帰ケース](docs/feedback.md)：依頼時だけ保存し、自動送信しない
+- [形式保持のA/B評価](evals/results/format-preservation-ab.md)：改善を確認できず候補不採用
 - [呼出し例](examples/codex-invocation.md)／[起動評価40件](evals/trigger-cases.json)／[タスク評価28件](evals/task-cases.json)
 
 インストール・更新とアンインストール（Python 3.9以上）：

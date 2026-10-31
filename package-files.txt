@@ -6,6 +6,7 @@ README.md
 SKILL.md
 VERSION
 adr/explicit-package-boundary.md
+adr/format-preservation-ab.md
 adr/private-feedback-regression.md
 adr/three-environment-delivery.md
 codex-implementation-prompt.txt
@@ -50,6 +51,7 @@ evals/results/independent/sources/passage.txt
 evals/results/independent/sources/provenance.json
 evals/results/independent/sources/synthetic.txt
 evals/results/linux-ci.json
+evals/results/format-preservation-ab.md
 evals/results/output-audit-ci.log
 evals/results/output-audit-tests.log
 evals/results/output-audit-verification.json
