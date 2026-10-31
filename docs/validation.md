@@ -1,5 +1,11 @@
 # 検証記録と再実行
 
+## 配布一覧の検証（0.2.1）
+
+2026-10-31、macOSのPython 3.15.2で76件に合格。配布一覧外の私的原稿、*.local.md、feedback/、キャッシュの混入防止、BOM/CRLF、不正パス・名前衝突・予約名・リンクの拒否を確認した。Gitのない一時配置で導入・更新・削除とguard/renderを実行し、配置後の文書リンクも検査した。旧インストーラとの合成比較は私的ファイルの混入3件から0件で、既存の配布対象を保持した。新しい一覧とADRを加え、配布物は98ファイル。
+
+Claude Code（Sonnet 5.5、medium）の静的レビューと補強後の再レビューを実施し、ブロックする指摘なし。採否は[ADR](../adr/explicit-package-boundary.md)に記録した。実行ログはGit対象外のfeedback/に保存する。Windows/LinuxのCI結果は[PR #5](https://github.com/Mr-Kondo/martial-arts-research/pull/5)で確認する。今回の配布テストや静的レビューから、モデル回答の品質や3環境の互換性を推定しない。
+
 実施日：2026-10-11。機械検査、独立回答評価、Codex CLI、Claude Codeの結果を分ける。記録整合性の合格から内容の正解を認定しない。
 
 ## オフライン機械検査
