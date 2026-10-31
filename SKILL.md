@@ -47,6 +47,7 @@ renderの終了値とJSONを確認する。不整合ならmarkdownはnullであ�
 | [military-methods.md](references/military-methods.md)、[military-source-catalog.md](references/military-source-catalog.md) | military、またはintegratedでM軸を使う場合だけ |
 | [optional-fiction.md](references/optional-fiction.md) | fictionまたはstageが明示された場合だけ |
 | [README.md](README.md)、[compatibility.md](docs/compatibility.md) | 配置、明示呼出し、環境の確認時 |
+| [feedback.md](references/feedback.md) | 利用者が結果の問題の報告・記録を依頼した場合だけ |
 
 評価用期待結果は通常実行で読まない。評価者向け手順は[validation.md](docs/validation.md)。
 

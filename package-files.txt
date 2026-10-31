@@ -6,9 +6,12 @@ README.md
 SKILL.md
 VERSION
 adr/explicit-package-boundary.md
+adr/private-feedback-regression.md
 adr/three-environment-delivery.md
 codex-implementation-prompt.txt
 docs/compatibility.md
+docs/feedback.md
+docs/templates/problem-report.md
 docs/original-files.json
 docs/provenance.md
 docs/validation.md
@@ -59,6 +62,7 @@ evals/results/unittest.log
 evals/results/verification.json
 evals/results/windows-ci.json
 evals/task-cases.json
+evals/regressions/feedback-evidence.json
 evals/trigger-cases.json
 examples/claim-review.md
 examples/codex-invocation.md
@@ -79,6 +83,7 @@ examples/survey.md
 examples/weapons-review.md
 package-files.txt
 references/evidence-policy.md
+references/feedback.md
 references/military-methods.md
 references/military-source-catalog.md
 references/optional-fiction.md

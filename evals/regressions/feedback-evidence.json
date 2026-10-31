@@ -1,0 +1,9 @@
+{
+  "origin": "synthetic",
+  "notice": "利用者の実報告・原文・個人情報を含まない合成再現例",
+  "base_record": "examples/records/military.json",
+  "mutation": {"finding": 0, "assessment": 0, "verdict": "supported"},
+  "expected_before": "fail",
+  "repair_verdict": "insufficient",
+  "expected_after": "pass"
+}
