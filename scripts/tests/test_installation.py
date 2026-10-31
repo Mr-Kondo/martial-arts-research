@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location('skill_installation', ROOT / 'scripts/skill_installation.py')
@@ -34,6 +35,34 @@ class InstallationTests(unittest.TestCase):
 
     def tearDown(self):
         self.tmp.cleanup()
+
+    def test_three_environment_destinations_and_lifecycle(self):
+        project = self.root / 'three'
+        self.assertEqual(installation.destinations('antigravity', project),
+                         installation.destinations('codex', project))
+        self.assertEqual(installation.destinations('all', project),
+                         installation.destinations('both', project))
+        with patch.object(installation.Path, 'home', return_value=self.root / 'home'):
+            targets = installation.destinations('all', user=True)
+            self.assertEqual([p.relative_to(self.root / 'home').as_posix() for p in targets],
+                             [f'{folder}/skills/{installation.NAME}'
+                              for folder in ('.agents', '.claude', '.gemini/config')])
+            self.assertEqual(installation.destinations('antigravity', user=True), targets[-1:])
+        for target in targets:
+            self.assertEqual(installation.install(self.source, [target])[0]['action'], 'installed')
+            self.assertEqual(installation.install(self.source, [target])[0]['action'], 'updated')
+            (target / 'SKILL.md').write_text('local edit', encoding='utf-8')
+            with self.assertRaises(ValueError):
+                installation.install(self.source, [target])
+            with self.assertRaises(ValueError):
+                installation.uninstall([target])
+            shutil.copy2(self.source / 'SKILL.md', target / 'SKILL.md')
+            self.assertEqual(installation.uninstall([target])[0]['action'], 'uninstalled')
+
+    def test_target_parser_keeps_existing_default(self):
+        self.assertEqual(installation.parser('test').parse_args([]).target, 'both')
+        for target in ('codex', 'claude', 'antigravity', 'both', 'all'):
+            self.assertEqual(installation.parser('test').parse_args(['--target', target]).target, target)
 
     def test_install_update_stale_file_removal_and_uninstall(self):
         first = installation.install(self.source, self.targets)

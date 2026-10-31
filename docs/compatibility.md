@@ -1,15 +1,18 @@
 # 配置・呼出し・互換性
 
-2026-10-11。共通本体はルートの[SKILL.md](../SKILL.md)。実行時に参照するファイルは同じコピーへ揃え、修正は正本で行う。プロジェクト配置を基本とし、グローバル設定・モデル指定・認証設定を変更しない。
+2026-10-31更新。共通本体はルートの[SKILL.md](../SKILL.md)。実行時に参照するファイルは同じコピーへ揃え、修正は正本で行う。プロジェクト配置を基本とし、グローバル設定・モデル指定・認証設定を変更しない。
 
 | 利用先 | コピー先 | 明示呼出し（チャットの本文） | 自然言語起動 |
 | --- | --- | --- | --- |
 | Codex | `<project>/.agents/skills/martial-arts-research/` | `$martial-arts-research --mode B --task compare 10式と90式の公開諸元を比較して` | スキル未指定で「戦術・作戦・戦略の用法を調べて」等 |
 | Claude Code | `<project>/.claude/skills/martial-arts-research/` | `/martial-arts-research --mode C --task survey 軍略の用法を調べて` | 同じ自然言語本文を使う |
+| Gemini Antigravity（IDE・CLI） | `<project>/.agents/skills/martial-arts-research/`（Codexと共有） | `martial-arts-researchを使って軍略の用法を調べて` | 同じ自然言語本文を使う |
+
+Antigravityの個人用配置は`~/.gemini/config/skills/martial-arts-research/`で、IDEとCLIが共有する。[公式仕様](https://antigravity.google/docs/skills)を2026-10-31に確認。旧CLI専用配置へ新しい重複コピーは作らない。配置仕様への対応はモデル回答の検証とは別である。
 
 配置と起動表記の根拠：[Codex公式](https://learn.chatgpt.com/docs/build-skills)、[Claude Code公式](https://code.claude.com/docs/en/skills)、[共通仕様](https://agentskills.io/specification)。ページの必要箇所を2026-10-11に確認。Codexの旧公式URLは前記ページへ転送された。発見済みのスキルが表示されない場合は新しいセッションで確認する。
 
-個人用のコピー先はCodexが`~/.agents/skills/martial-arts-research/`、Claude Codeが`~/.claude/skills/martial-arts-research/`。個人配置を明示的に選ぶ場合だけ、下のコピー手順のdestinationを該当パスへ置き換えて同じfiles／ディレクトリをコピーする。今回そこへのインストールは行っていない。Codexのスキル選択は`/skills`または`$`による選択で、Claude Codeのスラッシュ名をCodexで使えるとは仮定しない。
+個人用のコピー先はCodexが`~/.agents/skills/martial-arts-research/`、Claude Codeが`~/.claude/skills/martial-arts-research/`、Antigravityが`~/.gemini/config/skills/martial-arts-research/`。個人配置はインストーラの`--user`で選ぶ。今回そこへの新規インストールは行っていない。Codexのスキル選択は`/skills`または`$`による選択で、Claude Codeのスラッシュ名をCodexで使えるとは仮定しない。
 
 `--mode`、`--task`、`--fiction`、`--stage`はスキルへのプロンプト指定。`codex exec --mode ...`のような製品CLIの引数ではない。製品のプロンプト引数や標準入力に渡す。A/B/C/Dはmartial/weapons/military/integratedの別名。taskは独立してsurvey/compare/reviewを選ぶ。未知値・欠落・重複は確認を求める。
 
@@ -23,9 +26,11 @@
 python3 scripts/install.py --project /path/to/project --target both
 python3 scripts/install.py --project /path/to/project --target codex
 python3 scripts/install.py --user --target both
+python3 scripts/install.py --project /path/to/project --target all
+python3 scripts/install.py --user --target antigravity
 ```
 
-`--target`はcodex／claude／both（既定both）。`--project`の既定は現在のディレクトリ。`--user`は個人用を明示選択し、projectと併用不可。個人配置は利用者がこのコマンドを選んだ場合だけ実行する。今回の作業ではプロジェクト配置を更新した。
+`--target`はcodex／claude／antigravity／both／all（既定both）。bothは従来のCodex・Claude、allは3製品を選び、プロジェクトの共有先を1回だけ処理する。`--project`の既定は現在のディレクトリ。`--user`は個人用を明示選択し、projectと併用不可。個人配置は利用者がこのコマンドを選んだ場合だけ実行する。削除も同じtargetを指定する。共有プロジェクト配置を削除するとCodexとAntigravityの両方から使えなくなる。
 
 削除は[uninstall.py](../scripts/uninstall.py)で同じ配置先を選ぶ。
 

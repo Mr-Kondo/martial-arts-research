@@ -74,8 +74,10 @@ def ensure_owned(destination):
 
 def destinations(target, project=None, user=False):
     base = Path.home() if user else Path(project or Path.cwd()).expanduser().resolve()
-    surfaces = {'codex': ('.agents',), 'claude': ('.claude',), 'both': ('.agents', '.claude')}[target]
-    return [base / surface / 'skills' / NAME for surface in surfaces]
+    surfaces = {'codex': '.agents', 'claude': '.claude',
+                'antigravity': '.gemini/config' if user else '.agents'}
+    selected = ('codex', 'claude') if target == 'both' else tuple(surfaces) if target == 'all' else (target,)
+    return list(dict.fromkeys(base / surfaces[name] / 'skills' / NAME for name in selected))
 
 
 def copy_package(source, stage):
@@ -169,7 +171,7 @@ def uninstall(targets):
 
 def parser(description):
     result = argparse.ArgumentParser(description=description)
-    result.add_argument('--target', choices=('codex', 'claude', 'both'), default='both')
+    result.add_argument('--target', choices=('codex', 'claude', 'antigravity', 'both', 'all'), default='both')
     scope = result.add_mutually_exclusive_group()
     scope.add_argument('--project', type=Path, help='プロジェクトのパス。既定は現在のディレクトリ')
     scope.add_argument('--user', action='store_true', help='個人用配置を明示的に選択')
