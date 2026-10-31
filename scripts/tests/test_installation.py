@@ -24,7 +24,13 @@ class InstallationTests(unittest.TestCase):
         for name in installation.FOLDERS:
             (self.source / name).mkdir()
             (self.source / name / '日本語.txt').write_bytes('原文\r\n'.encode())
+        self.write_manifest()
         self.targets = installation.destinations('both', self.root / 'project')
+
+    def write_manifest(self):
+        names = sorted(p.relative_to(self.source).as_posix()
+                       for p in self.source.rglob('*') if p.is_file())
+        (self.source / 'package-files.txt').write_text('\n'.join(names) + '\n', encoding='utf-8')
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -37,6 +43,7 @@ class InstallationTests(unittest.TestCase):
         (self.source / 'scripts/日本語.txt').unlink()
         (self.source / 'references/日本語.txt').write_text('更新', encoding="utf-8")
         (self.source / 'VERSION').write_text('0.1.1\n', encoding="utf-8")
+        self.write_manifest()
         update = installation.install(self.source, self.targets)
         self.assertEqual([r['action'] for r in update], ['updated', 'updated'])
         for target in self.targets:
@@ -83,13 +90,51 @@ class InstallationTests(unittest.TestCase):
 
     def test_source_link_and_duplicate_skill_are_refused(self):
         (self.source / 'scripts/link').symlink_to(self.source / 'SKILL.md')
+        self.write_manifest()
         with self.assertRaises(ValueError):
             installation.install(self.source, self.targets)
         (self.source / 'scripts/link').unlink()
         (self.source / 'evals/SKILL.md').write_text('archived skill', encoding="utf-8")
+        self.write_manifest()
         with self.assertRaises(ValueError):
             installation.install(self.source, self.targets)
         self.assertTrue(all(not t.exists() for t in self.targets))
+
+    def test_unlisted_private_files_are_not_distributed(self):
+        for name in ['references/private.txt', 'docs/notes.local.md', 'scripts/feedback/result.json',
+                     'scripts/__pycache__/cached.pyc', 'evals/unpublished-answer.md']:
+            path = self.source / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text('private', encoding='utf-8')
+        installation.install(self.source, self.targets)
+        for target in self.targets:
+            self.assertEqual(installation.inventory(target)[0].keys(),
+                             set((self.source / 'package-files.txt').read_text(encoding='utf-8').splitlines()))
+
+    def test_unsafe_missing_and_duplicate_manifest_entries_refused(self):
+        original = (self.source / 'package-files.txt').read_text(encoding='utf-8')
+        for entry in ['../secret', '/tmp/secret', 'scripts/../SKILL.md', 'scripts//secret',
+                      'scripts/./secret', 'scripts\\secret', 'C:/secret', 'docs/notes.local.md',
+                      'scripts/feedback/result.json', 'scripts/.env', 'scripts/missing.txt', 'SKILL.md']:
+            with self.subTest(entry=entry):
+                (self.source / 'package-files.txt').write_text(original + entry + '\n', encoding='utf-8')
+                with self.assertRaises(ValueError):
+                    installation.install(self.source, self.targets)
+                self.assertTrue(all(not target.exists() for target in self.targets))
+        (self.source / 'package-files.txt').write_text(original.replace('SKILL.md\n', ''), encoding='utf-8')
+        with self.assertRaises(ValueError):
+            installation.install(self.source, self.targets)
+
+    def test_linked_parent_directory_is_refused(self):
+        outside = self.root / 'outside'
+        outside.mkdir()
+        (outside / 'secret.txt').write_text('private', encoding='utf-8')
+        (self.source / 'docs/linked').symlink_to(outside, target_is_directory=True)
+        manifest = self.source / 'package-files.txt'
+        manifest.write_text(manifest.read_text(encoding='utf-8') + 'docs/linked/secret.txt\n', encoding='utf-8')
+        with self.assertRaises(ValueError):
+            installation.install(self.source, self.targets)
+        self.assertTrue(all(not target.exists() for target in self.targets))
 
     def test_preflight_checks_all_targets_before_update(self):
         installation.install(self.source, self.targets)
@@ -137,6 +182,10 @@ class InstallationTests(unittest.TestCase):
                                   cwd=tempfile.gettempdir(), capture_output=True)
         self.assertEqual(rendered.returncode, 0, rendered.stdout + rendered.stderr)
         self.assertIn('不足情報', json.loads(rendered.stdout)['markdown'])
+        package_tests = subprocess.run(
+            [sys.executable, '-B', '-m', 'unittest', 'discover', '-s', str(target / 'scripts/tests'),
+             '-p', 'test_package.py'], cwd=tempfile.gettempdir(), capture_output=True)
+        self.assertEqual(package_tests.returncode, 0, package_tests.stdout + package_tests.stderr)
         self.assertEqual(run('uninstall.py').returncode, 0)
         self.assertEqual(run('uninstall.py').returncode, 0)
         bad = run('install.py', '--user')
