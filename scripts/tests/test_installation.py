@@ -159,12 +159,20 @@ class InstallationTests(unittest.TestCase):
         manifest = self.source / 'package-files.txt'
         original = manifest.read_text(encoding='utf-8')
         for entry in ['scripts/FEEDBACK/result.json', 'docs/private.LOCAL.MD', 'docs/NUL.txt',
-                      'docs/name.', 'docs/name ', 'scripts/Case.txt\nscripts/case.txt']:
+                      'docs/NUL/a.md', 'docs/NUL .txt', 'docs/name.', 'docs/name ', 'docs/a?.md',
+                      'docs/日本語.txt/child', 'scripts/Case.txt\nscripts/case.txt']:
             with self.subTest(entry=entry):
                 manifest.write_text(original + entry + '\n', encoding='utf-8')
                 with self.assertRaisesRegex(ValueError, '不正|重複'):
                     installation.install(self.source, self.targets)
                 self.assertTrue(all(not target.exists() for target in self.targets))
+
+    def test_lowercase_nested_skill_is_refused_on_all_platforms(self):
+        (self.source / 'examples/skill.md').write_text('nested skill', encoding='utf-8')
+        self.write_manifest()
+        with self.assertRaisesRegex(ValueError, 'SKILL.mdが複数'):
+            installation.install(self.source, self.targets)
+        self.assertTrue(all(not target.exists() for target in self.targets))
 
     def test_swap_failure_restores_previous_copy(self):
         from unittest.mock import patch

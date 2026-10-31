@@ -87,17 +87,20 @@ def copy_package(source, stage):
     if manifest.is_symlink():
         raise ValueError('配布一覧にリンクは使えません')
     names = manifest.read_text(encoding='utf-8-sig').splitlines()
-    if len(names) != len({name.casefold() for name in names}) or not set(FILES).issubset(names):
+    folded_names = {name.casefold() for name in names}
+    if len(names) != len(folded_names) or not set(FILES).issubset(names):
         raise ValueError('配布一覧に重複または必須ファイルの欠落があります')
     for name in names:
         path = Path(name)
         if (not name or path.is_absolute() or path.as_posix() != name
                 or any(part in ('', '.', '..') or part.startswith('.') or part.endswith((' ', '.'))
                        or part.casefold() in ('feedback', '__pycache__')
-                       or re.fullmatch(r'(?i)(con|prn|aux|nul|conin\$|conout\$|com[1-9¹²³]|lpt[1-9¹²³])(\..*)?', part)
+                       or re.fullmatch(r'(?i)(con|prn|aux|nul|conin\$|conout\$|com[1-9¹²³]|lpt[1-9¹²³]) *(\..*)?', part)
                        for part in name.split('/'))
-                or '\\' in name or ':' in name
+                or re.search(r'[<>"|?*\x00-\x1f]', name) or '\\' in name or ':' in name
                 or name.casefold().endswith(('.local.md', '.pyc'))
+                or any('/'.join(path.parts[:i]).casefold() in folded_names
+                       for i in range(1, len(path.parts)))
                 or (name not in FILES and path.parts[0] not in FOLDERS)):
             raise ValueError('配布一覧のパスが不正です: ' + name)
         # Check each parent before copying; copy2 follows directory links too.
@@ -114,7 +117,8 @@ def copy_package(source, stage):
         target = stage / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source / name, target)
-    if [p.relative_to(stage).as_posix() for p in stage.rglob('SKILL.md')] != ['SKILL.md']:
+    if [p.relative_to(stage).as_posix() for p in stage.rglob('*')
+            if p.name.casefold() == 'skill.md'] != ['SKILL.md']:
         raise ValueError('配布物に検出対象のSKILL.mdが複数あります')
     files, directories = inventory(stage)
     record = {'schema_version': 1, 'name': NAME, 'version': version,
