@@ -17,6 +17,8 @@
 
 インストールと更新は同じ[install.py](../scripts/install.py)を使う。最新版のチェックアウトまたは解凍したリリースから実行する。配布元はスクリプトの所在から解決する。
 
+配布物は[package-files.txt](../package-files.txt)に記載されたファイルだけをコピーする。Gitは不要。一覧の重複・必須項目欠落・不正な相対パス・リンク・存在しないファイルはエラーとし、配置を置換しない。`feedback/`、隠しパス、`*.local.md`、Pythonキャッシュは一覧内でも拒否する。既存の公開検証資料は一覧で明示して保持し、新しい実行記録はGit対象外の`feedback/`へ保存する。
+
 ```sh
 python3 scripts/install.py --project /path/to/project --target both
 python3 scripts/install.py --project /path/to/project --target codex

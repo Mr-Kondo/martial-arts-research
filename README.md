@@ -1,6 +1,6 @@
 # martial-arts-research
 
-バージョン：0.2.0。
+バージョン：0.2.1。
 
 添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本で、Codex／Claude Code向けのプロジェクトコピーを同じ内容で配置した。
 
@@ -35,6 +35,12 @@ python3 -B scripts/research_guard.py render --record examples/records/calculatio
 ```
 
 機械検査の合格は記録整合性のみ。意味・歴史・因果・性能・最終回答の正確性は自動保証しない。両CLIでのスキル検出を確認したが、Codexの設定モデル非対応とClaude Codeの週間利用上限により、両CLIの回答評価は未完了。別コンテキストの合成資料評価は実施した。
+
+## 配布と検証ログ
+
+配布対象は[package-files.txt](package-files.txt)で明示する。一覧外の私的原稿や追加ファイルはコピーしない。GitのないZIP展開先でも導入・更新・削除できる。配布対象を追加するときは一覧も更新する。[設計判断](adr/explicit-package-boundary.md)を参照。
+
+今後の実行記録・検証ログはGit対象外の`feedback/`に保存する。既存の公開済み合成評価・検証資料は再現用に残す。秘密情報・個人情報・未公開原稿は記録せず、自動送信もしない。
 
 ## 既存の設計資料
 
