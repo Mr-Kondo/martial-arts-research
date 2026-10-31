@@ -1,6 +1,6 @@
 # martial-arts-research
 
-バージョン：0.2.2。
+バージョン：0.2.3。
 
 添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本。Codex／Claude Code／Gemini Antigravity向けに同じ内容を配置できる。Antigravityの配置仕様と判断は[ADR](adr/three-environment-delivery.md)を参照。
 
@@ -9,6 +9,7 @@
 - [記録契約schema 2](references/record-contract.md)／[標準ライブラリguard](scripts/research_guard.py)
 - [ツールによる監査・回答生成](references/output-audit.md)：計算・引用・比較条件・推論・書誌の確認範囲を回答に保持
 - [来歴・変更範囲・ライセンス](docs/provenance.md)
+- [非公開の問題報告と合成回帰ケース](docs/feedback.md)：依頼時だけ保存し、自動送信しない
 - [呼出し例](examples/codex-invocation.md)／[起動評価40件](evals/trigger-cases.json)／[タスク評価28件](evals/task-cases.json)
 
 インストール・更新とアンインストール（Python 3.9以上）：

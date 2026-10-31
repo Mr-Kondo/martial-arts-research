@@ -18,6 +18,19 @@ spec.loader.exec_module(guard)
 
 
 class PackageTests(unittest.TestCase):
+    def test_synthetic_feedback_regression_rejects_evidence_free_upgrade(self):
+        case = json.loads((ROOT / 'evals/regressions/feedback-evidence.json').read_text(encoding='utf-8'))
+        self.assertEqual(case['origin'], 'synthetic')
+        record = json.loads((ROOT / case['base_record']).read_text(encoding='utf-8'))
+        mutation = case['mutation']
+        assessment = record['findings'][mutation['finding']]['assessments'][mutation['assessment']]
+        assessment['verdict'] = mutation['verdict']
+        invalid = guard.validate(record)
+        self.assertEqual(invalid['record_integrity'], case['expected_before'])
+        self.assertIn('SUPPORT_REQUIRED', {error['code'] for error in invalid['errors']})
+        assessment['verdict'] = case['repair_verdict']
+        self.assertEqual(guard.validate(record)['record_integrity'], case['expected_after'])
+
     def test_relative_documentation_links_resolve(self):
         paths = [ROOT / 'SKILL.md', ROOT / 'README.md', ROOT / 'CHANGELOG.md']
         for folder in ['references', 'examples', 'docs', 'adr']:
