@@ -47,6 +47,8 @@ python3 -B scripts/research_guard.py render --record examples/records/calculatio
 
 ## 既存の設計資料
 
+WikiSkillによる更新管理の4案は[十分性評価のADR](adr/wikiskill-sufficient-validation.md)に従って検証中。[中間結果と限界](evals/wikiskill-sufficient-result.md)・[成果物評価の実行契約](evals/wikiskill-artifact-protocol.md)を参照。現時点で実行用スキルへの採用は確定していない。評価用コードと記録を通常のスキル実行へ混入させない。
+
 2026-10-11。Defyの `defy-martial-review` を一般化し、CodexとClaude Codeの両方で利用するAgent Skill `martial-arts-research` として設計した。実装者はCodex。モードA〜Dと両環境の互換性を含む更新版。
 
 - [01 調査報告](01-research-report.md): 元スキル、既存スキル、武術・装備・軍事思想・戦史資料と確認範囲。
