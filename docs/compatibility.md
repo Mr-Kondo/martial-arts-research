@@ -64,7 +64,7 @@ Python 3.9以上の標準ライブラリのみ。Pythonがなければ調査と�
 | Python 3.14.8 | guard・記録例の機械検査 | オフライン検査を実施 | 初回検証は3.9文法チェックのみ。その後Windows CIで3.9／3.14各57件を通過（下記） |
 | 独立したCodexサブエージェント | スキルを明示して別コンテキストで読込 | 合成資料で実施 | 製品CLIの発見・自然言語起動・スキルなし比較の代替試験とはしない |
 
-実行条件、保全証拠、採点と再実行手順は[validation.md](validation.md)。自然言語の起動／非起動と全タスクの両CLI評価、スキルなし比較は未実施。コピー一致やJSON合格からモデル回答の互換性を推定しない。
+実行条件、保全証拠、採点と再実行手順は[validation.md](https://github.com/Mr-Kondo/martial-arts-research/blob/main/docs/validation.md)。自然言語の起動／非起動と全タスクの両CLI評価、スキルなし比較は未実施。コピー一致やJSON合格からモデル回答の互換性を推定しない。
 
 ## Windows CIで確認した範囲
 
@@ -74,6 +74,6 @@ Python 3.9以上の標準ライブラリのみ。Pythonがなければ調査と�
 
 ## Linux CIで確認した範囲
 
-2026-10-11、[Python CI実行38127240113](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113)でUbuntu 24.04、Python 3.9.25／3.14.8各57件に合格。既存のWindows側も各57件に合格した。guardとコピー配置・更新・削除、手編集の保護、日本語パス・CRLF・別OSのsnapshotを検証した。[実測記録](../evals/results/linux-ci.json)を参照。
+2026-10-11、[Python CI実行38127240113](https://github.com/Mr-Kondo/martial-arts-research/actions/runs/38127240113)でUbuntu 24.04、Python 3.9.25／3.14.8各57件に合格。既存のWindows側も各57件に合格した。guardとコピー配置・更新・削除、手編集の保護、日本語パス・CRLF・別OSのsnapshotを検証した。[実測記録](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/results/linux-ci.json)を参照。
 
 検証対象はmainコミットc8df6b4。Linuxの検証記録と共通CI設定は0.1.2に同梱する。公開済み0.1.1タグ・ZIPは変更していない。Linux上のCodex／Claude Codeモデル回答、個人用配置、他のLinuxディストリビューションは未確認。

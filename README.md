@@ -1,17 +1,17 @@
 # martial-arts-research
 
-バージョン：0.2.3。
+バージョン：0.3.0。
 
-添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本。Codex／Claude Code／Gemini Antigravity向けに同じ内容を配置できる。Antigravityの配置仕様と判断は[ADR](adr/three-environment-delivery.md)を参照。
+添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本。Codex／Claude Code／Gemini Antigravity向けに同じ内容を配置できる。Antigravityの配置仕様と判断は[ADR](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/three-environment-delivery.md)を参照。
 
 - [配置・呼出し・実機の確認範囲](docs/compatibility.md)
-- [検証結果・未実施項目・再実行手順](docs/validation.md)
+- [検証結果・未実施項目・再実行手順](https://github.com/Mr-Kondo/martial-arts-research/blob/main/docs/validation.md)
 - [記録契約schema 2](references/record-contract.md)／[標準ライブラリguard](scripts/research_guard.py)
 - [ツールによる監査・回答生成](references/output-audit.md)：計算・引用・比較条件・推論・書誌の確認範囲を回答に保持
-- [来歴・変更範囲・ライセンス](docs/provenance.md)
+- [来歴・変更範囲・ライセンス](https://github.com/Mr-Kondo/martial-arts-research/blob/main/docs/provenance.md)
 - [非公開の問題報告と合成回帰ケース](docs/feedback.md)：依頼時だけ保存し、自動送信しない
-- [形式保持のA/B評価](evals/results/format-preservation-ab.md)：改善を確認できず候補不採用
-- [呼出し例](examples/codex-invocation.md)／[起動評価40件](evals/trigger-cases.json)／[タスク評価28件](evals/task-cases.json)
+- [形式保持のA/B評価](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/results/format-preservation-ab.md)：改善を確認できず候補不採用
+- [呼出し例](examples/codex-invocation.md)／[起動評価40件](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/trigger-cases.json)／[タスク評価28件](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/task-cases.json)
 
 インストール・更新とアンインストール（Python 3.9以上）：
 
@@ -32,6 +32,7 @@ Claude Code: /martial-arts-research --mode C --task survey 戦術・作戦・戦
 `--mode`と`--task`はチャットの依頼本文で指定する。A/martial、B/weapons、C/military、D/integratedとsurvey/compare/reviewを独立に選ぶ。通常の推敲・単純翻訳・新規シーン執筆は自動起動の対象外。
 
 ```sh
+# 配布元リポジトリで実行（テストは配布物に含まない）
 python3 -B -m unittest discover -s scripts/tests -v
 python3 -B scripts/research_guard.py validate --record examples/records/military.json
 python3 -B scripts/research_guard.py render --record examples/records/calculation-audit.json
@@ -41,7 +42,7 @@ python3 -B scripts/research_guard.py render --record examples/records/calculatio
 
 ## 配布と検証ログ
 
-配布対象は[package-files.txt](package-files.txt)で明示する。一覧外の私的原稿や追加ファイルはコピーしない。GitのないZIP展開先でも導入・更新・削除できる。配布対象を追加するときは一覧も更新する。[設計判断](adr/explicit-package-boundary.md)を参照。
+配布対象は[package-files.txt](package-files.txt)で明示する。一覧外の私的原稿や追加ファイルはコピーしない。GitのないZIP展開先でも導入・更新・削除できる。配布対象は実行時に必要なものだけ（SKILL.md、references、scripts、examples、docs、導入用ファイル）。設計資料・ADR・評価と実行記録・テストは配布元リポジトリにだけ置く。配布対象を追加するときは一覧も更新する。設計判断は[一覧方式](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/explicit-package-boundary.md)と[実行時最小への絞り込み](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/runtime-only-package.md)を参照。
 
 今後の実行記録・検証ログはGit対象外の`feedback/`に保存する。既存の公開済み合成評価・検証資料は再現用に残す。秘密情報・個人情報・未公開原稿は記録せず、自動送信もしない。
 
@@ -49,10 +50,10 @@ python3 -B scripts/research_guard.py render --record examples/records/calculatio
 
 2026-10-11。Defyの `defy-martial-review` を一般化し、CodexとClaude Codeの両方で利用するAgent Skill `martial-arts-research` として設計した。実装者はCodex。モードA〜Dと両環境の互換性を含む更新版。
 
-- [01 調査報告](01-research-report.md): 元スキル、既存スキル、武術・装備・軍事思想・戦史資料と確認範囲。
-- [02 スキル設計](02-skill-design.md): モードA〜D、作業指定、A〜E/W1〜W5/M1〜M6、出典規則、記録・検証、両環境の配置・呼出し・評価。
-- [03 Codex向け実装プロンプト](03-codex-implementation-prompt.md): 「ここから」〜「ここまで」をCodexへ渡し、CodexとClaude Codeの両方で利用するスキルを実装できる。
-- [貼り付け用の指示文](codex-implementation-prompt.txt): 前書き・境界表示を除いた実装指示の全文。このファイルの内容をそのままCodexへ渡せる。
+- [01 調査報告](https://github.com/Mr-Kondo/martial-arts-research/blob/main/01-research-report.md): 元スキル、既存スキル、武術・装備・軍事思想・戦史資料と確認範囲。
+- [02 スキル設計](https://github.com/Mr-Kondo/martial-arts-research/blob/main/02-skill-design.md): モードA〜D、作業指定、A〜E/W1〜W5/M1〜M6、出典規則、記録・検証、両環境の配置・呼出し・評価。
+- [03 Codex向け実装プロンプト](https://github.com/Mr-Kondo/martial-arts-research/blob/main/03-codex-implementation-prompt.md): 「ここから」〜「ここまで」をCodexへ渡し、CodexとClaude Codeの両方で利用するスキルを実装できる。
+- [貼り付け用の指示文](https://github.com/Mr-Kondo/martial-arts-research/blob/main/codex-implementation-prompt.txt): 前書き・境界表示を除いた実装指示の全文。このファイルの内容をそのままCodexへ渡せる。
 
 考証対象を選ぶ `--mode` と、作業を選ぶ `--task survey|compare|review`（調査／比較／主張検証）を分ける。
 

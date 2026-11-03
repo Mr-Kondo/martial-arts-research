@@ -49,7 +49,7 @@ renderの終了値とJSONを確認する。不整合ならmarkdownはnullであ�
 | [README.md](README.md)、[compatibility.md](docs/compatibility.md) | 配置、明示呼出し、環境の確認時 |
 | [feedback.md](references/feedback.md) | 利用者が結果の問題の報告・記録を依頼した場合だけ |
 
-評価用期待結果は通常実行で読まない。評価者向け手順は[validation.md](docs/validation.md)。
+評価用期待結果は通常実行で読まない。評価者向け手順は[validation.md](https://github.com/Mr-Kondo/martial-arts-research/blob/main/docs/validation.md)（配布元リポジトリ）。
 
 ## 分析軸
 

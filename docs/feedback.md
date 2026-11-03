@@ -25,9 +25,10 @@
 3. 同じモデル・資料・設定の比較と、単なる機械検証を区別する。
 4. 誤った入力が拒否され、正しい入力が通ることを確認する。
 
-小さい例は[feedback-evidence.json](../evals/regressions/feedback-evidence.json)。未取得の資料について根拠なしでsupportedに格上げした誤りを、既存military記録のコピー上で再現する。原記録は書き換えない。次で失敗再現と修正後合格を確認できる。
+小さい例は[feedback-evidence.json](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/regressions/feedback-evidence.json)。未取得の資料について根拠なしでsupportedに格上げした誤りを、既存military記録のコピー上で再現する。原記録は書き換えない。次で失敗再現と修正後合格を確認できる。
 
 ```sh
+# 配布元リポジトリで実行（テストは配布物に含まない）
 python3 -B -m unittest discover -s scripts/tests -p test_package.py
 ```
 

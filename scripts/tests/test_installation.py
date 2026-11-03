@@ -123,7 +123,7 @@ class InstallationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             installation.install(self.source, self.targets)
         (self.source / 'scripts/link').unlink()
-        (self.source / 'evals/SKILL.md').write_text('archived skill', encoding="utf-8")
+        (self.source / 'docs/SKILL.md').write_text('archived skill', encoding="utf-8")
         self.write_manifest()
         with self.assertRaises(ValueError):
             installation.install(self.source, self.targets)
@@ -131,7 +131,7 @@ class InstallationTests(unittest.TestCase):
 
     def test_unlisted_private_files_are_not_distributed(self):
         for name in ['references/private.txt', 'docs/notes.local.md', 'scripts/feedback/result.json',
-                     'scripts/__pycache__/cached.pyc', 'evals/unpublished-answer.md']:
+                     'scripts/__pycache__/cached.pyc', 'docs/unpublished-answer.md']:
             path = self.source / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text('private', encoding='utf-8')
@@ -237,10 +237,9 @@ class InstallationTests(unittest.TestCase):
                                   cwd=tempfile.gettempdir(), capture_output=True)
         self.assertEqual(rendered.returncode, 0, rendered.stdout + rendered.stderr)
         self.assertIn('不足情報', json.loads(rendered.stdout)['markdown'])
-        package_tests = subprocess.run(
-            [sys.executable, '-B', '-m', 'unittest', 'discover', '-s', str(target / 'scripts/tests'),
-             '-p', 'test_package.py'], cwd=tempfile.gettempdir(), capture_output=True)
-        self.assertEqual(package_tests.returncode, 0, package_tests.stdout + package_tests.stderr)
+        installed = {q.relative_to(target).as_posix() for q in target.rglob('*') if q.is_file()}
+        listed = set((ROOT / 'package-files.txt').read_text(encoding='utf-8').splitlines())
+        self.assertEqual(installed, listed | {installation.MARKER})
         self.assertEqual(run('uninstall.py').returncode, 0)
         self.assertEqual(run('uninstall.py').returncode, 0)
         bad = run('install.py', '--user')

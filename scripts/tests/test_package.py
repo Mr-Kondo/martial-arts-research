@@ -2,6 +2,7 @@ import ast
 import hashlib
 import importlib.util
 import json
+import posixpath
 from pathlib import Path
 import re
 import subprocess
@@ -99,6 +100,26 @@ class PackageTests(unittest.TestCase):
         }
         for name, sha in expected.items():
             self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), sha)
+
+    def test_runtime_package_is_self_contained_and_small(self):
+        names = (ROOT / 'package-files.txt').read_text(encoding='utf-8').splitlines()
+        for name in names:
+            self.assertFalse(name.startswith(('evals/', 'adr/', 'scripts/tests/')), name)
+            self.assertNotIn(name, ['01-research-report.md', '02-skill-design.md',
+                                    '03-codex-implementation-prompt.md', 'codex-implementation-prompt.txt'])
+            self.assertTrue(name == 'package-files.txt' or 'evaluat' not in name)
+        self.assertLess(sum((ROOT / n).stat().st_size for n in names), 400 * 1024)
+        listed = set(names)
+        for name in names:
+            if not name.endswith('.md'):
+                continue
+            content = re.sub(r'```.*?```', '', (ROOT / name).read_text(encoding='utf-8'), flags=re.S)
+            for target in re.findall(r'\]\(([^\s)]+)\)', content):
+                if urlsplit(target).scheme or target.startswith(('/', '#')):
+                    continue
+                local = posixpath.normpath(posixpath.join(posixpath.dirname(name), unquote(target.split('#', 1)[0])))
+                with self.subTest(path=name, target=target):
+                    self.assertIn(local, listed)
 
 
 if __name__ == '__main__':

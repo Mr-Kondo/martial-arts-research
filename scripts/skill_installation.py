@@ -10,10 +10,8 @@ import tempfile
 
 NAME = 'martial-arts-research'
 MARKER = '.martial-arts-research-install.json'
-FILES = ('SKILL.md', 'README.md', 'VERSION', 'CHANGELOG.md', '01-research-report.md',
-         '02-skill-design.md', '03-codex-implementation-prompt.md', 'codex-implementation-prompt.txt',
-         'package-files.txt')
-FOLDERS = ('references', 'scripts', 'examples', 'evals', 'docs', 'adr')
+FILES = ('SKILL.md', 'README.md', 'VERSION', 'CHANGELOG.md', 'package-files.txt')
+FOLDERS = ('references', 'scripts', 'examples', 'docs')
 
 
 def digest(path):
