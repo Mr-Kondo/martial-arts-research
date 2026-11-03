@@ -18,16 +18,16 @@ class PreparationTest(unittest.TestCase):
             cases=ROOT/'evals/fixtures/wikiskill-artifacts/cases.json'
             with patch('evaluate_retrieval.private_output'):
                 manifest=prepare(cases,out)
-                self.assertEqual(json.loads((out/'frozen.json').read_text()),manifest)
-                self.assertEqual(manifest['systems']['B3'],digest((out/'B3-system.md').read_text()))
-                self.assertEqual((out/'cases-all.json').read_text(),cases.read_text())
+                self.assertEqual(json.loads((out/'frozen.json').read_text(encoding='utf-8')),manifest)
+                self.assertEqual(manifest['systems']['B3'],digest((out/'B3-system.md').read_text(encoding='utf-8')))
+                self.assertEqual((out/'cases-all.json').read_text(encoding='utf-8'),cases.read_text(encoding='utf-8'))
                 original=(out/'frozen.json').read_bytes()
                 with self.assertRaises(FileExistsError):
                     prepare(cases,out)
                 self.assertEqual((out/'frozen.json').read_bytes(),original)
 
     def test_public_cases_and_missing_or_duplicate_evidence(self):
-        data=json.loads((ROOT/'evals/fixtures/wikiskill-artifacts/cases.json').read_text())
+        data=json.loads((ROOT/'evals/fixtures/wikiskill-artifacts/cases.json').read_text(encoding='utf-8'))
         sources={p for case in data['cases'] for p in case['sources']}
         self.assertEqual(len(validate(data,sources)),82)
         self.assertEqual(sum(c['split']=='confirmation' and c['scene']=='update'

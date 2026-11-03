@@ -64,6 +64,7 @@ class ArtifactTest(unittest.TestCase):
                 inspect(wire(), audit)
 
     def test_execute_separates_failures_and_arm_fixtures(self):
+        (ROOT/'feedback').mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=ROOT/'feedback',prefix='unit-artifact-') as temporary:
             root=Path(temporary)
             frozen=root/'frozen'
