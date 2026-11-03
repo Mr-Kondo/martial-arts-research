@@ -1,6 +1,7 @@
 # 配布物を一覧で固定し、検証ログを分離する
 
 - 状態: accepted（2026-10-31、ユーザー確認済み）
+- 一部置き換え: [runtime-only-package.md](runtime-only-package.md)（配布物の範囲）。
 - 対応: GitHub Issue #1。後続は #2（3環境）、#3（報告）、#4（A/B評価）。
 
 ## 仮説と成功指標
