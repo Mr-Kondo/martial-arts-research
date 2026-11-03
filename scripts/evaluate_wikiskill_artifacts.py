@@ -101,7 +101,7 @@ def inspect(text, audit):
         raise ValueError('CLI infrastructure error: '+message[:200])
     if models != {MODEL} or set(final.get('modelUsage', {})) != {MODEL}:
         raise ValueError('unverified model report')
-    records = [json.loads(line) for line in audit.read_text().splitlines()] if audit.exists() else []
+    records = [json.loads(line) for line in audit.read_text(encoding='utf-8').splitlines()] if audit.exists() else []
     # Count a tool only when the local server actually executed it. Reconcile both traces.
     allowed_calls = [c for c in calls if c['name'] in TOOLS]
     expected = [(c['name'].removeprefix('mcp__evidence__'), c.get('input', {})) for c in allowed_calls]
@@ -128,14 +128,14 @@ def execute(frozen, cases, arm, out):
         raise ValueError('one independent task per session is required')
     private_output(out)
     out.mkdir(parents=True, exist_ok=False)
-    manifest = json.loads((frozen/'frozen.json').read_text())
+    manifest = json.loads((frozen/'frozen.json').read_text(encoding='utf-8'))
     if 'cases_sha256' in manifest:
-        registered = json.loads((frozen/'cases-all.json').read_text())['cases']
-        if digest((frozen/'cases-all.json').read_text()) != manifest['cases_sha256']:
+        registered = json.loads((frozen/'cases-all.json').read_text(encoding='utf-8'))['cases']
+        if digest((frozen/'cases-all.json').read_text(encoding='utf-8')) != manifest['cases_sha256']:
             raise ValueError('case registry drift')
         if cases[0] not in registered:
             raise ValueError('case not in frozen registry')
-    system = (frozen/(arm+'-system.md')).read_text()
+    system = (frozen/(arm+'-system.md')).read_text(encoding='utf-8')
     if digest(system) != manifest['systems'][arm]:
         raise ValueError('system drift')
     fixture = {}
@@ -144,19 +144,19 @@ def execute(frozen, cases, arm, out):
                 or not Path(name).parts or Path(name).parts[0] == 'maintenance'
                 or Path(name).suffix not in ('.md', '.json', '.txt')):
             raise ValueError('unsafe corpus manifest path')
-        body = (frozen/'corpus'/name).read_text()
+        body = (frozen/'corpus'/name).read_text(encoding='utf-8')
         if digest(body) != expected:
             raise ValueError('corpus drift')
         fixture[name] = body
     if arm == 'B3':
         for name in ('guide.md', 'knowledge.md'):
-            body = (frozen/name).read_text()
+            body = (frozen/name).read_text(encoding='utf-8')
             if digest(body) != manifest['candidate'][name]:
                 raise ValueError('candidate drift')
             fixture['maintenance/'+name] = body
     prompt = request_for(cases)
     supplied = supplied_sources(system, fixture)
-    (out/'request.md').write_text(prompt)
+    (out/'request.md').write_text(prompt, encoding='utf-8')
     env = os.environ.copy()
     row = {'arm': arm, 'ids': [c['id'] for c in cases], 'system_sha256': digest(system),
            'request_sha256': digest(prompt), 'status': 'incomplete', 'failure_class': 'infra',
@@ -164,18 +164,18 @@ def execute(frozen, cases, arm, out):
            'supplied_sources': supplied,
            'corpus_sha256': digest(json.dumps(manifest['corpus'], sort_keys=True)),
            'fixture_sha256': digest(json.dumps({k: digest(v) for k,v in fixture.items()}, sort_keys=True)),
-           'runner_sha256': digest(Path(__file__).read_text()),
-           'server_sha256': digest((ROOT/'scripts/evaluation_evidence_server.py').read_text()),
+           'runner_sha256': digest(Path(__file__).read_text(encoding='utf-8')),
+           'server_sha256': digest((ROOT/'scripts/evaluation_evidence_server.py').read_text(encoding='utf-8')),
            'cli': '/opt/homebrew/bin/claude'}
     start = time.monotonic()
     try:
         settings = Path.home()/'.claude/settings.json'
         if settings.exists():
-            env.update({k: str(v) for k,v in json.loads(settings.read_text()).get('env', {}).items()})
+            env.update({k: str(v) for k,v in json.loads(settings.read_text(encoding='utf-8')).get('env', {}).items()})
         env.pop('CLAUDECODE', None)
         env.pop('CLAUDE_CODE_SIMPLE', None)
         row['cli_version'] = subprocess.run([row['cli'], '--version'], capture_output=True,
-                                            text=True, timeout=15, check=True).stdout.strip()
+                                            text=True, encoding='utf-8', timeout=15, check=True).stdout.strip()
         with tempfile.TemporaryDirectory(prefix='wikiskill-artifact-') as temporary:
             workspace = Path(temporary)
             evidence_root = workspace/'evidence'
@@ -185,8 +185,8 @@ def execute(frozen, cases, arm, out):
             for name, body in fixture.items():
                 path = evidence_root/name
                 path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(body)
-            (out/'allowed.json').write_text(json.dumps(sorted(fixture)))
+                path.write_text(body, encoding='utf-8')
+            (out/'allowed.json').write_text(json.dumps(sorted(fixture)), encoding='utf-8')
             config = {'mcpServers': {'evidence': {'command': sys.executable,
                       'args': [str(ROOT/'scripts/evaluation_evidence_server.py'), '--root', str(evidence_root),
                                '--audit', str(out/'audit.jsonl'), '--allowlist', str(out/'allowed.json')]}}}
@@ -197,7 +197,7 @@ def execute(frozen, cases, arm, out):
                        '--no-session-persistence', '--verbose', '--output-format', 'stream-json',
                        '--max-turns', str(MAX_TURNS),
                        '--system-prompt', system]
-            process = subprocess.Popen(command, cwd=cwd, env=env, text=True,
+            process = subprocess.Popen(command, cwd=cwd, env=env, text=True, encoding='utf-8',
                                        stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE, start_new_session=True)
             try:
@@ -210,8 +210,8 @@ def execute(frozen, cases, arm, out):
                     pass
                 stdout, stderr = process.communicate()
                 row['process_returncode'] = process.returncode
-                (out/'partial-stdout.log').write_text(stdout)
-                (out/'partial-stderr.log').write_text(stderr)
+                (out/'partial-stdout.log').write_text(stdout, encoding='utf-8')
+                (out/'partial-stderr.log').write_text(stderr, encoding='utf-8')
                 raise EvaluationTimeout('evaluation timeout; process group terminated') from None
             finally:
                 if process.poll() is None:
@@ -221,10 +221,10 @@ def execute(frozen, cases, arm, out):
                         pass
                     partial_out, partial_err = process.communicate()
                     row['process_returncode'] = process.returncode
-                    (out/'partial-stdout.log').write_text(partial_out)
-                    (out/'partial-stderr.log').write_text(partial_err)
-            (out/'stream.jsonl').write_text(stdout)
-            (out/'stderr.log').write_text(stderr)
+                    (out/'partial-stdout.log').write_text(partial_out, encoding='utf-8')
+                    (out/'partial-stderr.log').write_text(partial_err, encoding='utf-8')
+            (out/'stream.jsonl').write_text(stdout, encoding='utf-8')
+            (out/'stderr.log').write_text(stderr, encoding='utf-8')
             # Inspect error envelope even for nonzero exits, preserving reset/transport evidence.
             try:
                 final, audit = inspect(stdout, out/'audit.jsonl')
@@ -269,9 +269,9 @@ def execute(frozen, cases, arm, out):
             for key, value in [('partial-stdout', error.stdout), ('partial-stderr', error.stderr)]:
                 if isinstance(value, bytes):
                     value = value.decode(errors='replace')
-                (out/(key+'.log')).write_text(value or '')
+                (out/(key+'.log')).write_text(value or '', encoding='utf-8')
     row['elapsed_seconds'] = round(time.monotonic()-start, 3)
-    (out/'result.json').write_text(json.dumps(row, ensure_ascii=False, indent=2))
+    (out/'result.json').write_text(json.dumps(row, ensure_ascii=False, indent=2), encoding='utf-8')
     return row
 
 
@@ -282,7 +282,7 @@ if __name__ == '__main__':
     parser.add_argument('--arm', choices=('A', 'B1', 'B2', 'B3'), required=True)
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
-    result = execute(args.frozen.resolve(), json.loads(args.cases.read_text())['cases'], args.arm,
+    result = execute(args.frozen.resolve(), json.loads(args.cases.read_text(encoding='utf-8'))['cases'], args.arm,
                      args.out.resolve())
     print(result['status'])
     raise SystemExit(result['status'] != 'ok')

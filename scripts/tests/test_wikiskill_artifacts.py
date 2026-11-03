@@ -69,8 +69,8 @@ class ArtifactTest(unittest.TestCase):
             root=Path(temporary)
             frozen=root/'frozen'
             (frozen/'corpus').mkdir(parents=True)
-            (frozen/'corpus/source.md').write_text('public evidence')
-            manifest={'systems':{},'corpus':{'source.md':digest('public evidence')},'candidate':{}}
+            (frozen/'corpus/source.md').write_text('日本語の正本',encoding='utf-8')
+            manifest={'systems':{},'corpus':{'source.md':digest('日本語の正本')},'candidate':{}}
             for arm in ('A','B1','B2','B3'):
                 (frozen/(arm+'-system.md')).write_text('system '+arm)
                 manifest['systems'][arm]=digest('system '+arm)
@@ -82,11 +82,13 @@ class ArtifactTest(unittest.TestCase):
             cited=[]
             for arm in ('A','B1','B2','B3'):
                 def fake_popen(command,**kwargs):
+                    self.assertEqual(kwargs['encoding'],'utf-8')
                     self.assertNotIn('CLAUDECODE',kwargs['env'])
                     self.assertNotIn('CLAUDE_CODE_SIMPLE',kwargs['env'])
                     config=json.loads(command[command.index('--mcp-config')+1])
                     args=config['mcpServers']['evidence']['args']
                     fixture=Path(args[args.index('--root')+1])
+                    self.assertEqual((fixture/'source.md').read_text(encoding='utf-8'),'日本語の正本')
                     self.assertNotEqual(fixture,kwargs['cwd'])
                     self.assertEqual((fixture/'maintenance/guide.md').exists(),arm=='B3')
                     self.assertEqual((fixture/'maintenance/knowledge.md').exists(),arm=='B3')
