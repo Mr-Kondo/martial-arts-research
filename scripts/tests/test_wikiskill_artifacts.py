@@ -166,7 +166,7 @@ class ArtifactTest(unittest.TestCase):
             process.communicate=Mock(side_effect=[subprocess.TimeoutExpired('model',300),('partial','timeout')])
             with patch('evaluate_wikiskill_artifacts.subprocess.run',return_value=SimpleNamespace(stdout='v',returncode=0)),\
                  patch('evaluate_wikiskill_artifacts.subprocess.Popen',return_value=process),\
-                 patch('evaluate_wikiskill_artifacts.os.killpg') as terminate:
+                 patch('evaluate_wikiskill_artifacts.os.killpg',create=True) as terminate:
                 row=execute(frozen,[case],'A',root/'timeout')
             self.assertEqual(row['failure_class'],'timeout')
             self.assertEqual(row['process_returncode'],-9)
@@ -175,7 +175,7 @@ class ArtifactTest(unittest.TestCase):
             process.communicate=Mock(side_effect=[subprocess.TimeoutExpired('model',300),('partial after exit','timeout')])
             with patch('evaluate_wikiskill_artifacts.subprocess.run',return_value=SimpleNamespace(stdout='v',returncode=0)),\
                  patch('evaluate_wikiskill_artifacts.subprocess.Popen',return_value=process),\
-                 patch('evaluate_wikiskill_artifacts.os.killpg',side_effect=ProcessLookupError):
+                 patch('evaluate_wikiskill_artifacts.os.killpg',side_effect=ProcessLookupError,create=True):
                 row=execute(frozen,[case],'A',root/'timeout-race')
             self.assertEqual(row['failure_class'],'timeout')
             self.assertEqual((root/'timeout-race/partial-stdout.log').read_text(),'partial after exit')
@@ -184,7 +184,7 @@ class ArtifactTest(unittest.TestCase):
             process.communicate=Mock(side_effect=[KeyboardInterrupt(),('partial','interrupted')])
             with patch('evaluate_wikiskill_artifacts.subprocess.run',return_value=SimpleNamespace(stdout='v',returncode=0)),\
                  patch('evaluate_wikiskill_artifacts.subprocess.Popen',return_value=process),\
-                 patch('evaluate_wikiskill_artifacts.os.killpg') as terminate:
+                 patch('evaluate_wikiskill_artifacts.os.killpg',create=True) as terminate:
                 with self.assertRaises(KeyboardInterrupt):
                     execute(frozen,[case],'A',root/'interrupted')
             terminate.assert_called_once()
