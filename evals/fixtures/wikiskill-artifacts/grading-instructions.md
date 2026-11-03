@@ -11,4 +11,3 @@ Common delivery facts: every artifact author received the FULL SKILL.md, docs/fe
 
 Prospective clarification after source reassessment: saved full tool output and common prompt establish wire delivery, not the model's final input after possible context middleware or its attention. A subjective report of compressed display or incomplete access is not by itself a proven factual error. Do not claim actual compression was established either. Separately check objective false statements about canonical rules, measurements, history or completion; a compression explanation does not make those statements correct. Preserve required-item and verified-citation obligations. Original trial prompts and adjudications remain archived; this clarification does not retroactively change the preregistered protocol.
 ```
-
