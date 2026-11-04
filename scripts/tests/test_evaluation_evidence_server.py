@@ -1,5 +1,6 @@
 """Actual subprocess protocol and fixture-boundary regression checks."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -10,6 +11,28 @@ SERVER = Path(__file__).resolve().parents[1] / 'evaluation_evidence_server.py'
 
 
 class EvidenceServerTest(unittest.TestCase):
+    def test_utf8_protocol_overrides_non_utf8_console_locale(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            parent = Path(temporary)
+            root = parent/'fixture'
+            root.mkdir()
+            (root/'日本語.md').write_text('日本語の正本\n', encoding='utf-8')
+            allowed = parent/'allow.json'
+            allowed.write_text(json.dumps(['日本語.md'], ensure_ascii=False), encoding='utf-8')
+            wire = json.dumps({'jsonrpc': '2.0', 'id': 1, 'method': 'tools/call',
+                               'params': {'name': 'open_evidence',
+                                          'arguments': {'path': '日本語.md'}}}, ensure_ascii=False)+'\n'
+            env = dict(os.environ, PYTHONIOENCODING='ascii', PYTHONUTF8='0')
+            result = subprocess.run([sys.executable, str(SERVER), '--root', str(root),
+                                     '--audit', str(parent/'audit.jsonl'), '--allowlist', str(allowed)],
+                                    input=wire.encode('utf-8'), capture_output=True,
+                                    check=True, timeout=10, env=env)
+            reply = json.loads(result.stdout.decode('utf-8'))
+            self.assertEqual(reply['result']['content'][0]['text'], '1: 日本語の正本')
+            audit = json.loads((parent/'audit.jsonl').read_text(encoding='utf-8'))
+            self.assertTrue(audit['success'])
+            self.assertEqual(audit['path'], '日本語.md')
+
     def test_protocol_search_and_boundaries(self):
         with tempfile.TemporaryDirectory() as temporary:
             parent = Path(temporary)

@@ -49,6 +49,22 @@ class TurnLimitError(AnswerError):
     """Explicit max-turn envelope; a nonzero CLI exit is expected."""
 
 
+def save_streams(out, stdout, stderr, prefix=''):
+    """Keep original process bytes even after interruption or invalid UTF-8."""
+    decoded = []
+    valid = True
+    for name, data in [('stdout', stdout), ('stderr', stderr)]:
+        (out/(prefix+name+'.bin')).write_bytes(data)
+        try:
+            text = data.decode('utf-8')
+        except UnicodeDecodeError:
+            text = data.decode('utf-8', errors='replace')
+            valid = False
+        (out/(prefix+name+'.log')).write_text(text, encoding='utf-8')
+        decoded.append(text)
+    return *decoded, valid
+
+
 def request_for(cases):
     visible = [{k: c[k] for k in ('id', 'scene', 'request', 'draft', 'observations')} for c in cases]
     return ('各依頼の実際の成果物を作成してください。更新依頼ではこのスキル自体の改訂本文を、'
@@ -197,11 +213,11 @@ def execute(frozen, cases, arm, out):
                        '--no-session-persistence', '--verbose', '--output-format', 'stream-json',
                        '--max-turns', str(MAX_TURNS),
                        '--system-prompt', system]
-            process = subprocess.Popen(command, cwd=cwd, env=env, text=True, encoding='utf-8',
+            process = subprocess.Popen(command, cwd=cwd, env=env,
                                        stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE, start_new_session=True)
             try:
-                stdout, stderr = process.communicate(prompt, timeout=300)
+                stdout, stderr = process.communicate(prompt.encode('utf-8'), timeout=300)
                 row['process_returncode'] = process.returncode
             except subprocess.TimeoutExpired:
                 try:
@@ -210,8 +226,7 @@ def execute(frozen, cases, arm, out):
                     pass
                 stdout, stderr = process.communicate()
                 row['process_returncode'] = process.returncode
-                (out/'partial-stdout.log').write_text(stdout, encoding='utf-8')
-                (out/'partial-stderr.log').write_text(stderr, encoding='utf-8')
+                save_streams(out, stdout, stderr, 'partial-')
                 raise EvaluationTimeout('evaluation timeout; process group terminated') from None
             finally:
                 if process.poll() is None:
@@ -221,10 +236,12 @@ def execute(frozen, cases, arm, out):
                         pass
                     partial_out, partial_err = process.communicate()
                     row['process_returncode'] = process.returncode
-                    (out/'partial-stdout.log').write_text(partial_out, encoding='utf-8')
-                    (out/'partial-stderr.log').write_text(partial_err, encoding='utf-8')
+                    save_streams(out, partial_out, partial_err, 'partial-')
+            stdout, stderr, valid_utf8 = save_streams(out, stdout, stderr)
             (out/'stream.jsonl').write_text(stdout, encoding='utf-8')
             (out/'stderr.log').write_text(stderr, encoding='utf-8')
+            if not valid_utf8:
+                raise ValueError('invalid UTF-8 process output; original bytes preserved')
             # Inspect error envelope even for nonzero exits, preserving reset/transport evidence.
             try:
                 final, audit = inspect(stdout, out/'audit.jsonl')

@@ -18,6 +18,21 @@ def init():
 
 
 class ArtifactTest(unittest.TestCase):
+    def test_invalid_and_truncated_process_bytes_are_preserved(self):
+        from evaluate_wikiskill_artifacts import save_streams
+        with tempfile.TemporaryDirectory() as temporary:
+            out = Path(temporary)
+            # A real subprocess writes bytes that text-mode communicate cannot decode.
+            process = subprocess.run([sys.executable, '-c',
+                                      "import os; os.write(1,b'\\xff\\xe3\\x81'); os.write(2,b'\\x80')"],
+                                     capture_output=True, check=True, timeout=10)
+            stdout, stderr, valid = save_streams(out, process.stdout, process.stderr, 'partial-')
+            self.assertFalse(valid)
+            self.assertIn('\ufffd', stdout)
+            self.assertIn('\ufffd', stderr)
+            self.assertEqual((out/'partial-stdout.bin').read_bytes(), b'\xff\xe3\x81')
+            self.assertEqual((out/'partial-stderr.bin').read_bytes(), b'\x80')
+
     def test_common_system_sources_are_available_without_duplicate_tool_read(self):
         fixture={name:'FULL SOURCE '+name for name in COMMON_CONTEXT}
         base='\n\n'.join(fixture[name] for name in COMMON_CONTEXT)
@@ -82,7 +97,8 @@ class ArtifactTest(unittest.TestCase):
             cited=[]
             for arm in ('A','B1','B2','B3'):
                 def fake_popen(command,**kwargs):
-                    self.assertEqual(kwargs['encoding'],'utf-8')
+                    self.assertNotIn('text',kwargs)
+                    self.assertNotIn('encoding',kwargs)
                     self.assertNotIn('CLAUDECODE',kwargs['env'])
                     self.assertNotIn('CLAUDE_CODE_SIMPLE',kwargs['env'])
                     config=json.loads(command[command.index('--mcp-config')+1])
@@ -98,7 +114,7 @@ class ArtifactTest(unittest.TestCase):
                                  result=json.dumps({'x':dict(decision='revise',text='done',limits='none',evidence=cited)}))]
                     self.assertIn('--max-turns', command)
                     return SimpleNamespace(returncode=0,poll=lambda:0,
-                                           communicate=lambda *a,**k:('\n'.join(map(json.dumps,events)),''))
+                                           communicate=lambda *a,**k:('\n'.join(map(json.dumps,events)).encode('utf-8'),b''))
                 with patch('evaluate_wikiskill_artifacts.subprocess.run',return_value=SimpleNamespace(stdout='test-version',returncode=0)),\
                      patch('evaluate_wikiskill_artifacts.subprocess.Popen',side_effect=fake_popen):
                     row=execute(frozen,[case],arm,root/arm)
@@ -163,7 +179,7 @@ class ArtifactTest(unittest.TestCase):
                 self.assertTrue((root/(classification+type(error).__name__)/'result.json').exists())
             process=SimpleNamespace(pid=123,returncode=-9,poll=lambda:-9)
             from unittest.mock import Mock
-            process.communicate=Mock(side_effect=[subprocess.TimeoutExpired('model',300),('partial','timeout')])
+            process.communicate=Mock(side_effect=[subprocess.TimeoutExpired('model',300),(b'partial',b'timeout')])
             with patch('evaluate_wikiskill_artifacts.subprocess.run',return_value=SimpleNamespace(stdout='v',returncode=0)),\
                  patch('evaluate_wikiskill_artifacts.subprocess.Popen',return_value=process),\
                  patch('evaluate_wikiskill_artifacts.os.killpg',create=True) as terminate,\
@@ -173,7 +189,7 @@ class ArtifactTest(unittest.TestCase):
             self.assertEqual(row['process_returncode'],-9)
             terminate.assert_called_once()
             self.assertEqual((root/'timeout/partial-stdout.log').read_text(),'partial')
-            process.communicate=Mock(side_effect=[subprocess.TimeoutExpired('model',300),('partial after exit','timeout')])
+            process.communicate=Mock(side_effect=[subprocess.TimeoutExpired('model',300),(b'partial after exit',b'timeout')])
             with patch('evaluate_wikiskill_artifacts.subprocess.run',return_value=SimpleNamespace(stdout='v',returncode=0)),\
                  patch('evaluate_wikiskill_artifacts.subprocess.Popen',return_value=process),\
                  patch('evaluate_wikiskill_artifacts.os.killpg',side_effect=ProcessLookupError,create=True),\
@@ -183,7 +199,7 @@ class ArtifactTest(unittest.TestCase):
             self.assertEqual((root/'timeout-race/partial-stdout.log').read_text(),'partial after exit')
             self.assertEqual(row['process_returncode'],-9)
             process.poll=lambda:None
-            process.communicate=Mock(side_effect=[KeyboardInterrupt(),('partial','interrupted')])
+            process.communicate=Mock(side_effect=[KeyboardInterrupt(),(b'partial',b'interrupted')])
             with patch('evaluate_wikiskill_artifacts.subprocess.run',return_value=SimpleNamespace(stdout='v',returncode=0)),\
                  patch('evaluate_wikiskill_artifacts.subprocess.Popen',return_value=process),\
                  patch('evaluate_wikiskill_artifacts.os.killpg',create=True) as terminate,\

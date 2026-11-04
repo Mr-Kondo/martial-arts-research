@@ -118,5 +118,8 @@ if __name__ == '__main__':
     if (not root.is_dir() or root.is_relative_to(checkout) or checkout.is_relative_to(root)
             or args.audit.resolve().is_relative_to(root)):
         parser.error('provide an isolated fixture directory')
-    allowed = set(json.loads(args.allowlist.read_text())) if args.allowlist else None
+    # JSON-RPC is UTF-8 regardless of the host console locale.
+    sys.stdin.reconfigure(encoding='utf-8')
+    sys.stdout.reconfigure(encoding='utf-8')
+    allowed = set(json.loads(args.allowlist.read_text(encoding='utf-8'))) if args.allowlist else None
     serve(root, args.audit.resolve(), allowed)
