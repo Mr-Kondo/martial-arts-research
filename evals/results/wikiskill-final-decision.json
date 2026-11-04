@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-05",
+  "decision": {
+    "B1": "reject_runtime_candidate",
+    "B2": "reject_runtime_candidate_effect_not_confirmed",
+    "B3": "reject_runtime_candidate_cost_gate_failed",
+    "B4": "retain_evaluation_infrastructure_only"
+  },
+  "prospective_confirmation": {
+    "registered_first_statistical_look_pairs": 408,
+    "fully_audited_pairs": 17,
+    "allocated_pass": {"A": 7, "B2": 9},
+    "important_errors": {"A": 1, "B2": 0},
+    "decision_at_17_pairs": "unresolved",
+    "next_unit_terminal_allocations": 31,
+    "next_unit_valid_answers": 26,
+    "next_unit_answer_failures": 4,
+    "next_unit_infrastructure_failures": 1,
+    "next_unit_unstarted_allocations": 3,
+    "next_unit_used_for_effect_inference": false,
+    "stop_reason": "diminishing decision information from repeated units; infrastructure limit encountered; no registered statistical look reached"
+  },
+  "interpretation": "No proof of no effect or safety. Current runtime candidates are not adopted because their required benefit was not demonstrated at acceptable evaluation cost.",
+  "runtime_version": "0.2.3",
+  "runtime_changed": false
+}

@@ -1,0 +1,242 @@
+{
+  "status": "posthoc root source reassessment; not a new primary trial",
+  "notes": [
+    "No primary call or saved initial grader was rerun. All original grades/adjudications/analyses remain preserved.",
+    "15 artifacts mentioned compression;10 had display-only factual penalties cleared,7 now pass the fixed full quality contract. Unverified citations and independently false substantive assertions remain failures.",
+    "Wire delivery does not establish final model input or attention. Actual middleware compression in a particular primary call remains unverified.",
+    "Independent reviewers agreed on factual-error disposition for all15; some required-item judgments differed and pre-existing noncompression adjudications remain unless separately justified.",
+    "Supplementary review artifacts retained original mechanical source flags, so full arm blindness is not guaranteed; this is a methodological limitation.",
+    "Original missing OS returncode and conservative derived ITT classification remain unresolved under frozen primary parser.",
+    "Conditional/source-shared synthetic tasks do not establish general workflow benefit or three-product equivalence."
+  ],
+  "changes": [
+    {
+      "anonymous_review_id": "recheck-004",
+      "case_id": "C-U16",
+      "arm": "B3",
+      "before_pass": false,
+      "after_pass": false,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-005",
+      "case_id": "E-U03",
+      "arm": "B1",
+      "before_pass": false,
+      "after_pass": false,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-006",
+      "case_id": "E-U03",
+      "arm": "B3",
+      "before_pass": false,
+      "after_pass": false,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-007",
+      "case_id": "C-N08",
+      "arm": "B1",
+      "before_pass": false,
+      "after_pass": true,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-008",
+      "case_id": "E-N11",
+      "arm": "B1",
+      "before_pass": false,
+      "after_pass": true,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-009",
+      "case_id": "E-N11",
+      "arm": "B2",
+      "before_pass": false,
+      "after_pass": true,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-010",
+      "case_id": "E-U12",
+      "arm": "B3",
+      "before_pass": false,
+      "after_pass": true,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-011",
+      "case_id": "E-U12",
+      "arm": "B2",
+      "before_pass": false,
+      "after_pass": true,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-012",
+      "case_id": "C-N08",
+      "arm": "A",
+      "before_pass": false,
+      "after_pass": true,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    },
+    {
+      "anonymous_review_id": "recheck-014",
+      "case_id": "E-U03",
+      "arm": "A",
+      "before_pass": false,
+      "after_pass": true,
+      "reason": "Display/access uncertainty alone is not an objectively false source statement; both source reviewers agree no independent factual/critical error. Other obligations and citation flags retained."
+    }
+  ],
+  "groups": {
+    "update": {
+      "n": 48,
+      "arms": {
+        "A": {
+          "pass": 14,
+          "critical": 0
+        },
+        "B1": {
+          "pass": 20,
+          "critical": 1
+        },
+        "B2": {
+          "pass": 15,
+          "critical": 0
+        },
+        "B3": {
+          "pass": 29,
+          "critical": 1
+        }
+      },
+      "comparisons": {
+        "B1-vs-A": {
+          "n": 48,
+          "wins": 11,
+          "losses": 5,
+          "difference": 0.125,
+          "lower": -0.21549773837864852,
+          "upper": 0.4311298889154926,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B2-vs-A": {
+          "n": 48,
+          "wins": 7,
+          "losses": 6,
+          "difference": 0.020833333333333332,
+          "lower": -0.2890706619338648,
+          "upper": 0.32493291337689595,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B3-vs-A": {
+          "n": 48,
+          "wins": 19,
+          "losses": 4,
+          "difference": 0.3125,
+          "lower": -0.06896721339811218,
+          "upper": 0.6094829023411377,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B2-vs-B1": {
+          "n": 48,
+          "wins": 7,
+          "losses": 12,
+          "difference": -0.10416666666666667,
+          "lower": -0.4360514065365358,
+          "upper": 0.25597924370220404,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B3-vs-B2": {
+          "n": 48,
+          "wins": 18,
+          "losses": 4,
+          "difference": 0.2916666666666667,
+          "lower": -0.08515525019772846,
+          "upper": 0.5894793240350791,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        }
+      }
+    },
+    "normal": {
+      "n": 24,
+      "arms": {
+        "A": {
+          "pass": 13,
+          "critical": 0
+        },
+        "B1": {
+          "pass": 14,
+          "critical": 0
+        },
+        "B2": {
+          "pass": 11,
+          "critical": 0
+        },
+        "B3": {
+          "pass": 17,
+          "critical": 0
+        }
+      },
+      "comparisons": {
+        "B1-vs-A": {
+          "n": 24,
+          "wins": 5,
+          "losses": 4,
+          "difference": 0.041666666666666664,
+          "lower": -0.44597274949227145,
+          "upper": 0.5078130512095538,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B2-vs-A": {
+          "n": 24,
+          "wins": 3,
+          "losses": 5,
+          "difference": -0.08333333333333333,
+          "lower": -0.5192080079517083,
+          "upper": 0.3956492453476968,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B3-vs-A": {
+          "n": 24,
+          "wins": 6,
+          "losses": 2,
+          "difference": 0.16666666666666666,
+          "lower": -0.3227056756565625,
+          "upper": 0.5701745255634497,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B2-vs-B1": {
+          "n": 24,
+          "wins": 0,
+          "losses": 3,
+          "difference": -0.125,
+          "lower": -0.43131292403429144,
+          "upper": 0.23051178125645522,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        },
+        "B3-vs-B2": {
+          "n": 24,
+          "wins": 8,
+          "losses": 2,
+          "difference": 0.25,
+          "lower": -0.27929880652566963,
+          "upper": 0.6511317622377321,
+          "boundary_alpha": 0.001388888888888889,
+          "practical_gain_futile": false
+        }
+      }
+    }
+  }
+}

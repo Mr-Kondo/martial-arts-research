@@ -1,0 +1,1049 @@
+{
+  "stage": 3,
+  "calls": 288,
+  "groups": {
+    "update": {
+      "n": 48,
+      "arms": {
+        "A": {
+          "pass": 13,
+          "critical": 0,
+          "incomplete": 4
+        },
+        "B1": {
+          "pass": 20,
+          "critical": 1,
+          "incomplete": 1
+        },
+        "B2": {
+          "pass": 14,
+          "critical": 0,
+          "incomplete": 0
+        },
+        "B3": {
+          "pass": 28,
+          "critical": 1,
+          "incomplete": 0
+        }
+      },
+      "comparisons": {
+        "B1-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 11,
+            "losses": 4,
+            "difference": 0.14583333333333334,
+            "lower": -0.1869516192464398,
+            "upper": 0.43827974151883375,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U23"
+          ],
+          "resource_complete_pairs": 43,
+          "resources": {
+            "characters": {
+              "estimable": true,
+              "geometric_ratio": 0.8793939993257575,
+              "lower": 0.5213960817015738,
+              "upper": 1.482349716855353,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 43
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 0.9426356362232846,
+              "lower": 0.8092604833781998,
+              "upper": 1.0895966710289855,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 43
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 0.9980257878983184,
+              "lower": 0.8910711022368282,
+              "upper": 1.1145715888769923,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 43
+            }
+          }
+        },
+        "B2-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 7,
+            "losses": 6,
+            "difference": 0.020833333333333332,
+            "lower": -0.2890706619338648,
+            "upper": 0.32493291337689595,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [],
+          "resource_complete_pairs": 44,
+          "resources": {
+            "characters": {
+              "estimable": true,
+              "geometric_ratio": 0.8684785260023562,
+              "lower": 0.5617563475520457,
+              "upper": 1.273079746143629,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 44
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 0.8627946805465029,
+              "lower": 0.7285570499986301,
+              "upper": 1.0005414738695828,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 44
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 0.9603905577572833,
+              "lower": 0.8672734263654059,
+              "upper": 1.0564640778863048,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 44
+            }
+          }
+        },
+        "B3-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 18,
+            "losses": 3,
+            "difference": 0.3125,
+            "lower": -0.055029956577962225,
+            "upper": 0.5949771727543561,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U19"
+          ],
+          "resource_complete_pairs": 44,
+          "resources": {
+            "characters": {
+              "estimable": true,
+              "geometric_ratio": 1.7709177041627449,
+              "lower": 1.2207839287351743,
+              "upper": 2.74082711996658,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 44
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 1.29151721290969,
+              "lower": 1.0911812156827319,
+              "upper": 1.5064895146541608,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 44
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 1.3745302950897254,
+              "lower": 1.2212177809522489,
+              "upper": 1.5759575230960587,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 44
+            }
+          }
+        },
+        "B2-vs-B1": {
+          "quality": {
+            "n": 48,
+            "wins": 6,
+            "losses": 12,
+            "difference": -0.125,
+            "lower": -0.44560505471922146,
+            "upper": 0.22967064044185856,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [],
+          "resource_complete_pairs": 47,
+          "resources": {
+            "characters": {
+              "estimable": true,
+              "geometric_ratio": 0.9143172001667004,
+              "lower": 0.5993617541784517,
+              "upper": 1.3949450339919887,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 47
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 0.9310258787988951,
+              "lower": 0.8445066204180528,
+              "upper": 1.0241908053920292,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 47
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 0.9559173326862326,
+              "lower": 0.859231815644783,
+              "upper": 1.0478480225385511,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 47
+            }
+          }
+        },
+        "B3-vs-B2": {
+          "quality": {
+            "n": 48,
+            "wins": 18,
+            "losses": 4,
+            "difference": 0.2916666666666667,
+            "lower": -0.08515525019772846,
+            "upper": 0.5894793240350791,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U19"
+          ],
+          "resource_complete_pairs": 48,
+          "resources": {
+            "characters": {
+              "estimable": true,
+              "geometric_ratio": 2.2593401666214286,
+              "lower": 1.577001731189581,
+              "upper": 3.3826567463081756,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 48
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 1.5067581877242298,
+              "lower": 1.3655649316898266,
+              "upper": 1.672737869869713,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 48
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 1.4551273177856325,
+              "lower": 1.2911449151830918,
+              "upper": 1.6672861629869575,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 48
+            }
+          }
+        }
+      }
+    },
+    "normal": {
+      "n": 24,
+      "arms": {
+        "A": {
+          "pass": 12,
+          "critical": 0,
+          "incomplete": 0
+        },
+        "B1": {
+          "pass": 12,
+          "critical": 0,
+          "incomplete": 1
+        },
+        "B2": {
+          "pass": 10,
+          "critical": 0,
+          "incomplete": 0
+        },
+        "B3": {
+          "pass": 17,
+          "critical": 0,
+          "incomplete": 1
+        }
+      },
+      "comparisons": {
+        "B1-vs-A": {
+          "quality": {
+            "n": 24,
+            "wins": 4,
+            "losses": 4,
+            "difference": 0.0,
+            "lower": -0.4609823348980138,
+            "upper": 0.4609823348980138,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [],
+          "resource_complete_pairs": 23,
+          "resources": {
+            "characters": {
+              "estimable": false,
+              "reason": "zero or negative measurement; report raw differences"
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 1.0816277503425913,
+              "lower": 0.897424266383313,
+              "upper": 1.3068130245325358,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 1.125026762596983,
+              "lower": 1.029931437356036,
+              "upper": 1.2503552598051098,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            }
+          }
+        },
+        "B2-vs-A": {
+          "quality": {
+            "n": 24,
+            "wins": 3,
+            "losses": 5,
+            "difference": -0.08333333333333333,
+            "lower": -0.5192080079517083,
+            "upper": 0.3956492453476968,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [],
+          "resource_complete_pairs": 24,
+          "resources": {
+            "characters": {
+              "estimable": false,
+              "reason": "zero or negative measurement; report raw differences"
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 1.0305865784254682,
+              "lower": 0.878979728434424,
+              "upper": 1.2107131986166326,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 24
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 1.1025098409680194,
+              "lower": 0.9513384281267067,
+              "upper": 1.290375962205211,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 24
+            }
+          }
+        },
+        "B3-vs-A": {
+          "quality": {
+            "n": 24,
+            "wins": 7,
+            "losses": 2,
+            "difference": 0.20833333333333334,
+            "lower": -0.30213386498606803,
+            "upper": 0.6117320820692166,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [],
+          "resource_complete_pairs": 23,
+          "resources": {
+            "characters": {
+              "estimable": false,
+              "reason": "zero or negative measurement; report raw differences"
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 1.0886362145771342,
+              "lower": 0.9451649845387367,
+              "upper": 1.2235120304632474,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 0.9831341499112635,
+              "lower": 0.8298164157639719,
+              "upper": 1.1432579787061459,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            }
+          }
+        },
+        "B2-vs-B1": {
+          "quality": {
+            "n": 24,
+            "wins": 1,
+            "losses": 3,
+            "difference": -0.08333333333333333,
+            "lower": -0.43125501511570036,
+            "upper": 0.3053223455426646,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [],
+          "resource_complete_pairs": 23,
+          "resources": {
+            "characters": {
+              "estimable": false,
+              "reason": "zero or negative measurement; report raw differences"
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 0.9423290254127521,
+              "lower": 0.8133615340015757,
+              "upper": 1.0933330808492325,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 0.9826508775758038,
+              "lower": 0.8172065304205691,
+              "upper": 1.1787898327009478,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            }
+          }
+        },
+        "B3-vs-B2": {
+          "quality": {
+            "n": 24,
+            "wins": 8,
+            "losses": 1,
+            "difference": 0.2916666666666667,
+            "lower": -0.21750403475978716,
+            "upper": 0.653354903904037,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [],
+          "resource_complete_pairs": 23,
+          "resources": {
+            "characters": {
+              "estimable": false,
+              "reason": "zero or negative measurement; report raw differences"
+            },
+            "seconds": {
+              "estimable": true,
+              "geometric_ratio": 1.0696437217934711,
+              "lower": 0.9295450993659271,
+              "upper": 1.2164227131440655,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            },
+            "tokens": {
+              "estimable": true,
+              "geometric_ratio": 0.9067441489507966,
+              "lower": 0.7188214214326781,
+              "upper": 1.095197729711491,
+              "confidence": 0.995,
+              "draws": 20000,
+              "seed": 8703,
+              "n": 23
+            }
+          }
+        }
+      }
+    }
+  },
+  "individual_graders": {
+    "claude": {
+      "update": {
+        "A": {
+          "n": 48,
+          "passed": 14
+        },
+        "B1": {
+          "n": 48,
+          "passed": 21
+        },
+        "B2": {
+          "n": 48,
+          "passed": 17
+        },
+        "B3": {
+          "n": 48,
+          "passed": 30
+        }
+      },
+      "normal": {
+        "A": {
+          "n": 24,
+          "passed": 12
+        },
+        "B1": {
+          "n": 24,
+          "passed": 14
+        },
+        "B2": {
+          "n": 24,
+          "passed": 10
+        },
+        "B3": {
+          "n": 24,
+          "passed": 16
+        }
+      }
+    },
+    "agy": {
+      "update": {
+        "A": {
+          "n": 48,
+          "passed": 13
+        },
+        "B1": {
+          "n": 48,
+          "passed": 19
+        },
+        "B2": {
+          "n": 48,
+          "passed": 14
+        },
+        "B3": {
+          "n": 48,
+          "passed": 26
+        }
+      },
+      "normal": {
+        "A": {
+          "n": 24,
+          "passed": 13
+        },
+        "B1": {
+          "n": 24,
+          "passed": 12
+        },
+        "B2": {
+          "n": 24,
+          "passed": 11
+        },
+        "B3": {
+          "n": 24,
+          "passed": 18
+        }
+      }
+    }
+  },
+  "mechanism": {
+    "updates_both": 45,
+    "updates_n": 48,
+    "normal_any": 0,
+    "normal_n": 24,
+    "normal_rate_bounds_95": [
+      0.0,
+      0.14247359772252555
+    ]
+  },
+  "notes": [
+    "288 allocated original comparisons; 281 valid artifacts and7 answer failures in the conservative derived analysis. Original block02 C-U09/B1 remains infra under the frozen parser; its CLI returncode was not saved. Derived ITT counts the rejected unknown-tool attempt as answer failure without rerunning. This is not full completion under the original frozen primary classification.",
+    "All successful primary calls and56 saved AGY stage3 grades were reused with provenance; raw failed blocks01/02 and streams are retained privately.",
+    "Quality includes generation/answer failures as ITT non-passes. Resource summaries use complete pairs only and cannot support adoption of incomplete arms by efficiency alone.",
+    "Candidate B2 includes B1 guide plus index; B2-vs-B1 isolates the incremental index only descriptively. B3 differs in conditional entry and loading of both maintenance files; no isolated index causal claim.",
+    "CLI/MCP evaluation is not native-host equivalence across three products. AGY requested model identifier is recorded; actual model identifier is not returned.",
+    "Enriched synthetic shared-source tasks are not a representative production sample; common-source dependence, partial blinding and grading uncertainty remain.",
+    "Unverified citations alone are contract failures, not necessarily content falsehoods or critical provenance errors. The posthoc diagnostic decomposition below does not replace the preregistered endpoint."
+  ],
+  "schema_version": 1,
+  "grading_agreement": [
+    {
+      "stage": 1,
+      "scored": 93,
+      "all_attributes_agreed": 64,
+      "anonymous_disagreements_adjudicated": 29
+    },
+    {
+      "stage": 2,
+      "scored": 94,
+      "all_attributes_agreed": 64,
+      "anonymous_disagreements_adjudicated": 30
+    },
+    {
+      "stage": 3,
+      "scored": 94,
+      "all_attributes_agreed": 58,
+      "anonymous_disagreements_adjudicated": 36
+    }
+  ],
+  "content_citation_diagnostic": {
+    "update": {
+      "A": {
+        "content_and_citation": 13,
+        "content_only": 25,
+        "citation_only": 3,
+        "neither": 3,
+        "generation_failed": 4
+      },
+      "B1": {
+        "content_and_citation": 20,
+        "content_only": 22,
+        "citation_only": 3,
+        "neither": 2,
+        "generation_failed": 1
+      },
+      "B2": {
+        "content_and_citation": 14,
+        "content_only": 26,
+        "citation_only": 3,
+        "neither": 5,
+        "generation_failed": 0
+      },
+      "B3": {
+        "content_and_citation": 28,
+        "content_only": 12,
+        "citation_only": 6,
+        "neither": 2,
+        "generation_failed": 0
+      }
+    },
+    "normal": {
+      "A": {
+        "content_and_citation": 12,
+        "content_only": 8,
+        "citation_only": 3,
+        "neither": 1,
+        "generation_failed": 0
+      },
+      "B1": {
+        "content_and_citation": 12,
+        "content_only": 7,
+        "citation_only": 3,
+        "neither": 1,
+        "generation_failed": 1
+      },
+      "B2": {
+        "content_and_citation": 10,
+        "content_only": 12,
+        "citation_only": 2,
+        "neither": 0,
+        "generation_failed": 0
+      },
+      "B3": {
+        "content_and_citation": 17,
+        "content_only": 2,
+        "citation_only": 3,
+        "neither": 1,
+        "generation_failed": 1
+      }
+    }
+  },
+  "raw_character_differences": {
+    "update": {
+      "B1-vs-A": {
+        "n": 43,
+        "mean_characters_difference": -75.86046511627907,
+        "median_characters_difference": 0,
+        "baseline_zero_count": 0,
+        "candidate_zero_count": 0
+      },
+      "B2-vs-A": {
+        "n": 44,
+        "mean_characters_difference": -820.6818181818181,
+        "median_characters_difference": 0.0,
+        "baseline_zero_count": 0,
+        "candidate_zero_count": 0
+      },
+      "B3-vs-A": {
+        "n": 44,
+        "mean_characters_difference": 1326.7727272727273,
+        "median_characters_difference": 1538.5,
+        "baseline_zero_count": 0,
+        "candidate_zero_count": 0
+      },
+      "B2-vs-B1": {
+        "n": 47,
+        "mean_characters_difference": -970.4468085106383,
+        "median_characters_difference": 0,
+        "baseline_zero_count": 0,
+        "candidate_zero_count": 0
+      },
+      "B3-vs-B2": {
+        "n": 48,
+        "mean_characters_difference": 2680.3125,
+        "median_characters_difference": 1586.0,
+        "baseline_zero_count": 0,
+        "candidate_zero_count": 0
+      }
+    },
+    "normal": {
+      "B1-vs-A": {
+        "n": 23,
+        "mean_characters_difference": -500.95652173913044,
+        "median_characters_difference": 0,
+        "baseline_zero_count": 2,
+        "candidate_zero_count": 2
+      },
+      "B2-vs-A": {
+        "n": 24,
+        "mean_characters_difference": -38.25,
+        "median_characters_difference": 0.0,
+        "baseline_zero_count": 2,
+        "candidate_zero_count": 2
+      },
+      "B3-vs-A": {
+        "n": 23,
+        "mean_characters_difference": 380.2173913043478,
+        "median_characters_difference": 0,
+        "baseline_zero_count": 2,
+        "candidate_zero_count": 3
+      },
+      "B2-vs-B1": {
+        "n": 23,
+        "mean_characters_difference": 446.9130434782609,
+        "median_characters_difference": 27,
+        "baseline_zero_count": 2,
+        "candidate_zero_count": 2
+      },
+      "B3-vs-B2": {
+        "n": 23,
+        "mean_characters_difference": 430.60869565217394,
+        "median_characters_difference": 0,
+        "baseline_zero_count": 2,
+        "candidate_zero_count": 3
+      }
+    }
+  },
+  "sensitivity": {
+    "scope": "Posthoc assumption sensitivity, not replacement for frozen primary classification or semantic regrading",
+    "original_primary": "B1 C-U09 remains infra under frozen parser; exit status was not persisted",
+    "disputed_case": {
+      "id": "agreement-005",
+      "stage": 1,
+      "case_id": "E-U04",
+      "arm": "B1"
+    },
+    "unknown_tool_case": {
+      "case_id": "C-U09",
+      "arm": "B1"
+    },
+    "recovered_artifact_note": "Passing is a favorable bound, not a claim the recovered content was independently graded",
+    "scenarios": {
+      "harmonized_conservative": {
+        "B1-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 11,
+            "losses": 4,
+            "difference": 0.14583333333333334,
+            "lower": -0.1869516192464398,
+            "upper": 0.43827974151883375,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U23"
+          ]
+        },
+        "B2-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 7,
+            "losses": 6,
+            "difference": 0.020833333333333332,
+            "lower": -0.2890706619338648,
+            "upper": 0.32493291337689595,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        },
+        "B3-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 18,
+            "losses": 3,
+            "difference": 0.3125,
+            "lower": -0.055029956577962225,
+            "upper": 0.5949771727543561,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U19"
+          ]
+        },
+        "B2-vs-B1": {
+          "quality": {
+            "n": 48,
+            "wins": 6,
+            "losses": 12,
+            "difference": -0.125,
+            "lower": -0.44560505471922146,
+            "upper": 0.22967064044185856,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        }
+      },
+      "agreement005_assumed_pass": {
+        "B1-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 12,
+            "losses": 4,
+            "difference": 0.16666666666666666,
+            "lower": -0.17380976440413307,
+            "upper": 0.4612244726473176,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U23"
+          ]
+        },
+        "B2-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 7,
+            "losses": 6,
+            "difference": 0.020833333333333332,
+            "lower": -0.2890706619338648,
+            "upper": 0.32493291337689595,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        },
+        "B3-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 18,
+            "losses": 3,
+            "difference": 0.3125,
+            "lower": -0.055029956577962225,
+            "upper": 0.5949771727543561,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U19"
+          ]
+        },
+        "B2-vs-B1": {
+          "quality": {
+            "n": 48,
+            "wins": 5,
+            "losses": 12,
+            "difference": -0.14583333333333334,
+            "lower": -0.4540746200439764,
+            "upper": 0.2023558835363418,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        }
+      },
+      "unknown_tool_recovered_artifact_assumed_pass_upper_bound": {
+        "B1-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 11,
+            "losses": 3,
+            "difference": 0.16666666666666666,
+            "lower": -0.15682632562667356,
+            "upper": 0.4437775902381108,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U23"
+          ]
+        },
+        "B2-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 7,
+            "losses": 6,
+            "difference": 0.020833333333333332,
+            "lower": -0.2890706619338648,
+            "upper": 0.32493291337689595,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        },
+        "B3-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 18,
+            "losses": 3,
+            "difference": 0.3125,
+            "lower": -0.055029956577962225,
+            "upper": 0.5949771727543561,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U19"
+          ]
+        },
+        "B2-vs-B1": {
+          "quality": {
+            "n": 48,
+            "wins": 5,
+            "losses": 12,
+            "difference": -0.14583333333333334,
+            "lower": -0.4540746200439764,
+            "upper": 0.2023558835363418,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        }
+      },
+      "both_assumed_pass": {
+        "B1-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 12,
+            "losses": 3,
+            "difference": 0.1875,
+            "lower": -0.14368447078436683,
+            "upper": 0.46672232136659464,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U23"
+          ]
+        },
+        "B2-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 7,
+            "losses": 6,
+            "difference": 0.020833333333333332,
+            "lower": -0.2890706619338648,
+            "upper": 0.32493291337689595,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        },
+        "B3-vs-A": {
+          "quality": {
+            "n": 48,
+            "wins": 18,
+            "losses": 3,
+            "difference": 0.3125,
+            "lower": -0.055029956577962225,
+            "upper": 0.5949771727543561,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": [
+            "C-U19"
+          ]
+        },
+        "B2-vs-B1": {
+          "quality": {
+            "n": 48,
+            "wins": 4,
+            "losses": 12,
+            "difference": -0.16666666666666666,
+            "lower": -0.4612244726473176,
+            "upper": 0.17380976440413307,
+            "boundary_alpha": 0.001388888888888889,
+            "practical_gain_futile": false
+          },
+          "critical_regressions": []
+        }
+      }
+    }
+  },
+  "frozen_source_sha256": {
+    "SKILL.md": "4dbe4bc843c29f4bb9f335dae28778fb4a7bd78e85288157c3043d2203228720",
+    "adr/explicit-package-boundary.md": "729067709fed54438c4dc82866435a1736fc248299c28be08699fe86165eb8ce",
+    "adr/format-preservation-ab.md": "5f773fd89ca2e6c419dee7ec0d2276b5916da687ef9509fbe90a1f61c58575e9",
+    "adr/private-feedback-regression.md": "c9787ed291c2d11331827231474e2843a4d5c42748a70dc9dd5e8b0296c3a831",
+    "adr/three-environment-delivery.md": "1fb74b049840ee3516848e3b64a4e9050b6f79847c2bb2d6ffd302c7cc10e369",
+    "docs/compatibility.md": "096c5e330d680e37ff233c9555fd618acd4b7f7ade689a4d8f84359f00c36c67",
+    "docs/feedback.md": "ce9a314d908f8fd97cd4ea4f5a7a1cdeaa071e2c959428d4904bba2de127fef8",
+    "docs/original-files.json": "b28419439b4c237a93ca00cd264324b04f5a2e120b508c11d00d5c413aa25f62",
+    "docs/provenance.md": "11c765324540913b3e1cc74b94c034023f555eb21c412c2ded34272a7b7db0fa",
+    "docs/templates/problem-report.md": "61856a85184fad29d005233247073342f357f5498f19d4682c49415dc38dc3b6",
+    "docs/validation.md": "d006185edb45331ebd34163131fd94089639e237a45d52e8944f4ea03f1088c0",
+    "evals/results/format-preservation-ab.md": "9fc42304d190bb77ebd39d440c0d36b3d09caf724f2f52107106922d1b94ff71",
+    "examples/claim-review.md": "37b533d812e4270e4ac0f44f27584a5df4e3e4e879260b156a77e6648b668b72",
+    "examples/codex-invocation.md": "eedee3ae736fc45f2a5e3fd74fcb4d707db4984a7ce8f9a84f68543aefe43d94",
+    "examples/comparison.md": "667bbd7e8033cd4a617a4df32ffcb4b6fe16bc0875a26d523a223012d4f501cd",
+    "examples/integrated-review.md": "cacf36548d3c18e5c9ac4e959db59c1097347b8cf290a55b2d9c9edaf24cbb31",
+    "examples/military-comparison.md": "6f0cc0469f6475d2b219179aacde33228f75471e2cd3760d4e5fe70b26ad0352",
+    "examples/military-review.md": "5a5685f086d0e04f659d70ffe8a3d302691dcd06df7d06fcc997dda497e4457e",
+    "examples/military-survey.md": "e6fdf62f14ef54d93c160917ffedc8b112547871dbe4bf6c05c50728dd7ef137",
+    "examples/records/calculation-audit.json": "89bdf07b8c8cc8471b3f02ffb1a35daf402186d1dedec506363539d8cb77631a",
+    "examples/records/integrated.json": "31198c5a99aa89887dc8755f308d888c21d28952285027d4177f77426e5a3c9a",
+    "examples/records/local-review.json": "3e1e8ced5c65a45d7caa76a7b079e564c6fe90b9f9021783bb46ad3edc8cf455",
+    "examples/records/local-snapshot.json": "c0887150b9bc1443ecc5104e0ed108d28669ed428b5adb2b0f431a8224c6df62",
+    "examples/records/martial.json": "2f35051829ab90d9d0ba17824cac415633f34ffe645c85d873eb746c75148983",
+    "examples/records/military.json": "b712727aa43ea10d1ee9dbf2e80dd00f943b523ae636d8f88ad1c96baf721cf4",
+    "examples/records/weapons-declared.json": "e0dbd91e7e866db0f76d4aefc979e34b1f2a5d8a5de000f0e4380db0a50d68fe",
+    "examples/records/weapons.json": "ba290303f1585e98cc6095b3cb5651d1121c6082a97fb40d0eb9bacc2583d0be",
+    "examples/survey.md": "bbc65ea5bd6be1d942298c343f29f5887587730b6926813ec067c48201fc97bb",
+    "examples/weapons-review.md": "b7f661ccec584b0e982fe3b1e393d52915a46421e8ae33664caabd974bfc7a29",
+    "references/evidence-policy.md": "6db499133965b8b52fdcec94d74abde25089e61e7ff6d7721bc6b8a458797678",
+    "references/feedback.md": "719461f69128e84186b497782feb9579bd1a3af2f86c8239cb2a85f116a93ada",
+    "references/military-methods.md": "08128b7b0144c9de426dc3df5751339d9e856c25901d795a9fc6aadad23c84b8",
+    "references/military-source-catalog.md": "d98b5e748e9c302346d6df3fae0cde76f1103ee7b4bbc7d8cf11003ee0a623b8",
+    "references/optional-fiction.md": "a059edbe698c0ee3a3673fbbe2cdb6a254eb67fca69a46f694d4549fd390e370",
+    "references/output-audit.md": "936c06ccac559a7a6b4e3d3f32bb5b9ec46a19d9ac6b2e6796f83666da9f8977",
+    "references/record-contract.md": "869d0086ea2269dcd53e8383d52113a7a34851a713b77eab9afa053a8a2adafa",
+    "references/research-methods.md": "543548745a2e7c343e5f22aa2a4feb447087e969420e1eed7e09334d17538b1b",
+    "references/source-catalog.md": "ec006082241e3a50ef53b753837c176d08bbb8a10a4cd5a8d7bbd6c778aa4342",
+    "references/weapons-methods.md": "5b2d7850f83d35c065b7fb6b0061a01536568621aa8d2345ac50b5173aedbfda",
+    "references/weapons-source-catalog.md": "b384af8324b4645f1e9253eb44e63188af66e5ca02b65f2e35177651b9a05fc3"
+  },
+  "requested_primary_model": "claude-sonnet-5-5; medium",
+  "verified_primary_model": "claude-sonnet-5-5",
+  "grading_models": {
+    "claude": "verified claude-sonnet-5-5; medium",
+    "agy": "requested gemini-4-argon-medium; medium; actual model unreported"
+  }
+}

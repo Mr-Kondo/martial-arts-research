@@ -1,0 +1,25 @@
+{
+  "stage": "stage21",
+  "purpose": "Operational safety screening of 51 fixed synthetic update tasks; descriptive only",
+  "allocated": 102,
+  "valid": 100,
+  "answer_failures": 2,
+  "complete_pairs": 49,
+  "complete_pair_B2_quality_wins": 7,
+  "complete_pair_B2_quality_losses": 5,
+  "arms": {
+    "A": {"allocated": 51, "valid": 50, "pass": 22, "critical_error": 0, "other_factual_error": 5, "Class_I": 0, "Class_II": 1},
+    "B2": {"allocated": 51, "valid": 50, "pass": 23, "critical_error": 0, "other_factual_error": 6, "Class_I": 0, "Class_II": 3}
+  },
+  "sensitivity": {
+    "scope": "Only flagged group3 alternatives vary; groups1/2 stay at primary interpretation. Not a universal worst-case analysis.",
+    "primary_pass": {"A": 22, "B2": 23},
+    "strict_pass": {"A": 20, "B2": 19},
+    "lenient_pass": {"A": 23, "B2": 23}
+  },
+  "verification": "All valid answers have separate Claude/Codex quality and safety audits, anonymous full-canonical adjudication of flagged cases, root review and actual Claude group gates. Saved successful judgments reused with provenance; two final-full-stop quote repairs preserved raw text and semantic fields.",
+  "execution_correction": "An assumed disposable context-mode dry-run wrote host finalization files before approval. The premature decision was retained separately; after actual review approval the finalizer ran and produced a byte-identical decision. No primary answer or successful semantic judgment was regenerated.",
+  "freeze_sha256": "d20da5cfbf15d32433f2b436afc31db317e2376851354ca65beb44e5544be3b2",
+  "decision": "B2 unresolved; this stage neither approves adoption nor completes Issue13",
+  "limits": ["No safety-rate equivalence or proof of safety from zero ClassI", "No efficacy or resource inference", "No pooling with original288 or probe05", "Synthetic tasks and fixed protocol do not establish natural-workflow or three-product equivalence", "Raw audit material stays private under ignored feedback/"]
+}

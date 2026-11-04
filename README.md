@@ -48,6 +48,10 @@ python3 -B scripts/research_guard.py render --record examples/records/calculatio
 
 ## 既存の設計資料
 
+WikiSkillによる更新管理の4案は[最終採否](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/wikiskill-final-decision.md)まで検証した。B1（ガイド）・B2（索引）・B3（条件付き入口）は、事前の採用基準を満たす効果を確認できなかったため実行用スキルへ採用しない。B4（比較・監査基盤）は評価専用の基盤として維持する。評価用コードと記録を通常のスキル実行へ混入させない。
+
+追加51課題の安全性確認段階は102割付け・100有効回答の二系統監査と裁定まで完了した。続く前向き確認は、最初の統計判定に408ペアを要する一方、17ペアの監査完了時点でも採用基準を満たす新しい証拠が得られず、次の単位も基盤上限で未完了となった。反復の機会費用が増分情報を上回ると判断して終了した。これはB2の無効性や安全性の証明ではなく、現候補を採用しないという製品判断である。
+
 2026-10-11。Defyの `defy-martial-review` を一般化し、CodexとClaude Codeの両方で利用するAgent Skill `martial-arts-research` として設計した。実装者はCodex。モードA〜Dと両環境の互換性を含む更新版。
 
 - [01 調査報告](https://github.com/Mr-Kondo/martial-arts-research/blob/main/01-research-report.md): 元スキル、既存スキル、武術・装備・軍事思想・戦史資料と確認範囲。
