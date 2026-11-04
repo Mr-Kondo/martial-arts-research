@@ -21,6 +21,6 @@
     "stop_reason": "diminishing decision information from repeated units; infrastructure limit encountered; no registered statistical look reached"
   },
   "interpretation": "No proof of no effect or safety. Current runtime candidates are not adopted because their required benefit was not demonstrated at acceptable evaluation cost.",
-  "runtime_version": "0.2.3",
+  "runtime_version": "0.3.0",
   "runtime_changed": false
 }
