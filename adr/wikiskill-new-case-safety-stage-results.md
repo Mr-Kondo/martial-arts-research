@@ -10,5 +10,5 @@
 
 実行上の訂正として、破棄されると思ったcontext-mode試験がhostに確定ファイルを書いていた。承認前の決定を別ファイルに保持し、実レビュー承認後に確定処理を実行し直して前後byte一致を確認した。先行書込を正規承認済み実行とは扱わない。
 
-公開集計は[結果JSON](../evals/results/wikiskill-new-case-safety-stage.json)。生ログ・private key・復旧台帳は`feedback/`に保持し公開しない。B2は未確定、Issue #13とPR #16は未完了であり、runtime v0.2.3を変更しない。追加比較は、新しい指標と誤差・検出力・実行可能性の設計、実装・別製品レビューを凍結してから行う。
+公開集計は[結果JSON](../evals/results/wikiskill-new-case-safety-stage.json)。生ログ・private key・復旧台帳は`feedback/`に保持し公開しない。この段階単独ではB2は未確定だった。その後の前向き確認と、反復に対する情報増分・費用の評価は[最終採否](wikiskill-final-decision.md)に記録した。runtime v0.2.3は変更しない。
 
