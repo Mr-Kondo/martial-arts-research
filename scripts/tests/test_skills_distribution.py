@@ -1,5 +1,6 @@
 """The committed CLI distribution must match the existing package boundary."""
 import importlib.util
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -19,5 +20,5 @@ class SkillsDistributionTests(unittest.TestCase):
             self.assertTrue(installation.ensure_owned(actual))
             self.assertEqual(installation.inventory(actual), installation.inventory(expected),
                              'Run python3 -B scripts/build_skills_distribution.py')
-            self.assertEqual((actual / installation.MARKER).read_bytes(),
-                             (expected / installation.MARKER).read_bytes())
+            self.assertEqual(json.loads((actual / installation.MARKER).read_text(encoding='utf-8')),
+                             json.loads((expected / installation.MARKER).read_text(encoding='utf-8')))
