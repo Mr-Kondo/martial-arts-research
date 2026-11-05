@@ -1,5 +1,30 @@
 # 配置・呼出し・互換性
 
+## skills CLIによる導入・更新
+
+`skills` 1.7.6のCLIで検証する。必要なNode.jsの版は[公式案内](https://github.com/vercel-labs/skills)で確認する。実行時のPython guardには従来どおりPython 3.9以上が必要。
+
+```sh
+npx skills add https://github.com/Mr-Kondo/martial-arts-research/tree/main/skills/martial-arts-research --skill martial-arts-research -a codex claude-code antigravity
+npx skills update martial-arts-research
+npx skills remove martial-arts-research
+```
+
+初回登録後は`npx skills update`でも更新できる。名前を省略すると他の登録スキルも対象になる。個人用は各コマンドに`-g`を付ける。CLIが保存するlock情報で更新元を追跡するため、Pythonや手動コピーだけで導入した配置は自動登録されない。更新先はmainであり、VERSIONやGitHub Releaseの最新タグを比較する方式ではない。
+
+既存配置から移行するときは、その配置を別の場所にバックアップしてから`add`する。CLIは同名配置を置換し得るため、手編集を事前に確認する。移行後の更新・削除にはskills CLIを使い、同じ配置をPythonインストーラと交互に管理しない。管理記録もCLIでコピーされるが、CLIのlock情報とは独立しており、管理方式の自動切替には使わない。Python側の手編集保護はCLIによる上書きを保護しない。既存のPython方式も独立した選択肢として残す。
+
+配布元URLには必ず`skills/martial-arts-research`まで含める。CLIは`package-files.txt`を解釈しないため、ルートからの導入は開発・評価資料もコピーする。専用フォルダは既存インストーラで配布一覧の41ファイルと管理記録を生成し、スキルの内容は正本と同じにする。CLIの既定のリンク配置と`--copy`の選択はCLIに任せる。
+
+配布元の変更後は次を実行して生成物もコミットする。既存CIのテストが欠落・余分なファイル・内容差を検出する。
+
+```sh
+python3 -B scripts/build_skills_distribution.py
+python3 -B -m unittest discover -s scripts/tests -v
+```
+
+設計と検証範囲は[ADR](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/skills-cli-update.md)を参照。
+
 2026-10-31更新。共通本体はルートの[SKILL.md](../SKILL.md)。実行時に参照するファイルは同じコピーへ揃え、修正は正本で行う。プロジェクト配置を基本とし、グローバル設定・モデル指定・認証設定を変更しない。
 
 | 利用先 | コピー先 | 明示呼出し（チャットの本文） | 自然言語起動 |
