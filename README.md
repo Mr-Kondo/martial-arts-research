@@ -1,6 +1,6 @@
 # martial-arts-research
 
-バージョン：0.3.0。
+バージョン：0.3.1。
 
 添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本。Codex／Claude Code／Gemini Antigravity向けに同じ内容を配置できる。Antigravityの配置仕様と判断は[ADR](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/three-environment-delivery.md)を参照。
 
@@ -13,7 +13,17 @@
 - [形式保持のA/B評価](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/results/format-preservation-ab.md)：改善を確認できず候補不採用
 - [呼出し例](examples/codex-invocation.md)／[起動評価40件](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/trigger-cases.json)／[タスク評価28件](https://github.com/Mr-Kondo/martial-arts-research/blob/main/evals/task-cases.json)
 
-インストール・更新とアンインストール（Python 3.9以上）：
+skills CLIで導入する場合（Node.jsが必要）：
+
+```sh
+npx skills add https://github.com/Mr-Kondo/martial-arts-research/tree/main/skills/martial-arts-research --skill martial-arts-research -a codex claude-code antigravity
+npx skills update martial-arts-research
+npx skills remove martial-arts-research
+```
+
+初回の`add`で更新元を登録する。以後は`npx skills update`でも更新できる。他のスキルも対象になるため、このスキルだけなら上の名前指定を使う。個人用は`add`に`-g`を付け、更新・削除にも`-g`を指定する。最新版はGitHubの`main`で、リリースタグの選択ではない。必ず上の専用フォルダURLを使う（ルートURLは開発・評価資料も含む）。既存のPython配置からの移行とCLIの検証版は[互換性](docs/compatibility.md#skills-cliによる導入更新)を参照。
+
+Pythonによるインストール・更新とアンインストール（Python 3.9以上）：
 
 ```sh
 python3 scripts/install.py --project /path/to/project --target both
