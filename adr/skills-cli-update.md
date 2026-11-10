@@ -1,6 +1,6 @@
 # skills CLIで更新元を登録する
 
-日付: 2026-11-05。状態: 採用（公開後の更新実測を残す）。関連: Issue #18。
+日付: 2026-11-05。状態: 採用（公開後の更新実測を残す）。関連: Issue #18。 一部置き換え: [remove-python-installer.md](remove-python-installer.md)（Pythonインストーラーの廃止）。
 
 ## 文脈と仮説
 

@@ -12,9 +12,7 @@ npx skills remove martial-arts-research
 
 初回登録後は`npx skills update`でも更新できる。名前を省略すると他の登録スキルも対象になる。個人用は各コマンドに`-g`を付ける。CLIが保存するlock情報で更新元を追跡するため、Pythonや手動コピーだけで導入した配置は自動登録されない。更新先はmainであり、VERSIONやGitHub Releaseの最新タグを比較する方式ではない。
 
-既存配置から移行するときは、その配置を別の場所にバックアップしてから`add`する。CLIは同名配置を置換し得るため、手編集を事前に確認する。移行後の更新・削除にはskills CLIを使い、同じ配置をPythonインストーラと交互に管理しない。管理記録もCLIでコピーされるが、CLIのlock情報とは独立しており、管理方式の自動切替には使わない。Python側の手編集保護はCLIによる上書きを保護しない。既存のPython方式も独立した選択肢として残す。
-
-配布元URLには必ず`skills/martial-arts-research`まで含める。CLIは`package-files.txt`を解釈しないため、ルートからの導入は開発・評価資料もコピーする。専用フォルダは既存インストーラで配布一覧の41ファイルと管理記録を生成し、スキルの内容は正本と同じにする。CLIの既定のリンク配置と`--copy`の選択はCLIに任せる。
+配布元URLには必ず`skills/martial-arts-research`まで含める。CLIは`package-files.txt`を解釈しないため、ルートからの導入は開発・評価資料もコピーする。専用フォルダは配布一覧の38ファイルから`scripts/build_skills_distribution.py`で生成し、スキルの内容は正本と同じにする。CLIの既定のリンク配置と`--copy`の選択はCLIに任せる。
 
 配布元の変更後は次を実行して生成物もコミットする。既存CIのテストが欠落・余分なファイル・内容差を検出する。
 
@@ -37,40 +35,19 @@ Antigravityの個人用配置は`~/.gemini/config/skills/martial-arts-research/`
 
 配置と起動表記の根拠：[Codex公式](https://learn.chatgpt.com/docs/build-skills)、[Claude Code公式](https://code.claude.com/docs/en/skills)、[共通仕様](https://agentskills.io/specification)。ページの必要箇所を2026-10-11に確認。Codexの旧公式URLは前記ページへ転送された。発見済みのスキルが表示されない場合は新しいセッションで確認する。
 
-個人用のコピー先はCodexが`~/.agents/skills/martial-arts-research/`、Claude Codeが`~/.claude/skills/martial-arts-research/`、Antigravityが`~/.gemini/config/skills/martial-arts-research/`。個人配置はインストーラの`--user`で選ぶ。今回そこへの新規インストールは行っていない。Codexのスキル選択は`/skills`または`$`による選択で、Claude Codeのスラッシュ名をCodexで使えるとは仮定しない。
+個人用のコピー先はCodexが`~/.agents/skills/martial-arts-research/`、Claude Codeが`~/.claude/skills/martial-arts-research/`、Antigravityが`~/.gemini/config/skills/martial-arts-research/`。個人配置はskills CLIの`-g`で選ぶ。今回そこへの新規導入は行っていない。Codexのスキル選択は`/skills`または`$`による選択で、Claude Codeのスラッシュ名をCodexで使えるとは仮定しない。
 
 `--mode`、`--task`、`--fiction`、`--stage`はスキルへのプロンプト指定。`codex exec --mode ...`のような製品CLIの引数ではない。製品のプロンプト引数や標準入力に渡す。A/B/C/Dはmartial/weapons/military/integratedの別名。taskは独立してsurvey/compare/reviewを選ぶ。未知値・欠落・重複は確認を求める。
 
-## コピー配置
+## 配布物の範囲
 
-インストールと更新は同じ[install.py](../scripts/install.py)を使う。最新版のチェックアウトまたは解凍したリリースから実行する。配布元はスクリプトの所在から解決する。
+配布物は[package-files.txt](../package-files.txt)に記載されたファイルだけで、Gitは不要。`skills/martial-arts-research`はこの一覧から生成する。`feedback/`、隠しパス、`*.local.md`、Pythonキャッシュ、重複、存在しないファイルは一覧に入れられず、CIのテストが拒否する。既存の公開検証資料は一覧で明示して保持し、新しい実行記録はGit対象外の`feedback/`へ保存する。
 
-配布物は[package-files.txt](../package-files.txt)に記載されたファイルだけをコピーする。Gitは不要。一覧の重複・必須項目欠落・不正な相対パス・リンク・存在しないファイルはエラーとし、配置を置換しない。`feedback/`、隠しパス、`*.local.md`、Pythonキャッシュは一覧内でも拒否する。既存の公開検証資料は一覧で明示して保持し、新しい実行記録はGit対象外の`feedback/`へ保存する。
+`.git`／`.agents`／`.claude`／キャッシュを配布元に含めない。評価用の保存スキルはSKILL.md.txtへ改名してバイトを保全し、検出対象のSKILL.mdはルートの1件だけにする。修正は正本で行い、生成し直してコミットする。シンボリックリンクは必須にしない。アプリ設定・認証・モデル設定は変更しない。
 
-```sh
-python3 scripts/install.py --project /path/to/project --target both
-python3 scripts/install.py --project /path/to/project --target codex
-python3 scripts/install.py --user --target both
-python3 scripts/install.py --project /path/to/project --target all
-python3 scripts/install.py --user --target antigravity
-```
+## 旧Pythonインストーラーからの移行
 
-`--target`はcodex／claude／antigravity／both／all（既定both）。bothは従来のCodex・Claude、allは3製品を選び、プロジェクトの共有先を1回だけ処理する。`--project`の既定は現在のディレクトリ。`--user`は個人用を明示選択し、projectと併用不可。個人配置は利用者がこのコマンドを選んだ場合だけ実行する。削除も同じtargetを指定する。共有プロジェクト配置を削除するとCodexとAntigravityの両方から使えなくなる。
-
-削除は[uninstall.py](../scripts/uninstall.py)で同じ配置先を選ぶ。
-
-```sh
-python3 scripts/uninstall.py --project /path/to/project --target both
-python3 scripts/uninstall.py --user --target claude
-```
-
-インストールはファイルとディレクトリをコピーし、VERSIONとSHA-256を`.martial-arts-research-install.json`に記録する。更新前・削除前に全対象を照合する。手編集、追加ファイル、空ディレクトリの追加、管理記録なし、リンク配置があれば停止する。変更を別途保全して元の配置へ戻してから再実行する。無条件上書き・強制削除オプションはない。存在しない配置の削除は成功扱い。
-
-更新は同じ親ディレクトリの一時コピーを置換し、旧版にだけあった管理対象ファイルも除く。置換失敗時は旧コピーを戻す。両配置は順番に更新するため、ディスク障害等では片方だけ更新済みになり得る。実行中に同じ配置を別プロセスで編集しない。アプリ設定・認証・モデル設定は変更しない。
-
-`.git`／`.agents`／`.claude`／キャッシュを配布元に含めない。評価用の保存スキルはSKILL.md.txtへ改名してバイトを保全し、検出対象のSKILL.mdはルートの1件だけにする。正本を更新してから両配置へ同じスクリプトで同期する。シンボリックリンクは必須にしない。
-
-旧方式で作成した今回の2コピーは、変更前の正本77ファイルとのバイト一致を確認して管理記録を付けた。一般の管理記録のない配置を自動採用する処理はない。
+0.3.1までの`install.py`で入れた配置には`.martial-arts-research-install.json`がある。0.4.0で`install.py`・`uninstall.py`は廃止した。移行するときは、その配置を別の場所にバックアップして削除し、上のskills CLIの`add`で入れ直す。手編集があれば、削除前にバックアップと比較して必要な変更を移す。以後の更新・削除にはskills CLIだけを使う。旧版のインストーラーが必要なら、タグv0.3.1から取得できる。
 
 相対参照は読み込んだSKILL.mdの所在から解決する。Pythonを使う場合は、その配置の`research_guard.py`を絶対パスで実行する。対象の`--root`と`--record`等は対象資料のパスを指定する。
 

@@ -1,6 +1,6 @@
 # martial-arts-research
 
-バージョン：0.3.1。
+バージョン：0.4.0。
 
 添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本。Codex／Claude Code／Gemini Antigravity向けに同じ内容を配置できる。Antigravityの配置仕様と判断は[ADR](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/three-environment-delivery.md)を参照。
 
@@ -21,17 +21,9 @@ npx skills update martial-arts-research
 npx skills remove martial-arts-research
 ```
 
-初回の`add`で更新元を登録する。以後は`npx skills update`でも更新できる。他のスキルも対象になるため、このスキルだけなら上の名前指定を使う。個人用は`add`に`-g`を付け、更新・削除にも`-g`を指定する。最新版はGitHubの`main`で、リリースタグの選択ではない。必ず上の専用フォルダURLを使う（ルートURLは開発・評価資料も含む）。既存のPython配置からの移行とCLIの検証版は[互換性](docs/compatibility.md#skills-cliによる導入更新)を参照。
+初回の`add`で更新元を登録する。以後は`npx skills update`でも更新できる。他のスキルも対象になるため、このスキルだけなら上の名前指定を使う。個人用は`add`に`-g`を付け、更新・削除にも`-g`を指定する。最新版はGitHubの`main`で、リリースタグの選択ではない。必ず上の専用フォルダURLを使う（ルートURLは開発・評価資料も含む）。CLIの検証版は[互換性](docs/compatibility.md#skills-cliによる導入更新)を参照。
 
-Pythonによるインストール・更新とアンインストール（Python 3.9以上）：
-
-```sh
-python3 scripts/install.py --project /path/to/project --target both
-python3 scripts/uninstall.py --project /path/to/project --target both
-python3 scripts/install.py --project /path/to/project --target all
-```
-
-個人用は`--project`の代わりに`--user`を明示する。bothは従来の2製品、allは3製品、antigravityはAntigravityだけを選ぶ。CodexとAntigravityのプロジェクト配置は共有する。更新もinstall.pyを使う。管理済みファイルに変更・追加があれば保全のため停止する。[詳細](docs/compatibility.md)、[リリース履歴](CHANGELOG.md)。
+Pythonインストーラー（`install.py`・`uninstall.py`）は0.4.0で廃止した。旧方式で入れた配置の移し方は[互換性](docs/compatibility.md#旧pythonインストーラーからの移行)を参照。[詳細](docs/compatibility.md)、[リリース履歴](CHANGELOG.md)。
 
 ```text
 Codex: $martial-arts-research --mode B --task compare 10式と90式の公称重量を比較して
@@ -52,7 +44,7 @@ python3 -B scripts/research_guard.py render --record examples/records/calculatio
 
 ## 配布と検証ログ
 
-配布対象は[package-files.txt](package-files.txt)で明示する。一覧外の私的原稿や追加ファイルはコピーしない。GitのないZIP展開先でも導入・更新・削除できる。配布対象は実行時に必要なものだけ（SKILL.md、references、scripts、examples、docs、導入用ファイル）。設計資料・ADR・評価と実行記録・テストは配布元リポジトリにだけ置く。配布対象を追加するときは一覧も更新する。設計判断は[一覧方式](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/explicit-package-boundary.md)と[実行時最小への絞り込み](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/runtime-only-package.md)を参照。
+配布対象は[package-files.txt](package-files.txt)で明示し、skills CLIが導入する`skills/martial-arts-research`をこの一覧から生成する。一覧外の私的原稿や追加ファイルは入らない。配布対象は実行時に必要なものだけ（SKILL.md、references、scripts、examples、docs）。設計資料・ADR・評価と実行記録・テストは配布元リポジトリにだけ置く。配布対象を追加するときは一覧も更新する。設計判断は[一覧方式](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/explicit-package-boundary.md)と[実行時最小への絞り込み](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/runtime-only-package.md)を参照。
 
 今後の実行記録・検証ログはGit対象外の`feedback/`に保存する。既存の公開済み合成評価・検証資料は再現用に残す。秘密情報・個人情報・未公開原稿は記録せず、自動送信もしない。
 

@@ -1,5 +1,11 @@
 # リリース履歴
 
+## 0.4.0 — 2026-11-11
+
+- Pythonインストーラー（`install.py`・`uninstall.py`）と共通モジュールを廃止した。導入・更新・削除はskills CLI（`npx skills add/update/remove`）だけで行う。旧方式で入れた配置の移し方は`docs/compatibility.md`。
+- 配布物は41→38ファイル。専用フォルダの管理記録（`.martial-arts-research-install.json`）は生成しない。
+- 配布一覧の禁止名と、専用フォルダが一覧どおりの内容であることをCIのテストで検査する。スキルの指示・参考資料・guardは不変。
+
 ## 0.3.1 — 2026-11-05
 
 - skills CLI用に配布一覧だけから生成する専用フォルダを追加。初回登録後は`npx skills update`でmainの最新版へ更新できる。
