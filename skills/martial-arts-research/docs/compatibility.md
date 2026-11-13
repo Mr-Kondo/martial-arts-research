@@ -12,7 +12,7 @@ npx skills remove martial-arts-research
 
 初回登録後は`npx skills update`でも更新できる。名前を省略すると他の登録スキルも対象になる。個人用は各コマンドに`-g`を付ける。CLIが保存するlock情報で更新元を追跡するため、Pythonや手動コピーだけで導入した配置は自動登録されない。更新先はmainであり、VERSIONやGitHub Releaseの最新タグを比較する方式ではない。
 
-配布元URLには必ず`skills/martial-arts-research`まで含める。CLIは`package-files.txt`を解釈しないため、ルートからの導入は開発・評価資料もコピーする。専用フォルダは配布一覧の38ファイルから`scripts/build_skills_distribution.py`で生成し、スキルの内容は正本と同じにする。CLIの既定のリンク配置と`--copy`の選択はCLIに任せる。
+配布元URLには必ず`skills/martial-arts-research`まで含める。CLIは`package-files.txt`を解釈しないため、ルートからの導入は開発・評価資料もコピーする。専用フォルダは配布一覧の39ファイルから`scripts/build_skills_distribution.py`で生成し、スキルの内容は正本と同じにする。CLIの既定のリンク配置と`--copy`の選択はCLIに任せる。
 
 配布元の変更後は次を実行して生成物もコミットする。既存CIのテストが欠落・余分なファイル・内容差を検出する。
 

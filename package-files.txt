@@ -36,3 +36,4 @@ references/weapons-methods.md
 references/weapons-source-catalog.md
 scripts/research_guard.py
 scripts/research_output.py
+LICENSE
