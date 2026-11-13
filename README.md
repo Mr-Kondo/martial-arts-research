@@ -1,6 +1,6 @@
 # martial-arts-research
 
-バージョン：0.4.0。
+バージョン：0.4.1。
 
 添付仕様に基づく実装を作成した（2026-10-11）。[スキル本体](SKILL.md)が正本。Codex／Claude Code／Gemini Antigravity向けに同じ内容を配置できる。Antigravityの配置仕様と判断は[ADR](https://github.com/Mr-Kondo/martial-arts-research/blob/main/adr/three-environment-delivery.md)を参照。
 
