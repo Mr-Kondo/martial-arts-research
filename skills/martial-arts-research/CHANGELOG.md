@@ -1,5 +1,11 @@
 # リリース履歴
 
+## 0.4.1 — 2026-11-14
+
+- MITライセンス（`LICENSE`）を追加した。配布物（`skills/martial-arts-research`）にも同じ`LICENSE`を含める。
+- `docs/provenance.md`を更新し、本リポジトリのMIT許諾と、参照元のライセンス未確認の注意を分けて記載した。
+- 配布一覧は38→39ファイル。
+
 ## 0.4.0 — 2026-11-11
 
 - Pythonインストーラー（`install.py`・`uninstall.py`）と共通モジュールを廃止した。導入・更新・削除はskills CLI（`npx skills add/update/remove`）だけで行う。旧方式で入れた配置の移し方は`docs/compatibility.md`。
